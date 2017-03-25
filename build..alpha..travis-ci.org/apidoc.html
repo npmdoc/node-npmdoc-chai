@@ -46,11 +46,11 @@
     font-weight: bold;
 }
 </style>
-<h1>api-documentation for
+<h1>api documentation for
     <a
-        
+
         href="http://chaijs.com"
-        
+
     >chai (v3.5.0)</a>
 </h1>
 <h4>BDD/TDD assertion library for node.js and the browser. Test framework agnostic.</h4>
@@ -58,1649 +58,1649 @@
     href="#apidoc.tableOfContents"
     id="apidoc.tableOfContents"
 ><h1>table of contents</h1></a><ol>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.chai">module chai</a><ol>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion">
             function <span class="apidocSignatureSpan">chai.</span>Assertion
             <span class="apidocSignatureSpan">(obj, msg, stack)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.AssertionError">
             function <span class="apidocSignatureSpan">chai.</span>AssertionError
             <span class="apidocSignatureSpan">(message, _props, ssf)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Should">
             function <span class="apidocSignatureSpan">chai.</span>Should
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert">
             function <span class="apidocSignatureSpan">chai.</span>assert
             <span class="apidocSignatureSpan">(express, errmsg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.expect">
             function <span class="apidocSignatureSpan">chai.</span>expect
             <span class="apidocSignatureSpan">(val, message)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.should">
             function <span class="apidocSignatureSpan">chai.</span>should
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.use">
             function <span class="apidocSignatureSpan">chai.</span>use
             <span class="apidocSignatureSpan">(fn)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.type">
             function <span class="apidocSignatureSpan">chai.</span>util.type
             <span class="apidocSignatureSpan">(obj)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">chai.</span>Assertion.prototype</span>
-            
+
         </li>
-        
+
         <li>
-            
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">chai.</span>AssertionError.prototype</span>
-            
+
         </li>
-        
+
         <li>
-            
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">chai.</span>config</span>
-            
+
         </li>
-        
+
         <li>
-            
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">chai.</span>util</span>
-            
+
         </li>
-        
+
         <li>
-            
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">chai.</span>util.type.Library.prototype</span>
-            
+
         </li>
-        
+
         <li>
-            
+
             <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">chai.</span>version</span>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.chai.Assertion">module chai.Assertion</a><ol>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.Assertion">
             function <span class="apidocSignatureSpan">chai.</span>Assertion
             <span class="apidocSignatureSpan">(obj, msg, stack)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.addChainableMethod">
             function <span class="apidocSignatureSpan">chai.Assertion.</span>addChainableMethod
             <span class="apidocSignatureSpan">(name, fn, chainingBehavior)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.addMethod">
             function <span class="apidocSignatureSpan">chai.Assertion.</span>addMethod
             <span class="apidocSignatureSpan">(name, fn)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.addProperty">
             function <span class="apidocSignatureSpan">chai.Assertion.</span>addProperty
             <span class="apidocSignatureSpan">(name, fn)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.overwriteChainableMethod">
             function <span class="apidocSignatureSpan">chai.Assertion.</span>overwriteChainableMethod
             <span class="apidocSignatureSpan">(name, fn, chainingBehavior)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.overwriteMethod">
             function <span class="apidocSignatureSpan">chai.Assertion.</span>overwriteMethod
             <span class="apidocSignatureSpan">(name, fn)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.overwriteProperty">
             function <span class="apidocSignatureSpan">chai.Assertion.</span>overwriteProperty
             <span class="apidocSignatureSpan">(name, fn)</span>
             </a>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.chai.Assertion.prototype">module chai.Assertion.prototype</a><ol>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.Throw">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>Throw
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.above">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>above
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.approximately">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>approximately
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.assert">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>assert
             <span class="apidocSignatureSpan">(expr, msg, negateMsg, expected, _actual, showDiff)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.below">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>below
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.closeTo">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>closeTo
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.eq">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>eq
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.eql">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>eql
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.eqls">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>eqls
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.equal">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>equal
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.equals">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>equals
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.greaterThan">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>greaterThan
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.gt">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>gt
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.gte">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>gte
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.haveOwnProperty">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>haveOwnProperty
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.haveOwnPropertyDescriptor">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>haveOwnPropertyDescriptor
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.instanceOf">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>instanceOf
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.instanceof">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>instanceof
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.key">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>key
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.keys">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>keys
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.least">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>least
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.lengthOf">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>lengthOf
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.lessThan">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>lessThan
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.lt">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>lt
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.lte">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>lte
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.match">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>match
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.matches">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>matches
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.members">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>members
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.most">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>most
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.oneOf">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>oneOf
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.ownProperty">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>ownProperty
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.ownPropertyDescriptor">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>ownPropertyDescriptor
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.property">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>property
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.respondTo">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>respondTo
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.respondsTo">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>respondsTo
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.satisfies">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>satisfies
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.satisfy">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>satisfy
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.string">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>string
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.throw">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>throw
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.throws">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>throws
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.Assertion.prototype.within">
             function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>within
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>__methods</span>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.chai.AssertionError">module chai.AssertionError</a><ol>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.AssertionError.AssertionError">
             function <span class="apidocSignatureSpan">chai.</span>AssertionError
             <span class="apidocSignatureSpan">(message, _props, ssf)</span>
             </a>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.chai.AssertionError.prototype">module chai.AssertionError.prototype</a><ol>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.AssertionError.prototype.constructor">
             function <span class="apidocSignatureSpan">chai.AssertionError.prototype.</span>constructor
             <span class="apidocSignatureSpan">(message, _props, ssf)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.AssertionError.prototype.toJSON">
             function <span class="apidocSignatureSpan">chai.AssertionError.prototype.</span>toJSON
             <span class="apidocSignatureSpan">(stack)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">chai.AssertionError.prototype.</span>name</span>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.chai.assert">module chai.assert</a><ol>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.assert">
             function <span class="apidocSignatureSpan">chai.</span>assert
             <span class="apidocSignatureSpan">(express, errmsg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.Throw">
             function <span class="apidocSignatureSpan">chai.assert.</span>Throw
             <span class="apidocSignatureSpan">(fn, errt, errs, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.approximately">
             function <span class="apidocSignatureSpan">chai.assert.</span>approximately
             <span class="apidocSignatureSpan">(act, exp, delta, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.changes">
             function <span class="apidocSignatureSpan">chai.assert.</span>changes
             <span class="apidocSignatureSpan">(fn, obj, prop)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.closeTo">
             function <span class="apidocSignatureSpan">chai.assert.</span>closeTo
             <span class="apidocSignatureSpan">(act, exp, delta, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.decreases">
             function <span class="apidocSignatureSpan">chai.assert.</span>decreases
             <span class="apidocSignatureSpan">(fn, obj, prop)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.deepEqual">
             function <span class="apidocSignatureSpan">chai.assert.</span>deepEqual
             <span class="apidocSignatureSpan">(act, exp, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.deepProperty">
             function <span class="apidocSignatureSpan">chai.assert.</span>deepProperty
             <span class="apidocSignatureSpan">(obj, prop, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.deepPropertyNotVal">
             function <span class="apidocSignatureSpan">chai.assert.</span>deepPropertyNotVal
             <span class="apidocSignatureSpan">(obj, prop, val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.deepPropertyVal">
             function <span class="apidocSignatureSpan">chai.assert.</span>deepPropertyVal
             <span class="apidocSignatureSpan">(obj, prop, val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.doesNotChange">
             function <span class="apidocSignatureSpan">chai.assert.</span>doesNotChange
             <span class="apidocSignatureSpan">(fn, obj, prop)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.doesNotDecrease">
             function <span class="apidocSignatureSpan">chai.assert.</span>doesNotDecrease
             <span class="apidocSignatureSpan">(fn, obj, prop)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.doesNotIncrease">
             function <span class="apidocSignatureSpan">chai.assert.</span>doesNotIncrease
             <span class="apidocSignatureSpan">(fn, obj, prop)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.doesNotThrow">
             function <span class="apidocSignatureSpan">chai.assert.</span>doesNotThrow
             <span class="apidocSignatureSpan">(fn, type, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.equal">
             function <span class="apidocSignatureSpan">chai.assert.</span>equal
             <span class="apidocSignatureSpan">(act, exp, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.extensible">
             function <span class="apidocSignatureSpan">chai.assert.</span>extensible
             <span class="apidocSignatureSpan">(obj, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.fail">
             function <span class="apidocSignatureSpan">chai.assert.</span>fail
             <span class="apidocSignatureSpan">(actual, expected, message, operator)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.frozen">
             function <span class="apidocSignatureSpan">chai.assert.</span>frozen
             <span class="apidocSignatureSpan">(obj, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.ifError">
             function <span class="apidocSignatureSpan">chai.assert.</span>ifError
             <span class="apidocSignatureSpan">(val)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.include">
             function <span class="apidocSignatureSpan">chai.assert.</span>include
             <span class="apidocSignatureSpan">(exp, inc, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.includeDeepMembers">
             function <span class="apidocSignatureSpan">chai.assert.</span>includeDeepMembers
             <span class="apidocSignatureSpan">(superset, subset, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.includeMembers">
             function <span class="apidocSignatureSpan">chai.assert.</span>includeMembers
             <span class="apidocSignatureSpan">(superset, subset, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.increases">
             function <span class="apidocSignatureSpan">chai.assert.</span>increases
             <span class="apidocSignatureSpan">(fn, obj, prop)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.instanceOf">
             function <span class="apidocSignatureSpan">chai.assert.</span>instanceOf
             <span class="apidocSignatureSpan">(val, type, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isAbove">
             function <span class="apidocSignatureSpan">chai.assert.</span>isAbove
             <span class="apidocSignatureSpan">(val, abv, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isArray">
             function <span class="apidocSignatureSpan">chai.assert.</span>isArray
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isAtLeast">
             function <span class="apidocSignatureSpan">chai.assert.</span>isAtLeast
             <span class="apidocSignatureSpan">(val, atlst, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isAtMost">
             function <span class="apidocSignatureSpan">chai.assert.</span>isAtMost
             <span class="apidocSignatureSpan">(val, atmst, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isBelow">
             function <span class="apidocSignatureSpan">chai.assert.</span>isBelow
             <span class="apidocSignatureSpan">(val, blw, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isBoolean">
             function <span class="apidocSignatureSpan">chai.assert.</span>isBoolean
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isDefined">
             function <span class="apidocSignatureSpan">chai.assert.</span>isDefined
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isExtensible">
             function <span class="apidocSignatureSpan">chai.assert.</span>isExtensible
             <span class="apidocSignatureSpan">(obj, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isFalse">
             function <span class="apidocSignatureSpan">chai.assert.</span>isFalse
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isFrozen">
             function <span class="apidocSignatureSpan">chai.assert.</span>isFrozen
             <span class="apidocSignatureSpan">(obj, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isFunction">
             function <span class="apidocSignatureSpan">chai.assert.</span>isFunction
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNaN">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNaN
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotArray">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotArray
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotBoolean">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotBoolean
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotExtensible">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotExtensible
             <span class="apidocSignatureSpan">(obj, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotFalse">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotFalse
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotFrozen">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotFrozen
             <span class="apidocSignatureSpan">(obj, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotFunction">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotFunction
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotNaN">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotNaN
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotNull">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotNull
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotNumber">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotNumber
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotObject">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotObject
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotOk">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotOk
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotSealed">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotSealed
             <span class="apidocSignatureSpan">(obj, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotString">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotString
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNotTrue">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNotTrue
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNull">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNull
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isNumber">
             function <span class="apidocSignatureSpan">chai.assert.</span>isNumber
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isObject">
             function <span class="apidocSignatureSpan">chai.assert.</span>isObject
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isOk">
             function <span class="apidocSignatureSpan">chai.assert.</span>isOk
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isSealed">
             function <span class="apidocSignatureSpan">chai.assert.</span>isSealed
             <span class="apidocSignatureSpan">(obj, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isString">
             function <span class="apidocSignatureSpan">chai.assert.</span>isString
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isTrue">
             function <span class="apidocSignatureSpan">chai.assert.</span>isTrue
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.isUndefined">
             function <span class="apidocSignatureSpan">chai.assert.</span>isUndefined
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.lengthOf">
             function <span class="apidocSignatureSpan">chai.assert.</span>lengthOf
             <span class="apidocSignatureSpan">(exp, len, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.match">
             function <span class="apidocSignatureSpan">chai.assert.</span>match
             <span class="apidocSignatureSpan">(exp, re, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notDeepEqual">
             function <span class="apidocSignatureSpan">chai.assert.</span>notDeepEqual
             <span class="apidocSignatureSpan">(act, exp, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notDeepProperty">
             function <span class="apidocSignatureSpan">chai.assert.</span>notDeepProperty
             <span class="apidocSignatureSpan">(obj, prop, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notEqual">
             function <span class="apidocSignatureSpan">chai.assert.</span>notEqual
             <span class="apidocSignatureSpan">(act, exp, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notExtensible">
             function <span class="apidocSignatureSpan">chai.assert.</span>notExtensible
             <span class="apidocSignatureSpan">(obj, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notFrozen">
             function <span class="apidocSignatureSpan">chai.assert.</span>notFrozen
             <span class="apidocSignatureSpan">(obj, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notInclude">
             function <span class="apidocSignatureSpan">chai.assert.</span>notInclude
             <span class="apidocSignatureSpan">(exp, inc, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notInstanceOf">
             function <span class="apidocSignatureSpan">chai.assert.</span>notInstanceOf
             <span class="apidocSignatureSpan">(val, type, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notMatch">
             function <span class="apidocSignatureSpan">chai.assert.</span>notMatch
             <span class="apidocSignatureSpan">(exp, re, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notOk">
             function <span class="apidocSignatureSpan">chai.assert.</span>notOk
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notProperty">
             function <span class="apidocSignatureSpan">chai.assert.</span>notProperty
             <span class="apidocSignatureSpan">(obj, prop, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notSealed">
             function <span class="apidocSignatureSpan">chai.assert.</span>notSealed
             <span class="apidocSignatureSpan">(obj, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notStrictEqual">
             function <span class="apidocSignatureSpan">chai.assert.</span>notStrictEqual
             <span class="apidocSignatureSpan">(act, exp, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.notTypeOf">
             function <span class="apidocSignatureSpan">chai.assert.</span>notTypeOf
             <span class="apidocSignatureSpan">(val, type, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.ok">
             function <span class="apidocSignatureSpan">chai.assert.</span>ok
             <span class="apidocSignatureSpan">(val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.oneOf">
             function <span class="apidocSignatureSpan">chai.assert.</span>oneOf
             <span class="apidocSignatureSpan">(inList, list, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.operator">
             function <span class="apidocSignatureSpan">chai.assert.</span>operator
             <span class="apidocSignatureSpan">(val, operator, val2, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.property">
             function <span class="apidocSignatureSpan">chai.assert.</span>property
             <span class="apidocSignatureSpan">(obj, prop, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.propertyNotVal">
             function <span class="apidocSignatureSpan">chai.assert.</span>propertyNotVal
             <span class="apidocSignatureSpan">(obj, prop, val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.propertyVal">
             function <span class="apidocSignatureSpan">chai.assert.</span>propertyVal
             <span class="apidocSignatureSpan">(obj, prop, val, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.sameDeepMembers">
             function <span class="apidocSignatureSpan">chai.assert.</span>sameDeepMembers
             <span class="apidocSignatureSpan">(set1, set2, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.sameMembers">
             function <span class="apidocSignatureSpan">chai.assert.</span>sameMembers
             <span class="apidocSignatureSpan">(set1, set2, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.sealed">
             function <span class="apidocSignatureSpan">chai.assert.</span>sealed
             <span class="apidocSignatureSpan">(obj, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.strictEqual">
             function <span class="apidocSignatureSpan">chai.assert.</span>strictEqual
             <span class="apidocSignatureSpan">(act, exp, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.throw">
             function <span class="apidocSignatureSpan">chai.assert.</span>throw
             <span class="apidocSignatureSpan">(fn, errt, errs, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.throws">
             function <span class="apidocSignatureSpan">chai.assert.</span>throws
             <span class="apidocSignatureSpan">(fn, errt, errs, msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.assert.typeOf">
             function <span class="apidocSignatureSpan">chai.assert.</span>typeOf
             <span class="apidocSignatureSpan">(val, type, msg)</span>
             </a>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.chai.expect">module chai.expect</a><ol>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.expect.expect">
             function <span class="apidocSignatureSpan">chai.</span>expect
             <span class="apidocSignatureSpan">(val, message)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.expect.fail">
             function <span class="apidocSignatureSpan">chai.expect.</span>fail
             <span class="apidocSignatureSpan">(actual, expected, message, operator)</span>
             </a>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.chai.util">module chai.util</a><ol>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.addChainableMethod">
             function <span class="apidocSignatureSpan">chai.util.</span>addChainableMethod
             <span class="apidocSignatureSpan">(ctx, name, method, chainingBehavior)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.addMethod">
             function <span class="apidocSignatureSpan">chai.util.</span>addMethod
             <span class="apidocSignatureSpan">(ctx, name, method)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.addProperty">
             function <span class="apidocSignatureSpan">chai.util.</span>addProperty
             <span class="apidocSignatureSpan">(ctx, name, getter)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.eql">
             function <span class="apidocSignatureSpan">chai.util.</span>eql
             <span class="apidocSignatureSpan">(a, b, m)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.expectTypes">
             function <span class="apidocSignatureSpan">chai.util.</span>expectTypes
             <span class="apidocSignatureSpan">(obj, types)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.flag">
             function <span class="apidocSignatureSpan">chai.util.</span>flag
             <span class="apidocSignatureSpan">(obj, key, value)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.getActual">
             function <span class="apidocSignatureSpan">chai.util.</span>getActual
             <span class="apidocSignatureSpan">(obj, args)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.getMessage">
             function <span class="apidocSignatureSpan">chai.util.</span>getMessage
             <span class="apidocSignatureSpan">(obj, args)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.getName">
             function <span class="apidocSignatureSpan">chai.util.</span>getName
             <span class="apidocSignatureSpan">(func)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.getPathInfo">
             function <span class="apidocSignatureSpan">chai.util.</span>getPathInfo
             <span class="apidocSignatureSpan">(path, obj)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.getPathValue">
             function <span class="apidocSignatureSpan">chai.util.</span>getPathValue
             <span class="apidocSignatureSpan">(path, obj)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.hasProperty">
             function <span class="apidocSignatureSpan">chai.util.</span>hasProperty
             <span class="apidocSignatureSpan">(name, obj)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.inspect">
             function <span class="apidocSignatureSpan">chai.util.</span>inspect
             <span class="apidocSignatureSpan">(obj, showHidden, depth, colors)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.objDisplay">
             function <span class="apidocSignatureSpan">chai.util.</span>objDisplay
             <span class="apidocSignatureSpan">(obj)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.overwriteChainableMethod">
             function <span class="apidocSignatureSpan">chai.util.</span>overwriteChainableMethod
             <span class="apidocSignatureSpan">(ctx, name, method, chainingBehavior)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.overwriteMethod">
             function <span class="apidocSignatureSpan">chai.util.</span>overwriteMethod
             <span class="apidocSignatureSpan">(ctx, name, method)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.overwriteProperty">
             function <span class="apidocSignatureSpan">chai.util.</span>overwriteProperty
             <span class="apidocSignatureSpan">(ctx, name, getter)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.test">
             function <span class="apidocSignatureSpan">chai.util.</span>test
             <span class="apidocSignatureSpan">(obj, args)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.transferFlags">
             function <span class="apidocSignatureSpan">chai.util.</span>transferFlags
             <span class="apidocSignatureSpan">(assertion, object, includeAll)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.type">
             function <span class="apidocSignatureSpan">chai.util.</span>type
             <span class="apidocSignatureSpan">(obj)</span>
             </a>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.chai.util.type">module chai.util.type</a><ol>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.type.type">
             function <span class="apidocSignatureSpan">chai.util.</span>type
             <span class="apidocSignatureSpan">(obj)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.type.Library">
             function <span class="apidocSignatureSpan">chai.util.type.</span>Library
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.chai.util.type.Library.prototype">module chai.util.type.Library.prototype</a><ol>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.type.Library.prototype.define">
             function <span class="apidocSignatureSpan">chai.util.type.Library.prototype.</span>define
             <span class="apidocSignatureSpan">(type, test)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.type.Library.prototype.of">
             function <span class="apidocSignatureSpan">chai.util.type.Library.prototype.</span>of
             <span class="apidocSignatureSpan">(obj)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.chai.util.type.Library.prototype.test">
             function <span class="apidocSignatureSpan">chai.util.type.Library.prototype.</span>test
             <span class="apidocSignatureSpan">(obj, type)</span>
             </a>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.chai" id="apidoc.module.chai">module chai</a></h1>
-    
-    
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion" id="apidoc.element.chai.Assertion">
         function <span class="apidocSignatureSpan">chai.</span>Assertion
@@ -1715,9 +1715,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.AssertionError" id="apidoc.element.chai.AssertionError">
         function <span class="apidocSignatureSpan">chai.</span>AssertionError
@@ -1752,9 +1752,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Should" id="apidoc.element.chai.Should">
         function <span class="apidocSignatureSpan">chai.</span>Should
@@ -1910,9 +1910,9 @@
    * `constructor`, or alternately that it will not throw an er ...</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert" id="apidoc.element.chai.assert">
         function <span class="apidocSignatureSpan">chai.</span>assert
@@ -1930,9 +1930,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.expect" id="apidoc.element.chai.expect">
         function <span class="apidocSignatureSpan">chai.</span>expect
@@ -1945,9 +1945,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.should" id="apidoc.element.chai.should">
         function <span class="apidocSignatureSpan">chai.</span>should
@@ -2103,9 +2103,9 @@
    * `constructor`, or alternately that it will not throw an er ...</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.use" id="apidoc.element.chai.use">
         function <span class="apidocSignatureSpan">chai.</span>use
@@ -2123,9 +2123,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.type" id="apidoc.element.chai.util.type">
         function <span class="apidocSignatureSpan">chai.</span>util.type
@@ -2145,26 +2145,26 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.chai.Assertion" id="apidoc.module.chai.Assertion">module chai.Assertion</a></h1>
-    
-    
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.Assertion" id="apidoc.element.chai.Assertion.Assertion">
         function <span class="apidocSignatureSpan">chai.</span>Assertion
@@ -2179,9 +2179,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.addChainableMethod" id="apidoc.element.chai.Assertion.addChainableMethod">
         function <span class="apidocSignatureSpan">chai.Assertion.</span>addChainableMethod
@@ -2194,9 +2194,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.addMethod" id="apidoc.element.chai.Assertion.addMethod">
         function <span class="apidocSignatureSpan">chai.Assertion.</span>addMethod
@@ -2209,9 +2209,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.addProperty" id="apidoc.element.chai.Assertion.addProperty">
         function <span class="apidocSignatureSpan">chai.Assertion.</span>addProperty
@@ -2224,9 +2224,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.overwriteChainableMethod" id="apidoc.element.chai.Assertion.overwriteChainableMethod">
         function <span class="apidocSignatureSpan">chai.Assertion.</span>overwriteChainableMethod
@@ -2239,9 +2239,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.overwriteMethod" id="apidoc.element.chai.Assertion.overwriteMethod">
         function <span class="apidocSignatureSpan">chai.Assertion.</span>overwriteMethod
@@ -2254,9 +2254,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.overwriteProperty" id="apidoc.element.chai.Assertion.overwriteProperty">
         function <span class="apidocSignatureSpan">chai.Assertion.</span>overwriteProperty
@@ -2269,14 +2269,14 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
+
+
 </div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.chai.Assertion.prototype" id="apidoc.module.chai.Assertion.prototype">module chai.Assertion.prototype</a></h1>
-    
-    
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.Throw" id="apidoc.element.chai.Assertion.prototype.Throw">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>Throw
@@ -2293,9 +2293,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.above" id="apidoc.element.chai.Assertion.prototype.above">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>above
@@ -2312,9 +2312,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.approximately" id="apidoc.element.chai.Assertion.prototype.approximately">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>approximately
@@ -2331,9 +2331,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.assert" id="apidoc.element.chai.Assertion.prototype.assert">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>assert
@@ -2358,9 +2358,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.below" id="apidoc.element.chai.Assertion.prototype.below">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>below
@@ -2377,9 +2377,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.closeTo" id="apidoc.element.chai.Assertion.prototype.closeTo">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>closeTo
@@ -2396,9 +2396,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.eq" id="apidoc.element.chai.Assertion.prototype.eq">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>eq
@@ -2415,9 +2415,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.eql" id="apidoc.element.chai.Assertion.prototype.eql">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>eql
@@ -2434,9 +2434,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.eqls" id="apidoc.element.chai.Assertion.prototype.eqls">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>eqls
@@ -2453,9 +2453,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.equal" id="apidoc.element.chai.Assertion.prototype.equal">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>equal
@@ -2472,9 +2472,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.equals" id="apidoc.element.chai.Assertion.prototype.equals">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>equals
@@ -2491,9 +2491,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.greaterThan" id="apidoc.element.chai.Assertion.prototype.greaterThan">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>greaterThan
@@ -2510,9 +2510,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.gt" id="apidoc.element.chai.Assertion.prototype.gt">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>gt
@@ -2529,9 +2529,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.gte" id="apidoc.element.chai.Assertion.prototype.gte">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>gte
@@ -2548,9 +2548,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.haveOwnProperty" id="apidoc.element.chai.Assertion.prototype.haveOwnProperty">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>haveOwnProperty
@@ -2567,9 +2567,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.haveOwnPropertyDescriptor" id="apidoc.element.chai.Assertion.prototype.haveOwnPropertyDescriptor">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>haveOwnPropertyDescriptor
@@ -2586,9 +2586,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.instanceOf" id="apidoc.element.chai.Assertion.prototype.instanceOf">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>instanceOf
@@ -2605,9 +2605,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.instanceof" id="apidoc.element.chai.Assertion.prototype.instanceof">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>instanceof
@@ -2624,9 +2624,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.key" id="apidoc.element.chai.Assertion.prototype.key">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>key
@@ -2643,9 +2643,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.keys" id="apidoc.element.chai.Assertion.prototype.keys">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>keys
@@ -2662,9 +2662,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.least" id="apidoc.element.chai.Assertion.prototype.least">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>least
@@ -2681,9 +2681,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.lengthOf" id="apidoc.element.chai.Assertion.prototype.lengthOf">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>lengthOf
@@ -2700,9 +2700,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.lessThan" id="apidoc.element.chai.Assertion.prototype.lessThan">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>lessThan
@@ -2719,9 +2719,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.lt" id="apidoc.element.chai.Assertion.prototype.lt">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>lt
@@ -2738,9 +2738,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.lte" id="apidoc.element.chai.Assertion.prototype.lte">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>lte
@@ -2757,9 +2757,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.match" id="apidoc.element.chai.Assertion.prototype.match">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>match
@@ -2776,9 +2776,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.matches" id="apidoc.element.chai.Assertion.prototype.matches">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>matches
@@ -2795,9 +2795,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.members" id="apidoc.element.chai.Assertion.prototype.members">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>members
@@ -2814,9 +2814,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.most" id="apidoc.element.chai.Assertion.prototype.most">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>most
@@ -2833,9 +2833,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.oneOf" id="apidoc.element.chai.Assertion.prototype.oneOf">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>oneOf
@@ -2852,9 +2852,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.ownProperty" id="apidoc.element.chai.Assertion.prototype.ownProperty">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>ownProperty
@@ -2871,9 +2871,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.ownPropertyDescriptor" id="apidoc.element.chai.Assertion.prototype.ownPropertyDescriptor">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>ownPropertyDescriptor
@@ -2890,9 +2890,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.property" id="apidoc.element.chai.Assertion.prototype.property">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>property
@@ -2909,9 +2909,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.respondTo" id="apidoc.element.chai.Assertion.prototype.respondTo">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>respondTo
@@ -2928,9 +2928,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.respondsTo" id="apidoc.element.chai.Assertion.prototype.respondsTo">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>respondsTo
@@ -2947,9 +2947,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.satisfies" id="apidoc.element.chai.Assertion.prototype.satisfies">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>satisfies
@@ -2966,9 +2966,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.satisfy" id="apidoc.element.chai.Assertion.prototype.satisfy">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>satisfy
@@ -2985,9 +2985,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.string" id="apidoc.element.chai.Assertion.prototype.string">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>string
@@ -3004,9 +3004,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.throw" id="apidoc.element.chai.Assertion.prototype.throw">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>throw
@@ -3023,9 +3023,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.throws" id="apidoc.element.chai.Assertion.prototype.throws">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>throws
@@ -3042,9 +3042,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.Assertion.prototype.within" id="apidoc.element.chai.Assertion.prototype.within">
         function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>within
@@ -3061,16 +3061,16 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
-    
+
+
+
+
 </div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.chai.AssertionError" id="apidoc.module.chai.AssertionError">module chai.AssertionError</a></h1>
-    
-    
+
+
     <h2>
         <a href="#apidoc.element.chai.AssertionError.AssertionError" id="apidoc.element.chai.AssertionError.AssertionError">
         function <span class="apidocSignatureSpan">chai.</span>AssertionError
@@ -3105,14 +3105,14 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
+
+
 </div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.chai.AssertionError.prototype" id="apidoc.module.chai.AssertionError.prototype">module chai.AssertionError.prototype</a></h1>
-    
-    
+
+
     <h2>
         <a href="#apidoc.element.chai.AssertionError.prototype.constructor" id="apidoc.element.chai.AssertionError.prototype.constructor">
         function <span class="apidocSignatureSpan">chai.AssertionError.prototype.</span>constructor
@@ -3147,9 +3147,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.AssertionError.prototype.toJSON" id="apidoc.element.chai.AssertionError.prototype.toJSON">
         function <span class="apidocSignatureSpan">chai.AssertionError.prototype.</span>toJSON
@@ -3170,16 +3170,16 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
-    
+
+
+
+
 </div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.chai.assert" id="apidoc.module.chai.assert">module chai.assert</a></h1>
-    
-    
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.assert" id="apidoc.element.chai.assert.assert">
         function <span class="apidocSignatureSpan">chai.</span>assert
@@ -3197,9 +3197,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.Throw" id="apidoc.element.chai.assert.Throw">
         function <span class="apidocSignatureSpan">chai.assert.</span>Throw
@@ -3218,9 +3218,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.approximately" id="apidoc.element.chai.assert.approximately">
         function <span class="apidocSignatureSpan">chai.assert.</span>approximately
@@ -3233,9 +3233,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.changes" id="apidoc.element.chai.assert.changes">
         function <span class="apidocSignatureSpan">chai.assert.</span>changes
@@ -3248,9 +3248,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.closeTo" id="apidoc.element.chai.assert.closeTo">
         function <span class="apidocSignatureSpan">chai.assert.</span>closeTo
@@ -3263,9 +3263,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.decreases" id="apidoc.element.chai.assert.decreases">
         function <span class="apidocSignatureSpan">chai.assert.</span>decreases
@@ -3278,9 +3278,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.deepEqual" id="apidoc.element.chai.assert.deepEqual">
         function <span class="apidocSignatureSpan">chai.assert.</span>deepEqual
@@ -3293,9 +3293,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.deepProperty" id="apidoc.element.chai.assert.deepProperty">
         function <span class="apidocSignatureSpan">chai.assert.</span>deepProperty
@@ -3308,9 +3308,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.deepPropertyNotVal" id="apidoc.element.chai.assert.deepPropertyNotVal">
         function <span class="apidocSignatureSpan">chai.assert.</span>deepPropertyNotVal
@@ -3323,9 +3323,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.deepPropertyVal" id="apidoc.element.chai.assert.deepPropertyVal">
         function <span class="apidocSignatureSpan">chai.assert.</span>deepPropertyVal
@@ -3338,9 +3338,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.doesNotChange" id="apidoc.element.chai.assert.doesNotChange">
         function <span class="apidocSignatureSpan">chai.assert.</span>doesNotChange
@@ -3353,9 +3353,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.doesNotDecrease" id="apidoc.element.chai.assert.doesNotDecrease">
         function <span class="apidocSignatureSpan">chai.assert.</span>doesNotDecrease
@@ -3368,9 +3368,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.doesNotIncrease" id="apidoc.element.chai.assert.doesNotIncrease">
         function <span class="apidocSignatureSpan">chai.assert.</span>doesNotIncrease
@@ -3383,9 +3383,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.doesNotThrow" id="apidoc.element.chai.assert.doesNotThrow">
         function <span class="apidocSignatureSpan">chai.assert.</span>doesNotThrow
@@ -3403,9 +3403,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.equal" id="apidoc.element.chai.assert.equal">
         function <span class="apidocSignatureSpan">chai.assert.</span>equal
@@ -3426,9 +3426,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.extensible" id="apidoc.element.chai.assert.extensible">
         function <span class="apidocSignatureSpan">chai.assert.</span>extensible
@@ -3441,9 +3441,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.fail" id="apidoc.element.chai.assert.fail">
         function <span class="apidocSignatureSpan">chai.assert.</span>fail
@@ -3461,9 +3461,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.frozen" id="apidoc.element.chai.assert.frozen">
         function <span class="apidocSignatureSpan">chai.assert.</span>frozen
@@ -3476,9 +3476,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.ifError" id="apidoc.element.chai.assert.ifError">
         function <span class="apidocSignatureSpan">chai.assert.</span>ifError
@@ -3493,9 +3493,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.include" id="apidoc.element.chai.assert.include">
         function <span class="apidocSignatureSpan">chai.assert.</span>include
@@ -3508,9 +3508,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.includeDeepMembers" id="apidoc.element.chai.assert.includeDeepMembers">
         function <span class="apidocSignatureSpan">chai.assert.</span>includeDeepMembers
@@ -3523,9 +3523,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.includeMembers" id="apidoc.element.chai.assert.includeMembers">
         function <span class="apidocSignatureSpan">chai.assert.</span>includeMembers
@@ -3538,9 +3538,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.increases" id="apidoc.element.chai.assert.increases">
         function <span class="apidocSignatureSpan">chai.assert.</span>increases
@@ -3553,9 +3553,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.instanceOf" id="apidoc.element.chai.assert.instanceOf">
         function <span class="apidocSignatureSpan">chai.assert.</span>instanceOf
@@ -3568,9 +3568,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isAbove" id="apidoc.element.chai.assert.isAbove">
         function <span class="apidocSignatureSpan">chai.assert.</span>isAbove
@@ -3583,9 +3583,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isArray" id="apidoc.element.chai.assert.isArray">
         function <span class="apidocSignatureSpan">chai.assert.</span>isArray
@@ -3598,9 +3598,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isAtLeast" id="apidoc.element.chai.assert.isAtLeast">
         function <span class="apidocSignatureSpan">chai.assert.</span>isAtLeast
@@ -3613,9 +3613,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isAtMost" id="apidoc.element.chai.assert.isAtMost">
         function <span class="apidocSignatureSpan">chai.assert.</span>isAtMost
@@ -3628,9 +3628,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isBelow" id="apidoc.element.chai.assert.isBelow">
         function <span class="apidocSignatureSpan">chai.assert.</span>isBelow
@@ -3643,9 +3643,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isBoolean" id="apidoc.element.chai.assert.isBoolean">
         function <span class="apidocSignatureSpan">chai.assert.</span>isBoolean
@@ -3658,9 +3658,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isDefined" id="apidoc.element.chai.assert.isDefined">
         function <span class="apidocSignatureSpan">chai.assert.</span>isDefined
@@ -3673,9 +3673,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isExtensible" id="apidoc.element.chai.assert.isExtensible">
         function <span class="apidocSignatureSpan">chai.assert.</span>isExtensible
@@ -3688,9 +3688,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isFalse" id="apidoc.element.chai.assert.isFalse">
         function <span class="apidocSignatureSpan">chai.assert.</span>isFalse
@@ -3703,9 +3703,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isFrozen" id="apidoc.element.chai.assert.isFrozen">
         function <span class="apidocSignatureSpan">chai.assert.</span>isFrozen
@@ -3718,9 +3718,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isFunction" id="apidoc.element.chai.assert.isFunction">
         function <span class="apidocSignatureSpan">chai.assert.</span>isFunction
@@ -3733,9 +3733,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNaN" id="apidoc.element.chai.assert.isNaN">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNaN
@@ -3748,9 +3748,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotArray" id="apidoc.element.chai.assert.isNotArray">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotArray
@@ -3763,9 +3763,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotBoolean" id="apidoc.element.chai.assert.isNotBoolean">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotBoolean
@@ -3778,9 +3778,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotExtensible" id="apidoc.element.chai.assert.isNotExtensible">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotExtensible
@@ -3793,9 +3793,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotFalse" id="apidoc.element.chai.assert.isNotFalse">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotFalse
@@ -3808,9 +3808,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotFrozen" id="apidoc.element.chai.assert.isNotFrozen">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotFrozen
@@ -3823,9 +3823,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotFunction" id="apidoc.element.chai.assert.isNotFunction">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotFunction
@@ -3838,9 +3838,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotNaN" id="apidoc.element.chai.assert.isNotNaN">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotNaN
@@ -3853,9 +3853,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotNull" id="apidoc.element.chai.assert.isNotNull">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotNull
@@ -3868,9 +3868,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotNumber" id="apidoc.element.chai.assert.isNotNumber">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotNumber
@@ -3883,9 +3883,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotObject" id="apidoc.element.chai.assert.isNotObject">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotObject
@@ -3898,9 +3898,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotOk" id="apidoc.element.chai.assert.isNotOk">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotOk
@@ -3913,9 +3913,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotSealed" id="apidoc.element.chai.assert.isNotSealed">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotSealed
@@ -3928,9 +3928,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotString" id="apidoc.element.chai.assert.isNotString">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotString
@@ -3943,9 +3943,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNotTrue" id="apidoc.element.chai.assert.isNotTrue">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNotTrue
@@ -3958,9 +3958,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNull" id="apidoc.element.chai.assert.isNull">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNull
@@ -3973,9 +3973,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isNumber" id="apidoc.element.chai.assert.isNumber">
         function <span class="apidocSignatureSpan">chai.assert.</span>isNumber
@@ -3988,9 +3988,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isObject" id="apidoc.element.chai.assert.isObject">
         function <span class="apidocSignatureSpan">chai.assert.</span>isObject
@@ -4003,9 +4003,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isOk" id="apidoc.element.chai.assert.isOk">
         function <span class="apidocSignatureSpan">chai.assert.</span>isOk
@@ -4018,9 +4018,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isSealed" id="apidoc.element.chai.assert.isSealed">
         function <span class="apidocSignatureSpan">chai.assert.</span>isSealed
@@ -4033,9 +4033,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isString" id="apidoc.element.chai.assert.isString">
         function <span class="apidocSignatureSpan">chai.assert.</span>isString
@@ -4048,9 +4048,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isTrue" id="apidoc.element.chai.assert.isTrue">
         function <span class="apidocSignatureSpan">chai.assert.</span>isTrue
@@ -4063,9 +4063,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.isUndefined" id="apidoc.element.chai.assert.isUndefined">
         function <span class="apidocSignatureSpan">chai.assert.</span>isUndefined
@@ -4078,9 +4078,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.lengthOf" id="apidoc.element.chai.assert.lengthOf">
         function <span class="apidocSignatureSpan">chai.assert.</span>lengthOf
@@ -4093,9 +4093,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.match" id="apidoc.element.chai.assert.match">
         function <span class="apidocSignatureSpan">chai.assert.</span>match
@@ -4108,9 +4108,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notDeepEqual" id="apidoc.element.chai.assert.notDeepEqual">
         function <span class="apidocSignatureSpan">chai.assert.</span>notDeepEqual
@@ -4123,9 +4123,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notDeepProperty" id="apidoc.element.chai.assert.notDeepProperty">
         function <span class="apidocSignatureSpan">chai.assert.</span>notDeepProperty
@@ -4138,9 +4138,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notEqual" id="apidoc.element.chai.assert.notEqual">
         function <span class="apidocSignatureSpan">chai.assert.</span>notEqual
@@ -4161,9 +4161,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notExtensible" id="apidoc.element.chai.assert.notExtensible">
         function <span class="apidocSignatureSpan">chai.assert.</span>notExtensible
@@ -4176,9 +4176,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notFrozen" id="apidoc.element.chai.assert.notFrozen">
         function <span class="apidocSignatureSpan">chai.assert.</span>notFrozen
@@ -4191,9 +4191,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notInclude" id="apidoc.element.chai.assert.notInclude">
         function <span class="apidocSignatureSpan">chai.assert.</span>notInclude
@@ -4206,9 +4206,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notInstanceOf" id="apidoc.element.chai.assert.notInstanceOf">
         function <span class="apidocSignatureSpan">chai.assert.</span>notInstanceOf
@@ -4221,9 +4221,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notMatch" id="apidoc.element.chai.assert.notMatch">
         function <span class="apidocSignatureSpan">chai.assert.</span>notMatch
@@ -4236,9 +4236,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notOk" id="apidoc.element.chai.assert.notOk">
         function <span class="apidocSignatureSpan">chai.assert.</span>notOk
@@ -4251,9 +4251,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notProperty" id="apidoc.element.chai.assert.notProperty">
         function <span class="apidocSignatureSpan">chai.assert.</span>notProperty
@@ -4266,9 +4266,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notSealed" id="apidoc.element.chai.assert.notSealed">
         function <span class="apidocSignatureSpan">chai.assert.</span>notSealed
@@ -4281,9 +4281,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notStrictEqual" id="apidoc.element.chai.assert.notStrictEqual">
         function <span class="apidocSignatureSpan">chai.assert.</span>notStrictEqual
@@ -4296,9 +4296,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.notTypeOf" id="apidoc.element.chai.assert.notTypeOf">
         function <span class="apidocSignatureSpan">chai.assert.</span>notTypeOf
@@ -4311,9 +4311,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.ok" id="apidoc.element.chai.assert.ok">
         function <span class="apidocSignatureSpan">chai.assert.</span>ok
@@ -4326,9 +4326,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.oneOf" id="apidoc.element.chai.assert.oneOf">
         function <span class="apidocSignatureSpan">chai.assert.</span>oneOf
@@ -4341,9 +4341,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.operator" id="apidoc.element.chai.assert.operator">
         function <span class="apidocSignatureSpan">chai.assert.</span>operator
@@ -4389,9 +4389,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.property" id="apidoc.element.chai.assert.property">
         function <span class="apidocSignatureSpan">chai.assert.</span>property
@@ -4404,9 +4404,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.propertyNotVal" id="apidoc.element.chai.assert.propertyNotVal">
         function <span class="apidocSignatureSpan">chai.assert.</span>propertyNotVal
@@ -4419,9 +4419,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.propertyVal" id="apidoc.element.chai.assert.propertyVal">
         function <span class="apidocSignatureSpan">chai.assert.</span>propertyVal
@@ -4434,9 +4434,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.sameDeepMembers" id="apidoc.element.chai.assert.sameDeepMembers">
         function <span class="apidocSignatureSpan">chai.assert.</span>sameDeepMembers
@@ -4449,9 +4449,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.sameMembers" id="apidoc.element.chai.assert.sameMembers">
         function <span class="apidocSignatureSpan">chai.assert.</span>sameMembers
@@ -4464,9 +4464,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.sealed" id="apidoc.element.chai.assert.sealed">
         function <span class="apidocSignatureSpan">chai.assert.</span>sealed
@@ -4479,9 +4479,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.strictEqual" id="apidoc.element.chai.assert.strictEqual">
         function <span class="apidocSignatureSpan">chai.assert.</span>strictEqual
@@ -4494,9 +4494,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.throw" id="apidoc.element.chai.assert.throw">
         function <span class="apidocSignatureSpan">chai.assert.</span>throw
@@ -4515,9 +4515,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.throws" id="apidoc.element.chai.assert.throws">
         function <span class="apidocSignatureSpan">chai.assert.</span>throws
@@ -4536,9 +4536,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.assert.typeOf" id="apidoc.element.chai.assert.typeOf">
         function <span class="apidocSignatureSpan">chai.assert.</span>typeOf
@@ -4551,14 +4551,14 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
+
+
 </div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.chai.expect" id="apidoc.module.chai.expect">module chai.expect</a></h1>
-    
-    
+
+
     <h2>
         <a href="#apidoc.element.chai.expect.expect" id="apidoc.element.chai.expect.expect">
         function <span class="apidocSignatureSpan">chai.</span>expect
@@ -4571,9 +4571,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.expect.fail" id="apidoc.element.chai.expect.fail">
         function <span class="apidocSignatureSpan">chai.expect.</span>fail
@@ -4591,14 +4591,14 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
+
+
 </div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.chai.util" id="apidoc.module.chai.util">module chai.util</a></h1>
-    
-    
+
+
     <h2>
         <a href="#apidoc.element.chai.util.addChainableMethod" id="apidoc.element.chai.util.addChainableMethod">
         function <span class="apidocSignatureSpan">chai.util.</span>addChainableMethod
@@ -4661,9 +4661,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.addMethod" id="apidoc.element.chai.util.addMethod">
         function <span class="apidocSignatureSpan">chai.util.</span>addMethod
@@ -4682,9 +4682,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.addProperty" id="apidoc.element.chai.util.addProperty">
         function <span class="apidocSignatureSpan">chai.util.</span>addProperty
@@ -4707,9 +4707,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.eql" id="apidoc.element.chai.util.eql">
         function <span class="apidocSignatureSpan">chai.util.</span>eql
@@ -4739,9 +4739,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.expectTypes" id="apidoc.element.chai.util.expectTypes">
         function <span class="apidocSignatureSpan">chai.util.</span>expectTypes
@@ -4769,9 +4769,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.flag" id="apidoc.element.chai.util.flag">
         function <span class="apidocSignatureSpan">chai.util.</span>flag
@@ -4789,9 +4789,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.getActual" id="apidoc.element.chai.util.getActual">
         function <span class="apidocSignatureSpan">chai.util.</span>getActual
@@ -4804,9 +4804,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.getMessage" id="apidoc.element.chai.util.getMessage">
         function <span class="apidocSignatureSpan">chai.util.</span>getMessage
@@ -4833,9 +4833,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.getName" id="apidoc.element.chai.util.getName">
         function <span class="apidocSignatureSpan">chai.util.</span>getName
@@ -4851,9 +4851,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.getPathInfo" id="apidoc.element.chai.util.getPathInfo">
         function <span class="apidocSignatureSpan">chai.util.</span>getPathInfo
@@ -4876,9 +4876,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.getPathValue" id="apidoc.element.chai.util.getPathValue">
         function <span class="apidocSignatureSpan">chai.util.</span>getPathValue
@@ -4892,9 +4892,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.hasProperty" id="apidoc.element.chai.util.hasProperty">
         function <span class="apidocSignatureSpan">chai.util.</span>hasProperty
@@ -4918,9 +4918,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.inspect" id="apidoc.element.chai.util.inspect">
         function <span class="apidocSignatureSpan">chai.util.</span>inspect
@@ -4938,9 +4938,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.objDisplay" id="apidoc.element.chai.util.objDisplay">
         function <span class="apidocSignatureSpan">chai.util.</span>objDisplay
@@ -4974,9 +4974,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.overwriteChainableMethod" id="apidoc.element.chai.util.overwriteChainableMethod">
         function <span class="apidocSignatureSpan">chai.util.</span>overwriteChainableMethod
@@ -5001,9 +5001,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.overwriteMethod" id="apidoc.element.chai.util.overwriteMethod">
         function <span class="apidocSignatureSpan">chai.util.</span>overwriteMethod
@@ -5025,9 +5025,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.overwriteProperty" id="apidoc.element.chai.util.overwriteProperty">
         function <span class="apidocSignatureSpan">chai.util.</span>overwriteProperty
@@ -5052,9 +5052,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.test" id="apidoc.element.chai.util.test">
         function <span class="apidocSignatureSpan">chai.util.</span>test
@@ -5069,9 +5069,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.transferFlags" id="apidoc.element.chai.util.transferFlags">
         function <span class="apidocSignatureSpan">chai.util.</span>transferFlags
@@ -5097,9 +5097,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.type" id="apidoc.element.chai.util.type">
         function <span class="apidocSignatureSpan">chai.util.</span>type
@@ -5119,14 +5119,14 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
+
+
 </div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.chai.util.type" id="apidoc.module.chai.util.type">module chai.util.type</a></h1>
-    
-    
+
+
     <h2>
         <a href="#apidoc.element.chai.util.type.type" id="apidoc.element.chai.util.type.type">
         function <span class="apidocSignatureSpan">chai.util.</span>type
@@ -5146,9 +5146,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.type.Library" id="apidoc.element.chai.util.type.Library">
         function <span class="apidocSignatureSpan">chai.util.type.</span>Library
@@ -5162,14 +5162,14 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
+
+
 </div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.chai.util.type.Library.prototype" id="apidoc.module.chai.util.type.Library.prototype">module chai.util.type.Library.prototype</a></h1>
-    
-    
+
+
     <h2>
         <a href="#apidoc.element.chai.util.type.Library.prototype.define" id="apidoc.element.chai.util.type.Library.prototype.define">
         function <span class="apidocSignatureSpan">chai.util.type.Library.prototype.</span>define
@@ -5184,9 +5184,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.type.Library.prototype.of" id="apidoc.element.chai.util.type.Library.prototype.of">
         function <span class="apidocSignatureSpan">chai.util.type.Library.prototype.</span>of
@@ -5206,9 +5206,9 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.chai.util.type.Library.prototype.test" id="apidoc.element.chai.util.type.Library.prototype.test">
         function <span class="apidocSignatureSpan">chai.util.type.Library.prototype.</span>test
@@ -5230,8 +5230,8 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
+
+
 </div>
 
 <div class="apidocFooterDiv">
