@@ -1,11 +1,13 @@
-# api documentation for  [chai (v3.5.0)](http://chaijs.com)  [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-chai.svg)](https://travis-ci.org/npmdoc/node-npmdoc-chai)
+# api documentation for  [chai (v3.5.0)](http://chaijs.com)  [![npm package](https://img.shields.io/npm/v/npmdoc-chai.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-chai) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-chai.svg)](https://travis-ci.org/npmdoc/node-npmdoc-chai)
 #### BDD/TDD assertion library for node.js and the browser. Test framework agnostic.
 
 [![NPM](https://nodei.co/npm/chai.png?downloads=true)](https://www.npmjs.com/package/chai)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-chai/build/screen-capture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-chai_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-chai/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-chai/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-chai_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-chai/build..beta..travis-ci.org/apidoc.html)
 
-![package-listing](https://npmdoc.github.io/node-npmdoc-chai/build/screen-capture.npmPackageListing.svg)
+![npmPackageListing](https://npmdoc.github.io/node-npmdoc-chai/build/screenCapture.npmPackageListing.svg)
+
+![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-chai/build/screenCapture.npmPackageDependencyTree.svg)
 
 
 
@@ -113,6 +115,7 @@
 1.  [function <span class="apidocSignatureSpan">chai.</span>should ()](#apidoc.element.chai.should)
 1.  [function <span class="apidocSignatureSpan">chai.</span>use (fn)](#apidoc.element.chai.use)
 1.  [function <span class="apidocSignatureSpan">chai.</span>util.type (obj)](#apidoc.element.chai.util.type)
+1.  object <span class="apidocSignatureSpan"></span>chai
 1.  object <span class="apidocSignatureSpan">chai.</span>Assertion.prototype
 1.  object <span class="apidocSignatureSpan">chai.</span>AssertionError.prototype
 1.  object <span class="apidocSignatureSpan">chai.</span>config
@@ -269,6 +272,18 @@
 1.  [function <span class="apidocSignatureSpan">chai.assert.</span>throws (fn, errt, errs, msg)](#apidoc.element.chai.assert.throws)
 1.  [function <span class="apidocSignatureSpan">chai.assert.</span>typeOf (val, type, msg)](#apidoc.element.chai.assert.typeOf)
 
+#### [module chai.chai](#apidoc.module.chai.chai)
+1.  [function <span class="apidocSignatureSpan">chai.chai.</span>Assertion (obj, msg, stack)](#apidoc.element.chai.chai.Assertion)
+1.  [function <span class="apidocSignatureSpan">chai.chai.</span>AssertionError (message, _props, ssf)](#apidoc.element.chai.chai.AssertionError)
+1.  [function <span class="apidocSignatureSpan">chai.chai.</span>Should ()](#apidoc.element.chai.chai.Should)
+1.  [function <span class="apidocSignatureSpan">chai.chai.</span>assert (express, errmsg)](#apidoc.element.chai.chai.assert)
+1.  [function <span class="apidocSignatureSpan">chai.chai.</span>expect (val, message)](#apidoc.element.chai.chai.expect)
+1.  [function <span class="apidocSignatureSpan">chai.chai.</span>should ()](#apidoc.element.chai.chai.should)
+1.  [function <span class="apidocSignatureSpan">chai.chai.</span>use (fn)](#apidoc.element.chai.chai.use)
+1.  object <span class="apidocSignatureSpan">chai.chai.</span>config
+1.  object <span class="apidocSignatureSpan">chai.chai.</span>util
+1.  string <span class="apidocSignatureSpan">chai.chai.</span>version
+
 #### [module chai.expect](#apidoc.module.chai.expect)
 1.  [function <span class="apidocSignatureSpan">chai.</span>expect (val, message)](#apidoc.element.chai.expect.expect)
 1.  [function <span class="apidocSignatureSpan">chai.expect.</span>fail (actual, expected, message, operator)](#apidoc.element.chai.expect.fail)
@@ -319,7 +334,23 @@ function Assertion(obj, msg, stack) {
 ```
 - example usage
 ```shell
-n/a
+...
+ * chai
+ * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+
+module.exports = function (chai, util) {
+chai.expect = function (val, message) {
+  return new chai.Assertion(val, message);
+};
+
+/**
+ * ### .fail(actual, expected, [message], [operator])
+ *
+ * Throw a failure.
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.AssertionError"></a>[function <span class="apidocSignatureSpan">chai.</span>AssertionError (message, _props, ssf)](#apidoc.element.chai.AssertionError)
@@ -353,7 +384,23 @@ function AssertionError(message, _props, ssf) {
 ```
 - example usage
 ```shell
-n/a
+...
+ * @param {String} operator
+ * @namespace Assert
+ * @api public
+ */
+
+assert.fail = function (actual, expected, message, operator) {
+  message = message || 'assert.fail()';
+  throw new chai.AssertionError(message, {
+      actual: actual
+    , expected: expected
+    , operator: operator
+  }, assert.fail);
+};
+
+/**
+...
 ```
 
 #### <a name="apidoc.element.chai.Should"></a>[function <span class="apidocSignatureSpan">chai.</span>Should ()](#apidoc.element.chai.Should)
@@ -525,7 +572,23 @@ assert = function (express, errmsg) {
 ```
 - example usage
 ```shell
-n/a
+...
+};
+
+Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
+  util.overwriteChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+/**
+ * ### .assert(expression, message, negateMessage, expected, actual, showDiff)
+ *
+ * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
+ *
+ * @name assert
+ * @param {Philosophical} expression to be tested
+ * @param {String|Function} message or function that returns message to display if expression fails
+ * @param {String|Function} negatedMessage or function that returns negatedMessage to display if negated expression fails
+...
 ```
 
 #### <a name="apidoc.element.chai.expect"></a>[function <span class="apidocSignatureSpan">chai.</span>expect (val, message)](#apidoc.element.chai.expect)
@@ -692,7 +755,23 @@ function loadShould() {
 ```
 - example usage
 ```shell
-n/a
+...
+    return new Assertion(this.valueOf(), null, shouldGetter);
+  }
+  return new Assertion(this, null, shouldGetter);
+}
+function shouldSetter(value) {
+  // See https://github.com/chaijs/chai/issues/86: this makes
+  // 'whatever.should = someValue' actually set 'someValue', which is
+  // especially useful for 'global.should = require('chai').should()'.
+  //
+  // Note that we have to use [[DefineProperty]] instead of [[Put]]
+  // since otherwise we would trigger this very setter!
+  Object.defineProperty(this, 'should', {
+    value: value,
+    enumerable: true,
+    configurable: true,
+...
 ```
 
 #### <a name="apidoc.element.chai.use"></a>[function <span class="apidocSignatureSpan">chai.</span>use (fn)](#apidoc.element.chai.use)
@@ -709,7 +788,23 @@ use = function (fn) {
 ```
 - example usage
 ```shell
-n/a
+...
+/*!
+* Utils for plugins (not exported)
+*/
+
+var util = require('./chai/utils');
+
+/**
+* # .use(function)
+*
+* Provides a way to extend the internals of Chai
+*
+* @param {Function}
+* @returns {this} for chaining
+* @api public
+*/
+...
 ```
 
 #### <a name="apidoc.element.chai.util.type"></a>[function <span class="apidocSignatureSpan">chai.</span>util.type (obj)](#apidoc.element.chai.util.type)
@@ -746,7 +841,23 @@ function Assertion(obj, msg, stack) {
 ```
 - example usage
 ```shell
-n/a
+...
+ * chai
+ * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+
+module.exports = function (chai, util) {
+chai.expect = function (val, message) {
+  return new chai.Assertion(val, message);
+};
+
+/**
+ * ### .fail(actual, expected, [message], [operator])
+ *
+ * Throw a failure.
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.addChainableMethod"></a>[function <span class="apidocSignatureSpan">chai.Assertion.</span>addChainableMethod (name, fn, chainingBehavior)](#apidoc.element.chai.Assertion.addChainableMethod)
@@ -758,7 +869,23 @@ addChainableMethod = function (name, fn, chainingBehavior) {
 ```
 - example usage
 ```shell
-n/a
+...
+};
+
+Assertion.addMethod = function (name, fn) {
+  util.addMethod(this.prototype, name, fn);
+};
+
+Assertion.addChainableMethod = function (name, fn, chainingBehavior) {
+  util.addChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+Assertion.overwriteProperty = function (name, fn) {
+  util.overwriteProperty(this.prototype, name, fn);
+};
+
+Assertion.overwriteMethod = function (name, fn) {
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.addMethod"></a>[function <span class="apidocSignatureSpan">chai.Assertion.</span>addMethod (name, fn)](#apidoc.element.chai.Assertion.addMethod)
@@ -770,7 +897,23 @@ addMethod = function (name, fn) {
 ```
 - example usage
 ```shell
-n/a
+...
+});
+
+Assertion.addProperty = function (name, fn) {
+  util.addProperty(this.prototype, name, fn);
+};
+
+Assertion.addMethod = function (name, fn) {
+  util.addMethod(this.prototype, name, fn);
+};
+
+Assertion.addChainableMethod = function (name, fn, chainingBehavior) {
+  util.addChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+Assertion.overwriteProperty = function (name, fn) {
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.addProperty"></a>[function <span class="apidocSignatureSpan">chai.Assertion.</span>addProperty (name, fn)](#apidoc.element.chai.Assertion.addProperty)
@@ -782,7 +925,23 @@ addProperty = function (name, fn) {
 ```
 - example usage
 ```shell
-n/a
+...
+  set: function(value) {
+    console.warn('Assertion.showDiff is deprecated, use chai.config.showDiff instead.');
+    config.showDiff = value;
+  }
+});
+
+Assertion.addProperty = function (name, fn) {
+  util.addProperty(this.prototype, name, fn);
+};
+
+Assertion.addMethod = function (name, fn) {
+  util.addMethod(this.prototype, name, fn);
+};
+
+Assertion.addChainableMethod = function (name, fn, chainingBehavior) {
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.overwriteChainableMethod"></a>[function <span class="apidocSignatureSpan">chai.Assertion.</span>overwriteChainableMethod (name, fn, chainingBehavior)](#apidoc.element.chai.Assertion.overwriteChainableMethod)
@@ -794,7 +953,23 @@ overwriteChainableMethod = function (name, fn, chainingBehavior) {
 ```
 - example usage
 ```shell
-n/a
+...
+};
+
+Assertion.overwriteMethod = function (name, fn) {
+  util.overwriteMethod(this.prototype, name, fn);
+};
+
+Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
+  util.overwriteChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+/**
+ * ### .assert(expression, message, negateMessage, expected, actual, showDiff)
+ *
+ * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.overwriteMethod"></a>[function <span class="apidocSignatureSpan">chai.Assertion.</span>overwriteMethod (name, fn)](#apidoc.element.chai.Assertion.overwriteMethod)
@@ -806,7 +981,23 @@ overwriteMethod = function (name, fn) {
 ```
 - example usage
 ```shell
-n/a
+...
+};
+
+Assertion.overwriteProperty = function (name, fn) {
+  util.overwriteProperty(this.prototype, name, fn);
+};
+
+Assertion.overwriteMethod = function (name, fn) {
+  util.overwriteMethod(this.prototype, name, fn);
+};
+
+Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
+  util.overwriteChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+/**
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.overwriteProperty"></a>[function <span class="apidocSignatureSpan">chai.Assertion.</span>overwriteProperty (name, fn)](#apidoc.element.chai.Assertion.overwriteProperty)
@@ -818,7 +1009,23 @@ overwriteProperty = function (name, fn) {
 ```
 - example usage
 ```shell
-n/a
+...
+};
+
+Assertion.addChainableMethod = function (name, fn, chainingBehavior) {
+  util.addChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+Assertion.overwriteProperty = function (name, fn) {
+  util.overwriteProperty(this.prototype, name, fn);
+};
+
+Assertion.overwriteMethod = function (name, fn) {
+  util.overwriteMethod(this.prototype, name, fn);
+};
+
+Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
+...
 ```
 
 
@@ -838,7 +1045,23 @@ Throw = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+
+assert.doesNotThrow = function (fn, type, msg) {
+  if ('string' === typeof type) {
+    msg = type;
+    type = null;
+  }
+
+  new Assertion(fn, msg).to.not.Throw(type);
+};
+
+/**
+ * ### .operator(val1, operator, val2, [message])
+ *
+ * Compares two values using 'operator'.
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.above"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>above ()](#apidoc.element.chai.Assertion.prototype.above)
@@ -854,7 +1077,23 @@ above = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+  );
+}
+
+Assertion.addMethod('eql', assertEql);
+Assertion.addMethod('eqls', assertEql);
+
+/**
+ * ### .above(value)
+ *
+ * Asserts that the target is greater than 'value'.
+ *
+ *     expect(10).to.be.above(5);
+ *
+ * Can also be used in conjunction with 'length' to
+ * assert a minimum length. The benefit being a
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.approximately"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>approximately ()](#apidoc.element.chai.Assertion.prototype.approximately)
@@ -870,7 +1109,23 @@ approximately = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.closeTo = function (act, exp, delta, msg) {
+  new Assertion(act, msg).to.be.closeTo(exp, delta);
+};
+
+/**
+ * ### .approximately(actual, expected, delta, [message])
+ *
+ * Asserts that the target is equal 'expected', to within a +/- 'delta' range.
+ *
+ *     assert.approximately(1.5, 1, 0.5, 'numbers are close');
+ *
+ * @name approximately
+ * @param {Number} actual
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.assert"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>assert (expr, msg, negateMsg, expected, _actual, showDiff)](#apidoc.element.chai.Assertion.prototype.assert)
@@ -894,7 +1149,23 @@ assert = function (expr, msg, negateMsg, expected, _actual, showDiff) {
 ```
 - example usage
 ```shell
-n/a
+...
+};
+
+Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
+  util.overwriteChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+/**
+ * ### .assert(expression, message, negateMessage, expected, actual, showDiff)
+ *
+ * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
+ *
+ * @name assert
+ * @param {Philosophical} expression to be tested
+ * @param {String|Function} message or function that returns message to display if expression fails
+ * @param {String|Function} negatedMessage or function that returns negatedMessage to display if negated expression fails
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.below"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>below ()](#apidoc.element.chai.Assertion.prototype.below)
@@ -910,7 +1181,23 @@ below = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+  }
+}
+
+Assertion.addMethod('least', assertLeast);
+Assertion.addMethod('gte', assertLeast);
+
+/**
+ * ### .below(value)
+ *
+ * Asserts that the target is less than 'value'.
+ *
+ *     expect(5).to.be.below(10);
+ *
+ * Can also be used in conjunction with 'length' to
+ * assert a maximum length. The benefit being a
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.closeTo"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>closeTo ()](#apidoc.element.chai.Assertion.prototype.closeTo)
@@ -926,7 +1213,23 @@ closeTo = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+  );
+}
+
+Assertion.addMethod('satisfy', satisfy);
+Assertion.addMethod('satisfies', satisfy);
+
+/**
+ * ### .closeTo(expected, delta)
+ *
+ * Asserts that the target is equal 'expected', to within a +/- 'delta' range.
+ *
+ *     expect(1.5).to.be.closeTo(1, 0.5);
+ *
+ * @name closeTo
+ * @alias approximately
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.eq"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>eq ()](#apidoc.element.chai.Assertion.prototype.eq)
@@ -958,7 +1261,23 @@ eql = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+
+if (msg) flag(this, 'message', msg);
+var obj = flag(this, 'object');
+var expected = false;
+
+if (_.type(obj) === 'array' && _.type(val) === 'object') {
+  for (var i in obj) {
+    if (_.eql(obj[i], val)) {
+      expected = true;
+      break;
+    }
+  }
+} else if (_.type(val) === 'object') {
+  if (!flag(this, 'negate')) {
+    for (var k in val) new Assertion(obj).property(k, val[k]);
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.eqls"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>eqls ()](#apidoc.element.chai.Assertion.prototype.eqls)
@@ -990,7 +1309,23 @@ equal = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+});
+
+/**
+ * ### .not
+ *
+ * Negates any of assertions following in the chain.
+ *
+ *     expect(foo).to.not.equal('bar');
+ *     expect(goodFn).to.not.throw(Error);
+ *     expect({ foo: 'baz' }).to.have.property('foo')
+ *       .and.not.equal('bar');
+ *
+ * @name not
+ * @namespace BDD
+ * @api public
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.equals"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>equals ()](#apidoc.element.chai.Assertion.prototype.equals)
@@ -1006,7 +1341,23 @@ equals = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+* to be the value of that property from the original object. This
+* permits for further chainable assertions on that property.
+*
+*     expect(obj).to.have.property('foo')
+*       .that.is.a('string');
+*     expect(deepObj).to.have.property('green')
+*       .that.is.an('object')
+*       .that.deep.equals({ tea: 'matcha' });
+*     expect(deepObj).to.have.property('teas')
+*       .that.is.an('array')
+*       .with.deep.property('[2]')
+*         .that.deep.equals({ tea: 'konacha' });
+*
+* Note that dots and bracket in 'name' must be backslash-escaped when
+* the 'deep' flag is set, while they must NOT be escaped when the 'deep'
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.greaterThan"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>greaterThan ()](#apidoc.element.chai.Assertion.prototype.greaterThan)
@@ -1102,7 +1453,23 @@ instanceOf = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.notTypeOf = function (val, type, msg) {
+  new Assertion(val, msg).to.not.be.a(type);
+};
+
+/**
+ * ### .instanceOf(object, constructor, [message])
+ *
+ * Asserts that 'value' is an instance of 'constructor'.
+ *
+ *     var Tea = function (name) { this.name = name; }
+ *       , chai = new Tea('chai');
+ *
+ *     assert.instanceOf(chai, Tea, 'chai is an instance of tea');
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.instanceof"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>instanceof ()](#apidoc.element.chai.Assertion.prototype.instanceof)
@@ -1118,7 +1485,23 @@ instanceof = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+*     expect(new Float32Array()).to.be.a('float32array');
+*     expect(Symbol()).to.be.a('symbol');
+*
+*     // es6 overrides
+*     expect({[Symbol.toStringTag]:()=>'foo'}).to.be.a('foo');
+*
+*     // language chain
+*     expect(foo).to.be.an.instanceof(Foo);
+*
+* @name a
+* @alias an
+* @param {String} type
+* @param {String} message _optional_
+* @namespace BDD
+* @api public
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.key"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>key ()](#apidoc.element.chai.Assertion.prototype.key)
@@ -1150,7 +1533,23 @@ keys = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+
+/**
+ * ### .any
+ *
+ * Sets the 'any' flag, (opposite of the 'all' flag)
+ * later used in the 'keys' assertion.
+ *
+ *     expect(foo).to.have.any.keys('bar', 'baz');
+ *
+ * @name any
+ * @namespace BDD
+ * @api public
+ */
+
+Assertion.addProperty('any', function () {
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.least"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>least ()](#apidoc.element.chai.Assertion.prototype.least)
@@ -1166,7 +1565,23 @@ least = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+}
+
+Assertion.addMethod('above', assertAbove);
+Assertion.addMethod('gt', assertAbove);
+Assertion.addMethod('greaterThan', assertAbove);
+
+/**
+ * ### .least(value)
+ *
+ * Asserts that the target is greater than or equal to 'value'.
+ *
+ *     expect(10).to.be.at.least(10);
+ *
+ * Can also be used in conjunction with 'length' to
+ * assert a minimum length. The benefit being a
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.lengthOf"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>lengthOf ()](#apidoc.element.chai.Assertion.prototype.lengthOf)
@@ -1182,7 +1597,23 @@ lengthOf = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+ *
+ * @name length
+ * @namespace BDD
+ * @api public
+ */
+
+/**
+ * ### .lengthOf(value[, message])
+ *
+ * Asserts that the target's 'length' property has
+ * the expected value.
+ *
+ *     expect([ 1, 2, 3]).to.have.lengthOf(3);
+ *     expect('foobar').to.have.lengthOf(6);
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.lessThan"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>lessThan ()](#apidoc.element.chai.Assertion.prototype.lessThan)
@@ -1246,7 +1677,23 @@ match = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+  );
+}
+
+Assertion.addChainableMethod('length', assertLength, assertLengthChain);
+Assertion.addMethod('lengthOf', assertLength);
+
+/**
+ * ### .match(regexp)
+ *
+ * Asserts that the target matches a regular expression.
+ *
+ *     expect('foobar').to.match(/^foo/);
+ *
+ * @name match
+ * @alias matches
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.matches"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>matches ()](#apidoc.element.chai.Assertion.prototype.matches)
@@ -1278,7 +1725,23 @@ members = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+    return superset.some(function(elem2) {
+      return cmp(elem, elem2);
+    });
+  })
+}
+
+/**
+ * ### .members(set)
+ *
+ * Asserts that the target is a superset of 'set',
+ * or that the target and 'set' have the same strictly-equal (===) members.
+ * Alternately, if the 'deep' flag is set, set members are compared for deep
+ * equality.
+ *
+ *     expect([1, 2, 3]).to.include.members([3, 2]);
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.most"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>most ()](#apidoc.element.chai.Assertion.prototype.most)
@@ -1294,7 +1757,23 @@ most = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+}
+
+Assertion.addMethod('below', assertBelow);
+Assertion.addMethod('lt', assertBelow);
+Assertion.addMethod('lessThan', assertBelow);
+
+/**
+ * ### .most(value)
+ *
+ * Asserts that the target is less than or equal to 'value'.
+ *
+ *     expect(5).to.be.at.most(5);
+ *
+ * Can also be used in conjunction with 'length' to
+ * assert a maximum length. The benefit being a
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.oneOf"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>oneOf ()](#apidoc.element.chai.Assertion.prototype.oneOf)
@@ -1310,7 +1789,23 @@ oneOf = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+      , 'expected #{this} to not have the same members as #{act}'
+      , obj
+      , subset
+  );
+});
+
+/**
+ * ### .oneOf(list)
+ *
+ * Assert that a value appears somewhere in the top level of array 'list'.
+ *
+ *     expect('a').to.be.oneOf(['a', 'b', 'c']);
+ *     expect(9).to.not.be.oneOf(['z']);
+ *     expect([3]).to.not.be.oneOf([1, 2, [3]]);
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.ownProperty"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>ownProperty ()](#apidoc.element.chai.Assertion.prototype.ownProperty)
@@ -1326,7 +1821,23 @@ ownProperty = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+  }
+
+  flag(this, 'object', value);
+});
+
+
+/**
+ * ### .ownProperty(name)
+ *
+ * Asserts that the target has an own property 'name'.
+ *
+ *     expect('test').to.have.ownProperty('length');
+ *
+ * @name ownProperty
+ * @alias haveOwnProperty
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.ownPropertyDescriptor"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>ownPropertyDescriptor ()](#apidoc.element.chai.Assertion.prototype.ownPropertyDescriptor)
@@ -1342,7 +1853,25 @@ ownPropertyDescriptor = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+  );
+}
+
+Assertion.addMethod('ownProperty', assertOwnProperty);
+Assertion.addMethod('haveOwnProperty', assertOwnProperty);
+
+/**
+ * ### .ownPropertyDescriptor(name[, descriptor[, message]])
+ *
+ * Asserts that the target has an own property descriptor 'name', that optionally matches 'descriptor'.
+ *
+ *     expect('test').to.have.ownPropertyDescriptor('length');
+ *     expect('test').to.have.ownPropertyDescriptor('length', { enumerable: false, configurable: false, writable: false, value:
+4 });
+ *     expect('test').not.to.have.ownPropertyDescriptor('length', { enumerable: false, configurable: false, writable: false, value
+: 3 });
+ *     expect('test').ownPropertyDescriptor('length').to.have.property('enumerable', false);
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.property"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>property ()](#apidoc.element.chai.Assertion.prototype.property)
@@ -1358,7 +1887,22 @@ property = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+  /**
+* ### .not
+*
+* Negates any of assertions following in the chain.
+*
+*     expect(foo).to.not.equal('bar');
+*     expect(goodFn).to.not.throw(Error);
+*     expect({ foo: 'baz' }).to.have.property('foo')
+*       .and.not.equal('bar');
+*
+* @name not
+* @namespace BDD
+* @api public
+*/
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.respondTo"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>respondTo ()](#apidoc.element.chai.Assertion.prototype.respondTo)
@@ -1374,7 +1918,23 @@ respondTo = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+};
+
+Assertion.addMethod('throw', assertThrows);
+Assertion.addMethod('throws', assertThrows);
+Assertion.addMethod('Throw', assertThrows);
+
+/**
+ * ### .respondTo(method)
+ *
+ * Asserts that the object or class target will respond to a method.
+ *
+ *     Klass.prototype.bar = function(){};
+ *     expect(Klass).to.respondTo('bar');
+ *     expect(obj).to.respondTo('bar');
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.respondsTo"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>respondsTo ()](#apidoc.element.chai.Assertion.prototype.respondsTo)
@@ -1422,7 +1982,23 @@ satisfy = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+Assertion.addProperty('itself', function () {
+  flag(this, 'itself', true);
+});
+
+/**
+ * ### .satisfy(method)
+ *
+ * Asserts that the target passes a given truth test.
+ *
+ *     expect(1).to.satisfy(function(num) { return num > 0; });
+ *
+ * @name satisfy
+ * @alias satisfies
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.string"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>string ()](#apidoc.element.chai.Assertion.prototype.string)
@@ -1438,7 +2014,23 @@ string = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+  );
+}
+
+Assertion.addMethod('match', assertMatch);
+Assertion.addMethod('matches', assertMatch);
+
+/**
+ * ### .string(string)
+ *
+ * Asserts that the string target contains another string.
+ *
+ *     expect('foobar').to.have.string('bar');
+ *
+ * @name string
+ * @param {String} string
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.throw"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>throw ()](#apidoc.element.chai.Assertion.prototype.throw)
@@ -1454,7 +2046,23 @@ throw = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+
+  /**
+* ### .not
+*
+* Negates any of assertions following in the chain.
+*
+*     expect(foo).to.not.equal('bar');
+*     expect(goodFn).to.not.throw(Error);
+*     expect({ foo: 'baz' }).to.have.property('foo')
+*       .and.not.equal('bar');
+*
+* @name not
+* @namespace BDD
+* @api public
+*/
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.throws"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>throws ()](#apidoc.element.chai.Assertion.prototype.throws)
@@ -1470,7 +2078,23 @@ throws = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.lengthOf = function (exp, len, msg) {
+  new Assertion(exp, msg).to.have.length(len);
+};
+
+/**
+ * ### .throws(function, [constructor/string/regexp], [string/regexp], [message])
+ *
+ * Asserts that 'function' will throw an error that is an instance of
+ * 'constructor', or alternately that it will throw an error with message
+ * matching 'regexp'.
+ *
+ *     assert.throws(fn, 'function throws a reference error');
+ *     assert.throws(fn, /function throws a reference error/);
+...
 ```
 
 #### <a name="apidoc.element.chai.Assertion.prototype.within"></a>[function <span class="apidocSignatureSpan">chai.Assertion.prototype.</span>within ()](#apidoc.element.chai.Assertion.prototype.within)
@@ -1486,7 +2110,23 @@ within = function () {
 ```
 - example usage
 ```shell
-n/a
+...
+  }
+}
+
+Assertion.addMethod('most', assertMost);
+Assertion.addMethod('lte', assertMost);
+
+/**
+ * ### .within(start, finish)
+ *
+ * Asserts that the target is within a range.
+ *
+ *     expect(7).to.be.within(5,10);
+ *
+ * Can also be used in conjunction with 'length' to
+ * assert a length range. The benefit being a
+...
 ```
 
 
@@ -1524,7 +2164,23 @@ function AssertionError(message, _props, ssf) {
 ```
 - example usage
 ```shell
-n/a
+...
+ * @param {String} operator
+ * @namespace Assert
+ * @api public
+ */
+
+assert.fail = function (actual, expected, message, operator) {
+  message = message || 'assert.fail()';
+  throw new chai.AssertionError(message, {
+      actual: actual
+    , expected: expected
+    , operator: operator
+  }, assert.fail);
+};
+
+/**
+...
 ```
 
 
@@ -1603,7 +2259,23 @@ assert = function (express, errmsg) {
 ```
 - example usage
 ```shell
-n/a
+...
+};
+
+Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
+  util.overwriteChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+/**
+ * ### .assert(expression, message, negateMessage, expected, actual, showDiff)
+ *
+ * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
+ *
+ * @name assert
+ * @param {Philosophical} expression to be tested
+ * @param {String|Function} message or function that returns message to display if expression fails
+ * @param {String|Function} negatedMessage or function that returns negatedMessage to display if negated expression fails
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.Throw"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>Throw (fn, errt, errs, msg)](#apidoc.element.chai.assert.Throw)
@@ -1621,7 +2293,23 @@ Throw = function (fn, errt, errs, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+
+assert.doesNotThrow = function (fn, type, msg) {
+  if ('string' === typeof type) {
+    msg = type;
+    type = null;
+  }
+
+  new Assertion(fn, msg).to.not.Throw(type);
+};
+
+/**
+ * ### .operator(val1, operator, val2, [message])
+ *
+ * Compares two values using 'operator'.
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.approximately"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>approximately (act, exp, delta, msg)](#apidoc.element.chai.assert.approximately)
@@ -1633,7 +2321,23 @@ approximately = function (act, exp, delta, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.closeTo = function (act, exp, delta, msg) {
+  new Assertion(act, msg).to.be.closeTo(exp, delta);
+};
+
+/**
+ * ### .approximately(actual, expected, delta, [message])
+ *
+ * Asserts that the target is equal 'expected', to within a +/- 'delta' range.
+ *
+ *     assert.approximately(1.5, 1, 0.5, 'numbers are close');
+ *
+ * @name approximately
+ * @param {Number} actual
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.changes"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>changes (fn, obj, prop)](#apidoc.element.chai.assert.changes)
@@ -1645,7 +2349,23 @@ changes = function (fn, obj, prop) {
 ```
 - example usage
 ```shell
-n/a
+...
+*/
+
+  assert.oneOf = function (inList, list, msg) {
+ new Assertion(inList, msg).to.be.oneOf(list);
+  }
+
+/**
+* ### .changes(function, object, property)
+*
+* Asserts that a function changes the value of a property
+*
+*     var obj = { val: 10 };
+*     var fn = function() { obj.val = 22 };
+*     assert.changes(fn, obj, 'val');
+*
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.closeTo"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>closeTo (act, exp, delta, msg)](#apidoc.element.chai.assert.closeTo)
@@ -1657,7 +2377,23 @@ closeTo = function (act, exp, delta, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+  );
+}
+
+Assertion.addMethod('satisfy', satisfy);
+Assertion.addMethod('satisfies', satisfy);
+
+/**
+ * ### .closeTo(expected, delta)
+ *
+ * Asserts that the target is equal 'expected', to within a +/- 'delta' range.
+ *
+ *     expect(1.5).to.be.closeTo(1, 0.5);
+ *
+ * @name closeTo
+ * @alias approximately
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.decreases"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>decreases (fn, obj, prop)](#apidoc.element.chai.assert.decreases)
@@ -1669,7 +2405,23 @@ decreases = function (fn, obj, prop) {
 ```
 - example usage
 ```shell
-n/a
+...
+*/
+
+  assert.doesNotIncrease = function (fn, obj, prop) {
+ new Assertion(fn).to.not.increase(obj, prop);
+  }
+
+/**
+* ### .decreases(function, object, property)
+*
+* Asserts that a function decreases an object property
+*
+*     var obj = { val: 10 };
+*     var fn = function() { obj.val = 5 };
+*     assert.decreases(fn, obj, 'val');
+*
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.deepEqual"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>deepEqual (act, exp, msg)](#apidoc.element.chai.assert.deepEqual)
@@ -1681,7 +2433,23 @@ deepEqual = function (act, exp, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.notStrictEqual = function (act, exp, msg) {
+  new Assertion(act, msg).to.not.equal(exp);
+};
+
+/**
+ * ### .deepEqual(actual, expected, [message])
+ *
+ * Asserts that 'actual' is deeply equal to 'expected'.
+ *
+ *     assert.deepEqual({ tea: 'green' }, { tea: 'green' });
+ *
+ * @name deepEqual
+ * @param {Mixed} actual
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.deepProperty"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>deepProperty (obj, prop, msg)](#apidoc.element.chai.assert.deepProperty)
@@ -1693,7 +2461,23 @@ deepProperty = function (obj, prop, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.notProperty = function (obj, prop, msg) {
+  new Assertion(obj, msg).to.not.have.property(prop);
+};
+
+/**
+ * ### .deepProperty(object, property, [message])
+ *
+ * Asserts that 'object' has a property named by 'property', which can be a
+ * string using dot- and bracket-notation for deep reference.
+ *
+ *     assert.deepProperty({ tea: { green: 'matcha' }}, 'tea.green');
+ *
+ * @name deepProperty
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.deepPropertyNotVal"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>deepPropertyNotVal (obj, prop, val, msg)](#apidoc.element.chai.assert.deepPropertyNotVal)
@@ -1705,7 +2489,23 @@ deepPropertyNotVal = function (obj, prop, val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.deepPropertyVal = function (obj, prop, val, msg) {
+  new Assertion(obj, msg).to.have.deep.property(prop, val);
+};
+
+/**
+ * ### .deepPropertyNotVal(object, property, value, [message])
+ *
+ * Asserts that 'object' has a property named by 'property', but with a value
+ * different from that given by 'value'. 'property' can use dot- and
+ * bracket-notation for deep reference.
+ *
+ *     assert.deepPropertyNotVal({ tea: { green: 'matcha' }}, 'tea.green', 'konacha');
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.deepPropertyVal"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>deepPropertyVal (obj, prop, val, msg)](#apidoc.element.chai.assert.deepPropertyVal)
@@ -1717,7 +2517,23 @@ deepPropertyVal = function (obj, prop, val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.propertyNotVal = function (obj, prop, val, msg) {
+  new Assertion(obj, msg).to.not.have.property(prop, val);
+};
+
+/**
+ * ### .deepPropertyVal(object, property, value, [message])
+ *
+ * Asserts that 'object' has a property named by 'property' with value given
+ * by 'value'. 'property' can use dot- and bracket-notation for deep
+ * reference.
+ *
+ *     assert.deepPropertyVal({ tea: { green: 'matcha' }}, 'tea.green', 'matcha');
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.doesNotChange"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>doesNotChange (fn, obj, prop)](#apidoc.element.chai.assert.doesNotChange)
@@ -1729,7 +2545,23 @@ doesNotChange = function (fn, obj, prop) {
 ```
 - example usage
 ```shell
-n/a
+...
+*/
+
+  assert.changes = function (fn, obj, prop) {
+ new Assertion(fn).to.change(obj, prop);
+  }
+
+/**
+* ### .doesNotChange(function, object, property)
+*
+* Asserts that a function does not changes the value of a property
+*
+*     var obj = { val: 10 };
+*     var fn = function() { console.log('foo'); };
+*     assert.doesNotChange(fn, obj, 'val');
+*
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.doesNotDecrease"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>doesNotDecrease (fn, obj, prop)](#apidoc.element.chai.assert.doesNotDecrease)
@@ -1741,7 +2573,23 @@ doesNotDecrease = function (fn, obj, prop) {
 ```
 - example usage
 ```shell
-n/a
+...
+*/
+
+  assert.decreases = function (fn, obj, prop) {
+ new Assertion(fn).to.decrease(obj, prop);
+  }
+
+/**
+* ### .doesNotDecrease(function, object, property)
+*
+* Asserts that a function does not decreases an object property
+*
+*     var obj = { val: 10 };
+*     var fn = function() { obj.val = 15 };
+*     assert.doesNotDecrease(fn, obj, 'val');
+*
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.doesNotIncrease"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>doesNotIncrease (fn, obj, prop)](#apidoc.element.chai.assert.doesNotIncrease)
@@ -1753,7 +2601,23 @@ doesNotIncrease = function (fn, obj, prop) {
 ```
 - example usage
 ```shell
-n/a
+...
+*/
+
+  assert.increases = function (fn, obj, prop) {
+ new Assertion(fn).to.increase(obj, prop);
+  }
+
+/**
+* ### .doesNotIncrease(function, object, property)
+*
+* Asserts that a function does not increase object property
+*
+*     var obj = { val: 10 };
+*     var fn = function() { obj.val = 8 };
+*     assert.doesNotIncrease(fn, obj, 'val');
+*
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.doesNotThrow"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>doesNotThrow (fn, type, msg)](#apidoc.element.chai.assert.doesNotThrow)
@@ -1770,7 +2634,23 @@ doesNotThrow = function (fn, type, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+  }
+
+  var assertErr = new Assertion(fn, msg).to.throw(errt, errs);
+  return flag(assertErr, 'object');
+};
+
+/**
+ * ### .doesNotThrow(function, [constructor/regexp], [message])
+ *
+ * Asserts that 'function' will _not_ throw an error that is an instance of
+ * 'constructor', or alternately that it will not throw an error with message
+ * matching 'regexp'.
+ *
+ *     assert.doesNotThrow(fn, Error, 'function does not throw');
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.equal"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>equal (act, exp, msg)](#apidoc.element.chai.assert.equal)
@@ -1790,7 +2670,23 @@ equal = function (act, exp, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+});
+
+/**
+ * ### .not
+ *
+ * Negates any of assertions following in the chain.
+ *
+ *     expect(foo).to.not.equal('bar');
+ *     expect(goodFn).to.not.throw(Error);
+ *     expect({ foo: 'baz' }).to.have.property('foo')
+ *       .and.not.equal('bar');
+ *
+ * @name not
+ * @namespace BDD
+ * @api public
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.extensible"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>extensible (obj, msg)](#apidoc.element.chai.assert.extensible)
@@ -1819,7 +2715,23 @@ fail = function (actual, expected, message, operator) {
 ```
 - example usage
 ```shell
-n/a
+...
+      express
+    , errmsg
+    , '[ negation message unavailable ]'
+  );
+};
+
+/**
+ * ### .fail(actual, expected, [message], [operator])
+ *
+ * Throw a failure. Node.js 'assert' module-compatible.
+ *
+ * @name fail
+ * @param {Mixed} actual
+ * @param {Mixed} expected
+ * @param {String} message
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.frozen"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>frozen (obj, msg)](#apidoc.element.chai.assert.frozen)
@@ -1831,7 +2743,23 @@ frozen = function (obj, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+  /**
+* ### .isFrozen(object)
+*
+* Asserts that 'object' is frozen (cannot have new properties added to it
+* and its existing properties cannot be modified).
+*
+*     var frozenObject = Object.freeze({});
+*     assert.frozen(frozenObject);
+*
+* @name isFrozen
+* @alias frozen
+* @param {Object} object
+* @param {String} message _optional_
+* @namespace Assert
+* @api public
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.ifError"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>ifError (val)](#apidoc.element.chai.assert.ifError)
@@ -1845,7 +2773,23 @@ ifError = function (val) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.doesNotDecrease = function (fn, obj, prop) {
+  new Assertion(fn).to.not.decrease(obj, prop);
+}
+
+/*!
+ * ### .ifError(object)
+ *
+ * Asserts if value is not a false value, and throws if it is a true value.
+ * This is added to allow for chai to be a drop-in replacement for Node's
+ * assert class.
+ *
+ *     var err = new Error('I am a custom error');
+ *     assert.ifError(err); // Rethrows err!
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.include"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>include (exp, inc, msg)](#apidoc.element.chai.assert.include)
@@ -1857,7 +2801,23 @@ include = function (exp, inc, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+  );
+}
+
+Assertion.addChainableMethod('an', an);
+Assertion.addChainableMethod('a', an);
+
+/**
+ * ### .include(value)
+ *
+ * The 'include' and 'contain' assertions can be used as either property
+ * based language chains or as methods to assert the inclusion of an object
+ * in an array or a substring in a string. When used as language chains,
+ * they toggle the 'contains' flag for the 'keys' assertion.
+ *
+ *     expect([1,2,3]).to.include(2);
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.includeDeepMembers"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>includeDeepMembers (superset, subset, msg)](#apidoc.element.chai.assert.includeDeepMembers)
@@ -1869,7 +2829,23 @@ includeDeepMembers = function (superset, subset, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.includeMembers = function (superset, subset, msg) {
+  new Assertion(superset, msg).to.include.members(subset);
+}
+
+/**
+ * ### .includeDeepMembers(superset, subset, [message])
+ *
+ * Asserts that 'subset' is included in 'superset' - using deep equality checking.
+ * Order is not taken into account.
+ * Duplicates are ignored.
+ *
+ *     assert.includeDeepMembers([ {a: 1}, {b: 2}, {c: 3} ], [ {b: 2}, {a: 1}, {b: 2} ], 'include deep members');
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.includeMembers"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>includeMembers (superset, subset, msg)](#apidoc.element.chai.assert.includeMembers)
@@ -1881,7 +2857,23 @@ includeMembers = function (superset, subset, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.sameDeepMembers = function (set1, set2, msg) {
+  new Assertion(set1, msg).to.have.same.deep.members(set2);
+}
+
+/**
+ * ### .includeMembers(superset, subset, [message])
+ *
+ * Asserts that 'subset' is included in 'superset'.
+ * Order is not taken into account.
+ *
+ *     assert.includeMembers([ 1, 2, 3 ], [ 2, 1 ], 'include members');
+ *
+ * @name includeMembers
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.increases"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>increases (fn, obj, prop)](#apidoc.element.chai.assert.increases)
@@ -1893,7 +2885,23 @@ increases = function (fn, obj, prop) {
 ```
 - example usage
 ```shell
-n/a
+...
+*/
+
+  assert.doesNotChange = function (fn, obj, prop) {
+ new Assertion(fn).to.not.change(obj, prop);
+  }
+
+/**
+* ### .increases(function, object, property)
+*
+* Asserts that a function increases an object property
+*
+*     var obj = { val: 10 };
+*     var fn = function() { obj.val = 13 };
+*     assert.increases(fn, obj, 'val');
+*
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.instanceOf"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>instanceOf (val, type, msg)](#apidoc.element.chai.assert.instanceOf)
@@ -1905,7 +2913,23 @@ instanceOf = function (val, type, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.notTypeOf = function (val, type, msg) {
+  new Assertion(val, msg).to.not.be.a(type);
+};
+
+/**
+ * ### .instanceOf(object, constructor, [message])
+ *
+ * Asserts that 'value' is an instance of 'constructor'.
+ *
+ *     var Tea = function (name) { this.name = name; }
+ *       , chai = new Tea('chai');
+ *
+ *     assert.instanceOf(chai, Tea, 'chai is an instance of tea');
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isAbove"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isAbove (val, abv, msg)](#apidoc.element.chai.assert.isAbove)
@@ -1917,7 +2941,23 @@ isAbove = function (val, abv, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+*/
+
+  assert.notDeepEqual = function (act, exp, msg) {
+ new Assertion(act, msg).to.not.eql(exp);
+  };
+
+/**
+* ### .isAbove(valueToCheck, valueToBeAbove, [message])
+*
+* Asserts 'valueToCheck' is strictly greater than (>) 'valueToBeAbove'
+*
+*     assert.isAbove(5, 2, '5 is strictly greater than 2');
+*
+* @name isAbove
+* @param {Mixed} valueToCheck
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isArray"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isArray (val, msg)](#apidoc.element.chai.assert.isArray)
@@ -1929,7 +2969,23 @@ isArray = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+   * @api public
+   */
+
+  Assertion.addProperty('empty', function () {
+var obj = flag(this, 'object')
+  , expected = obj;
+
+if (Array.isArray(obj) || 'string' === typeof object) {
+  expected = obj.length;
+} else if (typeof obj === 'object') {
+  expected = Object.keys(obj).length;
+}
+
+this.assert(
+    !expected
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isAtLeast"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isAtLeast (val, atlst, msg)](#apidoc.element.chai.assert.isAtLeast)
@@ -1941,7 +2997,23 @@ isAtLeast = function (val, atlst, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+*/
+
+  assert.isAbove = function (val, abv, msg) {
+ new Assertion(val, msg).to.be.above(abv);
+  };
+
+/**
+* ### .isAtLeast(valueToCheck, valueToBeAtLeast, [message])
+*
+* Asserts 'valueToCheck' is greater than or equal to (>=) 'valueToBeAtLeast'
+*
+*     assert.isAtLeast(5, 2, '5 is greater or equal to 2');
+*     assert.isAtLeast(3, 3, '3 is greater or equal to 3');
+*
+* @name isAtLeast
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isAtMost"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isAtMost (val, atmst, msg)](#apidoc.element.chai.assert.isAtMost)
@@ -1953,7 +3025,23 @@ isAtMost = function (val, atmst, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+*/
+
+  assert.isBelow = function (val, blw, msg) {
+ new Assertion(val, msg).to.be.below(blw);
+  };
+
+/**
+* ### .isAtMost(valueToCheck, valueToBeAtMost, [message])
+*
+* Asserts 'valueToCheck' is less than or equal to (<=) 'valueToBeAtMost'
+*
+*     assert.isAtMost(3, 6, '3 is less than or equal to 6');
+*     assert.isAtMost(4, 4, '4 is less than or equal to 4');
+*
+* @name isAtMost
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isBelow"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isBelow (val, blw, msg)](#apidoc.element.chai.assert.isBelow)
@@ -1965,7 +3053,23 @@ isBelow = function (val, blw, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+*/
+
+  assert.isAtLeast = function (val, atlst, msg) {
+ new Assertion(val, msg).to.be.least(atlst);
+  };
+
+/**
+* ### .isBelow(valueToCheck, valueToBeBelow, [message])
+*
+* Asserts 'valueToCheck' is strictly less than (<) 'valueToBeBelow'
+*
+*     assert.isBelow(3, 6, '3 is strictly less than 6');
+*
+* @name isBelow
+* @param {Mixed} valueToCheck
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isBoolean"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isBoolean (val, msg)](#apidoc.element.chai.assert.isBoolean)
@@ -1977,7 +3081,23 @@ isBoolean = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isNotNumber = function (val, msg) {
+  new Assertion(val, msg).to.not.be.a('number');
+};
+
+/**
+ * ### .isBoolean(value, [message])
+ *
+ * Asserts that 'value' is a boolean.
+ *
+ *     var teaReady = true
+ *       , teaServed = false;
+ *
+ *     assert.isBoolean(teaReady, 'is the tea ready');
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isDefined"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isDefined (val, msg)](#apidoc.element.chai.assert.isDefined)
@@ -1989,7 +3109,23 @@ isDefined = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isUndefined = function (val, msg) {
+  new Assertion(val, msg).to.equal(undefined);
+};
+
+/**
+ * ### .isDefined(value, [message])
+ *
+ * Asserts that 'value' is not 'undefined'.
+ *
+ *     var tea = 'cup of chai';
+ *     assert.isDefined(tea, 'tea has been defined');
+ *
+ * @name isDefined
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isExtensible"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isExtensible (obj, msg)](#apidoc.element.chai.assert.isExtensible)
@@ -2001,7 +3137,23 @@ isExtensible = function (obj, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+// In ES6, a non-object argument will be treated as if it was a non-extensible ordinary object, simply return false.
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isExtensible
+// The following provides ES6 behavior when a TypeError is thrown under ES5.
+
+var isExtensible;
+
+try {
+  isExtensible = Object.isExtensible(obj);
+} catch (err) {
+  if (err instanceof TypeError) isExtensible = false;
+  else throw err;
+}
+
+this.assert(
+  isExtensible
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isFalse"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isFalse (val, msg)](#apidoc.element.chai.assert.isFalse)
@@ -2013,7 +3165,23 @@ isFalse = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isNotTrue = function (val, msg) {
+  new Assertion(val, msg).to.not.equal(true);
+};
+
+/**
+ * ### .isFalse(value, [message])
+ *
+ * Asserts that 'value' is false.
+ *
+ *     var teaServed = false;
+ *     assert.isFalse(teaServed, 'no tea yet? hmm...');
+ *
+ * @name isFalse
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isFrozen"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isFrozen (obj, msg)](#apidoc.element.chai.assert.isFrozen)
@@ -2025,7 +3193,23 @@ isFrozen = function (obj, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+// In ES6, a non-object argument will be treated as if it was a frozen ordinary object, simply return true.
+// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen
+// The following provides ES6 behavior when a TypeError is thrown under ES5.
+
+var isFrozen;
+
+try {
+  isFrozen = Object.isFrozen(obj);
+} catch (err) {
+  if (err instanceof TypeError) isFrozen = true;
+  else throw err;
+}
+
+this.assert(
+  isFrozen
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isFunction"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isFunction (val, msg)](#apidoc.element.chai.assert.isFunction)
@@ -2037,7 +3221,23 @@ isFunction = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isDefined = function (val, msg) {
+  new Assertion(val, msg).to.not.equal(undefined);
+};
+
+/**
+ * ### .isFunction(value, [message])
+ *
+ * Asserts that 'value' is a function.
+ *
+ *     function serveTea() { return 'cup of tea'; };
+ *     assert.isFunction(serveTea, 'great, we can have tea now');
+ *
+ * @name isFunction
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNaN"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNaN (val, msg)](#apidoc.element.chai.assert.isNaN)
@@ -2049,7 +3249,23 @@ isNaN = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+  new Assertion(val, msg).to.not.equal(null);
+};
+
+/**
+ * ### .isNaN
+ * Asserts that value is NaN
+ *
+ *    assert.isNaN('foo', 'foo is NaN');
+ *
+ * @name isNaN
+ * @param {Mixed} value
+ * @param {String} message
+ * @namespace Assert
+ * @api public
+ */
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotArray"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotArray (val, msg)](#apidoc.element.chai.assert.isNotArray)
@@ -2061,7 +3277,23 @@ isNotArray = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isArray = function (val, msg) {
+  new Assertion(val, msg).to.be.an('array');
+};
+
+/**
+ * ### .isNotArray(value, [message])
+ *
+ * Asserts that 'value' is _not_ an array.
+ *
+ *     var menu = 'green|chai|oolong';
+ *     assert.isNotArray(menu, 'what kind of tea do we want?');
+ *
+ * @name isNotArray
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotBoolean"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotBoolean (val, msg)](#apidoc.element.chai.assert.isNotBoolean)
@@ -2073,7 +3305,23 @@ isNotBoolean = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isBoolean = function (val, msg) {
+  new Assertion(val, msg).to.be.a('boolean');
+};
+
+/**
+ * ### .isNotBoolean(value, [message])
+ *
+ * Asserts that 'value' is _not_ a boolean.
+ *
+ *     var teaReady = 'yep'
+ *       , teaServed = 'nope';
+ *
+ *     assert.isNotBoolean(teaReady, 'is the tea ready');
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotExtensible"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotExtensible (obj, msg)](#apidoc.element.chai.assert.isNotExtensible)
@@ -2085,7 +3333,23 @@ isNotExtensible = function (obj, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isExtensible = function (obj, msg) {
+  new Assertion(obj, msg).to.be.extensible;
+};
+
+/**
+ * ### .isNotExtensible(object)
+ *
+ * Asserts that 'object' is _not_ extensible.
+ *
+ *     var nonExtensibleObject = Object.preventExtensions({});
+ *     var sealedObject = Object.seal({});
+ *     var frozenObject = Object.freese({});
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotFalse"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotFalse (val, msg)](#apidoc.element.chai.assert.isNotFalse)
@@ -2097,7 +3361,23 @@ isNotFalse = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isFalse = function (val, msg) {
+  new Assertion(val, msg).is['false'];
+};
+
+/**
+ * ### .isNotFalse(value, [message])
+ *
+ * Asserts that 'value' is not false.
+ *
+ *     var tea = 'tasty chai';
+ *     assert.isNotFalse(tea, 'great, time for tea!');
+ *
+ * @name isNotFalse
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotFrozen"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotFrozen (obj, msg)](#apidoc.element.chai.assert.isNotFrozen)
@@ -2109,7 +3389,23 @@ isNotFrozen = function (obj, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isFrozen = function (obj, msg) {
+  new Assertion(obj, msg).to.be.frozen;
+};
+
+/**
+ * ### .isNotFrozen(object)
+ *
+ * Asserts that 'object' is _not_ frozen.
+ *
+ *     assert.isNotFrozen({});
+ *
+ * @name isNotFrozen
+ * @alias notFrozen
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotFunction"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotFunction (val, msg)](#apidoc.element.chai.assert.isNotFunction)
@@ -2121,7 +3417,23 @@ isNotFunction = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isFunction = function (val, msg) {
+  new Assertion(val, msg).to.be.a('function');
+};
+
+/**
+ * ### .isNotFunction(value, [message])
+ *
+ * Asserts that 'value' is _not_ a function.
+ *
+ *     var serveTea = [ 'heat', 'pour', 'sip' ];
+ *     assert.isNotFunction(serveTea, 'great, we have listed the steps');
+ *
+ * @name isNotFunction
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotNaN"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotNaN (val, msg)](#apidoc.element.chai.assert.isNotNaN)
@@ -2133,7 +3445,23 @@ isNotNaN = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+  new Assertion(val, msg).to.be.NaN;
+};
+
+/**
+ * ### .isNotNaN
+ * Asserts that value is not NaN
+ *
+ *    assert.isNotNaN(4, '4 is not NaN');
+ *
+ * @name isNotNaN
+ * @param {Mixed} value
+ * @param {String} message
+ * @namespace Assert
+ * @api public
+ */
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotNull"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotNull (val, msg)](#apidoc.element.chai.assert.isNotNull)
@@ -2145,7 +3473,23 @@ isNotNull = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isNull = function (val, msg) {
+  new Assertion(val, msg).to.equal(null);
+};
+
+/**
+ * ### .isNotNull(value, [message])
+ *
+ * Asserts that 'value' is not null.
+ *
+ *     var tea = 'tasty chai';
+ *     assert.isNotNull(tea, 'great, time for tea!');
+ *
+ * @name isNotNull
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotNumber"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotNumber (val, msg)](#apidoc.element.chai.assert.isNotNumber)
@@ -2157,7 +3501,23 @@ isNotNumber = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isNumber = function (val, msg) {
+  new Assertion(val, msg).to.be.a('number');
+};
+
+/**
+ * ### .isNotNumber(value, [message])
+ *
+ * Asserts that 'value' is _not_ a number.
+ *
+ *     var cups = '2 cups please';
+ *     assert.isNotNumber(cups, 'how many cups');
+ *
+ * @name isNotNumber
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotObject"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotObject (val, msg)](#apidoc.element.chai.assert.isNotObject)
@@ -2169,7 +3529,23 @@ isNotObject = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isObject = function (val, msg) {
+  new Assertion(val, msg).to.be.a('object');
+};
+
+/**
+ * ### .isNotObject(value, [message])
+ *
+ * Asserts that 'value' is _not_ an object of type 'Object' (as revealed by 'Object.prototype.toString').
+ *
+ *     var selection = 'chai'
+ *     assert.isNotObject(selection, 'tea selection is not an object');
+ *     assert.isNotObject(null, 'null is not an object');
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotOk"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotOk (val, msg)](#apidoc.element.chai.assert.isNotOk)
@@ -2181,7 +3557,23 @@ isNotOk = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isOk = function (val, msg) {
+  new Assertion(val, msg).is.ok;
+};
+
+/**
+ * ### .isNotOk(object, [message])
+ *
+ * Asserts that 'object' is falsy.
+ *
+ *     assert.isNotOk('everything', 'this will fail');
+ *     assert.isNotOk(false, 'this will pass');
+ *
+ * @name isNotOk
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotSealed"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotSealed (obj, msg)](#apidoc.element.chai.assert.isNotSealed)
@@ -2193,7 +3585,23 @@ isNotSealed = function (obj, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isSealed = function (obj, msg) {
+  new Assertion(obj, msg).to.be.sealed;
+};
+
+/**
+ * ### .isNotSealed(object)
+ *
+ * Asserts that 'object' is _not_ sealed.
+ *
+ *     assert.isNotSealed({});
+ *
+ * @name isNotSealed
+ * @alias notSealed
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotString"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotString (val, msg)](#apidoc.element.chai.assert.isNotString)
@@ -2205,7 +3613,23 @@ isNotString = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isString = function (val, msg) {
+  new Assertion(val, msg).to.be.a('string');
+};
+
+/**
+ * ### .isNotString(value, [message])
+ *
+ * Asserts that 'value' is _not_ a string.
+ *
+ *     var teaOrder = 4;
+ *     assert.isNotString(teaOrder, 'order placed');
+ *
+ * @name isNotString
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNotTrue"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNotTrue (val, msg)](#apidoc.element.chai.assert.isNotTrue)
@@ -2217,7 +3641,23 @@ isNotTrue = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isTrue = function (val, msg) {
+  new Assertion(val, msg).is['true'];
+};
+
+/**
+ * ### .isNotTrue(value, [message])
+ *
+ * Asserts that 'value' is not true.
+ *
+ *     var tea = 'tasty chai';
+ *     assert.isNotTrue(tea, 'great, time for tea!');
+ *
+ * @name isNotTrue
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNull"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNull (val, msg)](#apidoc.element.chai.assert.isNull)
@@ -2229,7 +3669,23 @@ isNull = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isNotFalse = function (val, msg) {
+  new Assertion(val, msg).to.not.equal(false);
+};
+
+/**
+ * ### .isNull(value, [message])
+ *
+ * Asserts that 'value' is null.
+ *
+ *     assert.isNull(err, 'there was no error');
+ *
+ * @name isNull
+ * @param {Mixed} value
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isNumber"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isNumber (val, msg)](#apidoc.element.chai.assert.isNumber)
@@ -2241,7 +3697,23 @@ isNumber = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isNotString = function (val, msg) {
+  new Assertion(val, msg).to.not.be.a('string');
+};
+
+/**
+ * ### .isNumber(value, [message])
+ *
+ * Asserts that 'value' is a number.
+ *
+ *     var cups = 2;
+ *     assert.isNumber(cups, 'how many cups');
+ *
+ * @name isNumber
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isObject"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isObject (val, msg)](#apidoc.element.chai.assert.isObject)
@@ -2253,7 +3725,23 @@ isObject = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isNotFunction = function (val, msg) {
+  new Assertion(val, msg).to.not.be.a('function');
+};
+
+/**
+ * ### .isObject(value, [message])
+ *
+ * Asserts that 'value' is an object of type 'Object' (as revealed by 'Object.prototype.toString').
+ * _The assertion does not match subclassed objects._
+ *
+ *     var selection = { name: 'Chai', serve: 'with spices' };
+ *     assert.isObject(selection, 'tea selection is an object');
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isOk"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isOk (val, msg)](#apidoc.element.chai.assert.isOk)
@@ -2265,7 +3753,23 @@ isOk = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+      actual: actual
+    , expected: expected
+    , operator: operator
+  }, assert.fail);
+};
+
+/**
+ * ### .isOk(object, [message])
+ *
+ * Asserts that 'object' is truthy.
+ *
+ *     assert.isOk('everything', 'everything is ok');
+ *     assert.isOk(false, 'this will fail');
+ *
+ * @name isOk
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isSealed"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isSealed (obj, msg)](#apidoc.element.chai.assert.isSealed)
@@ -2277,7 +3781,23 @@ isSealed = function (obj, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+// In ES6, a non-object argument will be treated as if it was a sealed ordinary object, simply return true.
+// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isSealed
+// The following provides ES6 behavior when a TypeError is thrown under ES5.
+
+var isSealed;
+
+try {
+  isSealed = Object.isSealed(obj);
+} catch (err) {
+  if (err instanceof TypeError) isSealed = true;
+  else throw err;
+}
+
+this.assert(
+  isSealed
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isString"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isString (val, msg)](#apidoc.element.chai.assert.isString)
@@ -2289,7 +3809,23 @@ isString = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isNotArray = function (val, msg) {
+  new Assertion(val, msg).to.not.be.an('array');
+};
+
+/**
+ * ### .isString(value, [message])
+ *
+ * Asserts that 'value' is a string.
+ *
+ *     var teaOrder = 'chai';
+ *     assert.isString(teaOrder, 'order placed');
+ *
+ * @name isString
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isTrue"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isTrue (val, msg)](#apidoc.element.chai.assert.isTrue)
@@ -2301,7 +3837,23 @@ isTrue = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.isAtMost = function (val, atmst, msg) {
+  new Assertion(val, msg).to.be.most(atmst);
+};
+
+/**
+ * ### .isTrue(value, [message])
+ *
+ * Asserts that 'value' is true.
+ *
+ *     var teaServed = true;
+ *     assert.isTrue(teaServed, 'the tea has been served');
+ *
+ * @name isTrue
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.isUndefined"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>isUndefined (val, msg)](#apidoc.element.chai.assert.isUndefined)
@@ -2313,7 +3865,23 @@ isUndefined = function (val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ * @api public
+ */
+assert.isNotNaN = function (val, msg) {
+  new Assertion(val, msg).not.to.be.NaN;
+};
+
+/**
+ * ### .isUndefined(value, [message])
+ *
+ * Asserts that 'value' is 'undefined'.
+ *
+ *     var tea;
+ *     assert.isUndefined(tea, 'no tea defined');
+ *
+ * @name isUndefined
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.lengthOf"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>lengthOf (exp, len, msg)](#apidoc.element.chai.assert.lengthOf)
@@ -2325,7 +3893,23 @@ lengthOf = function (exp, len, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ *
+ * @name length
+ * @namespace BDD
+ * @api public
+ */
+
+/**
+ * ### .lengthOf(value[, message])
+ *
+ * Asserts that the target's 'length' property has
+ * the expected value.
+ *
+ *     expect([ 1, 2, 3]).to.have.lengthOf(3);
+ *     expect('foobar').to.have.lengthOf(6);
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.match"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>match (exp, re, msg)](#apidoc.element.chai.assert.match)
@@ -2337,7 +3921,23 @@ match = function (exp, re, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+  );
+}
+
+Assertion.addChainableMethod('length', assertLength, assertLengthChain);
+Assertion.addMethod('lengthOf', assertLength);
+
+/**
+ * ### .match(regexp)
+ *
+ * Asserts that the target matches a regular expression.
+ *
+ *     expect('foobar').to.match(/^foo/);
+ *
+ * @name match
+ * @alias matches
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.notDeepEqual"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>notDeepEqual (act, exp, msg)](#apidoc.element.chai.assert.notDeepEqual)
@@ -2349,7 +3949,23 @@ notDeepEqual = function (act, exp, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.deepEqual = function (act, exp, msg) {
+  new Assertion(act, msg).to.eql(exp);
+};
+
+/**
+ * ### .notDeepEqual(actual, expected, [message])
+ *
+ * Assert that 'actual' is not deeply equal to 'expected'.
+ *
+ *     assert.notDeepEqual({ tea: 'green' }, { tea: 'jasmine' });
+ *
+ * @name notDeepEqual
+ * @param {Mixed} actual
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.notDeepProperty"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>notDeepProperty (obj, prop, msg)](#apidoc.element.chai.assert.notDeepProperty)
@@ -2361,7 +3977,23 @@ notDeepProperty = function (obj, prop, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.deepProperty = function (obj, prop, msg) {
+  new Assertion(obj, msg).to.have.deep.property(prop);
+};
+
+/**
+ * ### .notDeepProperty(object, property, [message])
+ *
+ * Asserts that 'object' does _not_ have a property named by 'property', which
+ * can be a string using dot- and bracket-notation for deep reference.
+ *
+ *     assert.notDeepProperty({ tea: { green: 'matcha' }}, 'tea.oolong');
+ *
+ * @name notDeepProperty
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.notEqual"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>notEqual (act, exp, msg)](#apidoc.element.chai.assert.notEqual)
@@ -2381,7 +4013,23 @@ notEqual = function (act, exp, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+    , 'expected #{this} to not equal #{act}'
+    , exp
+    , act
+  );
+};
+
+/**
+ * ### .notEqual(actual, expected, [message])
+ *
+ * Asserts non-strict inequality ('!=') of 'actual' and 'expected'.
+ *
+ *     assert.notEqual(3, 4, 'these numbers are not equal');
+ *
+ * @name notEqual
+ * @param {Mixed} actual
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.notExtensible"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>notExtensible (obj, msg)](#apidoc.element.chai.assert.notExtensible)
@@ -2417,7 +4065,23 @@ notInclude = function (exp, inc, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.include = function (exp, inc, msg) {
+  new Assertion(exp, msg, assert.include).include(inc);
+};
+
+/**
+ * ### .notInclude(haystack, needle, [message])
+ *
+ * Asserts that 'haystack' does not include 'needle'. Works
+ * for strings and arrays.
+ *
+ *     assert.notInclude('foobar', 'baz', 'string not include substring');
+ *     assert.notInclude([ 1, 2, 3 ], 4, 'array not include contain value');
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.notInstanceOf"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>notInstanceOf (val, type, msg)](#apidoc.element.chai.assert.notInstanceOf)
@@ -2429,7 +4093,23 @@ notInstanceOf = function (val, type, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.instanceOf = function (val, type, msg) {
+  new Assertion(val, msg).to.be.instanceOf(type);
+};
+
+/**
+ * ### .notInstanceOf(object, constructor, [message])
+ *
+ * Asserts 'value' is not an instance of 'constructor'.
+ *
+ *     var Tea = function (name) { this.name = name; }
+ *       , chai = new String('chai');
+ *
+ *     assert.notInstanceOf(chai, Tea, 'chai is not an instance of tea');
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.notMatch"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>notMatch (exp, re, msg)](#apidoc.element.chai.assert.notMatch)
@@ -2441,7 +4121,23 @@ notMatch = function (exp, re, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.match = function (exp, re, msg) {
+  new Assertion(exp, msg).to.match(re);
+};
+
+/**
+ * ### .notMatch(value, regexp, [message])
+ *
+ * Asserts that 'value' does not match the regular expression 'regexp'.
+ *
+ *     assert.notMatch('foobar', /^foo/, 'regexp does not match');
+ *
+ * @name notMatch
+ * @param {Mixed} value
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.notOk"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>notOk (val, msg)](#apidoc.element.chai.assert.notOk)
@@ -2465,7 +4161,23 @@ notProperty = function (obj, prop, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.property = function (obj, prop, msg) {
+  new Assertion(obj, msg).to.have.property(prop);
+};
+
+/**
+ * ### .notProperty(object, property, [message])
+ *
+ * Asserts that 'object' does _not_ have a property named by 'property'.
+ *
+ *     assert.notProperty({ tea: { green: 'matcha' }}, 'coffee');
+ *
+ * @name notProperty
+ * @param {Object} object
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.notSealed"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>notSealed (obj, msg)](#apidoc.element.chai.assert.notSealed)
@@ -2489,7 +4201,23 @@ notStrictEqual = function (act, exp, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.strictEqual = function (act, exp, msg) {
+  new Assertion(act, msg).to.equal(exp);
+};
+
+/**
+ * ### .notStrictEqual(actual, expected, [message])
+ *
+ * Asserts strict inequality ('!==') of 'actual' and 'expected'.
+ *
+ *     assert.notStrictEqual(3, '3', 'no coercion for strict equality');
+ *
+ * @name notStrictEqual
+ * @param {Mixed} actual
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.notTypeOf"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>notTypeOf (val, type, msg)](#apidoc.element.chai.assert.notTypeOf)
@@ -2501,7 +4229,23 @@ notTypeOf = function (val, type, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.typeOf = function (val, type, msg) {
+  new Assertion(val, msg).to.be.a(type);
+};
+
+/**
+ * ### .notTypeOf(value, name, [message])
+ *
+ * Asserts that 'value''s type is _not_ 'name', as determined by
+ * 'Object.prototype.toString'.
+ *
+ *     assert.notTypeOf('tea', 'number', 'strings are not numbers');
+ *
+ * @name notTypeOf
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.ok"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>ok (val, msg)](#apidoc.element.chai.assert.ok)
@@ -2525,7 +4269,23 @@ oneOf = function (inList, list, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+      , 'expected #{this} to not have the same members as #{act}'
+      , obj
+      , subset
+  );
+});
+
+/**
+ * ### .oneOf(list)
+ *
+ * Assert that a value appears somewhere in the top level of array 'list'.
+ *
+ *     expect('a').to.be.oneOf(['a', 'b', 'c']);
+ *     expect(9).to.not.be.oneOf(['z']);
+ *     expect([3]).to.not.be.oneOf([1, 2, [3]]);
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.operator"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>operator (val, operator, val2, msg)](#apidoc.element.chai.assert.operator)
@@ -2570,7 +4330,23 @@ operator = function (val, operator, val2, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+    type = null;
+  }
+
+  new Assertion(fn, msg).to.not.Throw(type);
+};
+
+/**
+ * ### .operator(val1, operator, val2, [message])
+ *
+ * Compares two values using 'operator'.
+ *
+ *     assert.operator(1, '<', 2, 'everything is ok');
+ *     assert.operator(1, '>', 2, 'this will fail');
+ *
+ * @name operator
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.property"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>property (obj, prop, msg)](#apidoc.element.chai.assert.property)
@@ -2582,7 +4358,22 @@ property = function (obj, prop, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+  /**
+* ### .not
+*
+* Negates any of assertions following in the chain.
+*
+*     expect(foo).to.not.equal('bar');
+*     expect(goodFn).to.not.throw(Error);
+*     expect({ foo: 'baz' }).to.have.property('foo')
+*       .and.not.equal('bar');
+*
+* @name not
+* @namespace BDD
+* @api public
+*/
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.propertyNotVal"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>propertyNotVal (obj, prop, val, msg)](#apidoc.element.chai.assert.propertyNotVal)
@@ -2594,7 +4385,23 @@ propertyNotVal = function (obj, prop, val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.propertyVal = function (obj, prop, val, msg) {
+  new Assertion(obj, msg).to.have.property(prop, val);
+};
+
+/**
+ * ### .propertyNotVal(object, property, value, [message])
+ *
+ * Asserts that 'object' has a property named by 'property', but with a value
+ * different from that given by 'value'.
+ *
+ *     assert.propertyNotVal({ tea: 'is good' }, 'tea', 'is bad');
+ *
+ * @name propertyNotVal
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.propertyVal"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>propertyVal (obj, prop, val, msg)](#apidoc.element.chai.assert.propertyVal)
@@ -2606,7 +4413,23 @@ propertyVal = function (obj, prop, val, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.notDeepProperty = function (obj, prop, msg) {
+  new Assertion(obj, msg).to.not.have.deep.property(prop);
+};
+
+/**
+ * ### .propertyVal(object, property, value, [message])
+ *
+ * Asserts that 'object' has a property named by 'property' with value given
+ * by 'value'.
+ *
+ *     assert.propertyVal({ tea: 'is good' }, 'tea', 'is good');
+ *
+ * @name propertyVal
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.sameDeepMembers"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>sameDeepMembers (set1, set2, msg)](#apidoc.element.chai.assert.sameDeepMembers)
@@ -2618,7 +4441,23 @@ sameDeepMembers = function (set1, set2, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.sameMembers = function (set1, set2, msg) {
+  new Assertion(set1, msg).to.have.same.members(set2);
+}
+
+/**
+ * ### .sameDeepMembers(set1, set2, [message])
+ *
+ * Asserts that 'set1' and 'set2' have the same members - using a deep equality checking.
+ * Order is not taken into account.
+ *
+ *     assert.sameDeepMembers([ {b: 3}, {a: 2}, {c: 5} ], [ {c: 5}, {b: 3}, {a: 2} ], 'same deep members');
+ *
+ * @name sameDeepMembers
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.sameMembers"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>sameMembers (set1, set2, msg)](#apidoc.element.chai.assert.sameMembers)
@@ -2630,7 +4469,23 @@ sameMembers = function (set1, set2, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.approximately = function (act, exp, delta, msg) {
+  new Assertion(act, msg).to.be.approximately(exp, delta);
+};
+
+/**
+ * ### .sameMembers(set1, set2, [message])
+ *
+ * Asserts that 'set1' and 'set2' have the same members.
+ * Order is not taken into account.
+ *
+ *     assert.sameMembers([ 1, 2, 3 ], [ 2, 1, 3 ], 'same members');
+ *
+ * @name sameMembers
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.sealed"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>sealed (obj, msg)](#apidoc.element.chai.assert.sealed)
@@ -2654,7 +4509,23 @@ strictEqual = function (act, exp, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+    , 'expected #{this} to equal #{act}'
+    , exp
+    , act
+  );
+};
+
+/**
+ * ### .strictEqual(actual, expected, [message])
+ *
+ * Asserts strict equality ('===') of 'actual' and 'expected'.
+ *
+ *     assert.strictEqual(true, true, 'these booleans are strictly equal');
+ *
+ * @name strictEqual
+ * @param {Mixed} actual
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.throw"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>throw (fn, errt, errs, msg)](#apidoc.element.chai.assert.throw)
@@ -2672,7 +4543,23 @@ throw = function (fn, errt, errs, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+
+  /**
+* ### .not
+*
+* Negates any of assertions following in the chain.
+*
+*     expect(foo).to.not.equal('bar');
+*     expect(goodFn).to.not.throw(Error);
+*     expect({ foo: 'baz' }).to.have.property('foo')
+*       .and.not.equal('bar');
+*
+* @name not
+* @namespace BDD
+* @api public
+*/
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.throws"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>throws (fn, errt, errs, msg)](#apidoc.element.chai.assert.throws)
@@ -2690,7 +4577,23 @@ throws = function (fn, errt, errs, msg) {
 ```
 - example usage
 ```shell
-n/a
+...
+ */
+
+assert.lengthOf = function (exp, len, msg) {
+  new Assertion(exp, msg).to.have.length(len);
+};
+
+/**
+ * ### .throws(function, [constructor/string/regexp], [string/regexp], [message])
+ *
+ * Asserts that 'function' will throw an error that is an instance of
+ * 'constructor', or alternately that it will throw an error with message
+ * matching 'regexp'.
+ *
+ *     assert.throws(fn, 'function throws a reference error');
+ *     assert.throws(fn, /function throws a reference error/);
+...
 ```
 
 #### <a name="apidoc.element.chai.assert.typeOf"></a>[function <span class="apidocSignatureSpan">chai.assert.</span>typeOf (val, type, msg)](#apidoc.element.chai.assert.typeOf)
@@ -2702,7 +4605,507 @@ typeOf = function (val, type, msg) {
 ```
 - example usage
 ```shell
+...
+ */
+
+assert.isNotBoolean = function (val, msg) {
+  new Assertion(val, msg).to.not.be.a('boolean');
+};
+
+/**
+ * ### .typeOf(value, name, [message])
+ *
+ * Asserts that 'value''s type is 'name', as determined by
+ * 'Object.prototype.toString'.
+ *
+ *     assert.typeOf({ tea: 'chai' }, 'object', 'we have an object');
+ *     assert.typeOf(['chai', 'jasmine'], 'array', 'we have an array');
+ *     assert.typeOf('tea', 'string', 'we have a string');
+...
+```
+
+
+
+# <a name="apidoc.module.chai.chai"></a>[module chai.chai](#apidoc.module.chai.chai)
+
+#### <a name="apidoc.element.chai.chai.Assertion"></a>[function <span class="apidocSignatureSpan">chai.chai.</span>Assertion (obj, msg, stack)](#apidoc.element.chai.chai.Assertion)
+- description and source-code
+```javascript
+function Assertion(obj, msg, stack) {
+  flag(this, 'ssfi', stack || arguments.callee);
+  flag(this, 'object', obj);
+  flag(this, 'message', msg);
+}
+```
+- example usage
+```shell
+...
+ * chai
+ * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+
+module.exports = function (chai, util) {
+chai.expect = function (val, message) {
+  return new chai.Assertion(val, message);
+};
+
+/**
+ * ### .fail(actual, expected, [message], [operator])
+ *
+ * Throw a failure.
+ *
+...
+```
+
+#### <a name="apidoc.element.chai.chai.AssertionError"></a>[function <span class="apidocSignatureSpan">chai.chai.</span>AssertionError (message, _props, ssf)](#apidoc.element.chai.chai.AssertionError)
+- description and source-code
+```javascript
+function AssertionError(message, _props, ssf) {
+  var extend = exclude('name', 'message', 'stack', 'constructor', 'toJSON')
+    , props = extend(_props || {});
+
+  // default values
+  this.message = message || 'Unspecified AssertionError';
+  this.showDiff = false;
+
+  // copy from properties
+  for (var key in props) {
+    this[key] = props[key];
+  }
+
+  // capture stack trace
+  ssf = ssf || arguments.callee;
+  if (ssf && Error.captureStackTrace) {
+    Error.captureStackTrace(this, ssf);
+  } else {
+    this.stack = new Error().stack;
+  }
+}
+```
+- example usage
+```shell
+...
+ * @param {String} operator
+ * @namespace Assert
+ * @api public
+ */
+
+assert.fail = function (actual, expected, message, operator) {
+  message = message || 'assert.fail()';
+  throw new chai.AssertionError(message, {
+      actual: actual
+    , expected: expected
+    , operator: operator
+  }, assert.fail);
+};
+
+/**
+...
+```
+
+#### <a name="apidoc.element.chai.chai.Should"></a>[function <span class="apidocSignatureSpan">chai.chai.</span>Should ()](#apidoc.element.chai.chai.Should)
+- description and source-code
+```javascript
+function loadShould() {
+  // explicitly define this method as function as to have it's name to include as 'ssfi'
+  function shouldGetter() {
+    if (this instanceof String || this instanceof Number || this instanceof Boolean ) {
+      return new Assertion(this.valueOf(), null, shouldGetter);
+    }
+    return new Assertion(this, null, shouldGetter);
+  }
+  function shouldSetter(value) {
+    // See https://github.com/chaijs/chai/issues/86: this makes
+    // 'whatever.should = someValue' actually set 'someValue', which is
+    // especially useful for 'global.should = require('chai').should()'.
+    //
+    // Note that we have to use [[DefineProperty]] instead of [[Put]]
+    // since otherwise we would trigger this very setter!
+    Object.defineProperty(this, 'should', {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  }
+  // modify Object.prototype to have 'should'
+  Object.defineProperty(Object.prototype, 'should', {
+    set: shouldSetter
+    , get: shouldGetter
+    , configurable: true
+  });
+
+  var should = {};
+
+<span class="apidocCodeCommentSpan">  /**
+   * ### .fail(actual, expected, [message], [operator])
+   *
+   * Throw a failure.
+   *
+   * @name fail
+   * @param {Mixed} actual
+   * @param {Mixed} expected
+   * @param {String} message
+   * @param {String} operator
+   * @namespace Should
+   * @api public
+   */
+</span>
+  should.fail = function (actual, expected, message, operator) {
+    message = message || 'should.fail()';
+    throw new chai.AssertionError(message, {
+        actual: actual
+      , expected: expected
+      , operator: operator
+    }, should.fail);
+  };
+
+  /**
+   * ### .equal(actual, expected, [message])
+   *
+   * Asserts non-strict equality ('==') of 'actual' and 'expected'.
+   *
+   *     should.equal(3, '3', '== coerces values to strings');
+   *
+   * @name equal
+   * @param {Mixed} actual
+   * @param {Mixed} expected
+   * @param {String} message
+   * @namespace Should
+   * @api public
+   */
+
+  should.equal = function (val1, val2, msg) {
+    new Assertion(val1, msg).to.equal(val2);
+  };
+
+  /**
+   * ### .throw(function, [constructor/string/regexp], [string/regexp], [message])
+   *
+   * Asserts that 'function' will throw an error that is an instance of
+   * 'constructor', or alternately that it will throw an error with message
+   * matching 'regexp'.
+   *
+   *     should.throw(fn, 'function throws a reference error');
+   *     should.throw(fn, /function throws a reference error/);
+   *     should.throw(fn, ReferenceError);
+   *     should.throw(fn, ReferenceError, 'function throws a reference error');
+   *     should.throw(fn, ReferenceError, /function throws a reference error/);
+   *
+   * @name throw
+   * @alias Throw
+   * @param {Function} function
+   * @param {ErrorConstructor} constructor
+   * @param {RegExp} regexp
+   * @param {String} message
+   * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error#Error_types
+   * @namespace Should
+   * @api public
+   */
+
+  should.Throw = function (fn, errt, errs, msg) {
+    new Assertion(fn, msg).to.Throw(errt, errs);
+  };
+
+  /**
+   * ### .exist
+   *
+   * Asserts that the target is neither 'null' nor 'undefined'.
+   *
+   *     var foo = 'hi';
+   *
+   *     should.exist(foo, 'foo exists');
+   *
+   * @name exist
+   * @namespace Should
+   * @api public
+   */
+
+  should.exist = function (val, msg) {
+    new Assertion(val, msg).to.exist;
+  }
+
+  // negation
+  should.not = {}
+
+  /**
+   * ### .not.equal(actual, expected, [message])
+   *
+   * Asserts non-strict inequality ('!=') of 'actual' and 'expected'.
+   *
+   *     should.not.equal(3, 4, 'these numbers are not equal');
+   *
+   * @name not.equal
+   * @param {Mixed} actual
+   * @param {Mixed} expected
+   * @param {String} message
+   * @namespace Should
+   * @api public
+   */
+
+  should.not.equal = function (val1, val2, msg) {
+    new Assertion(val1, msg).to.not.equal(val2);
+  };
+
+  /**
+   * ### .throw(function, [constructor/regexp], [message])
+   *
+   * Asserts that 'function' will _not_ throw an error that is an instance of
+   * 'constructor', or alternately that it will not throw an er ...
+```
+- example usage
+```shell
 n/a
+```
+
+#### <a name="apidoc.element.chai.chai.assert"></a>[function <span class="apidocSignatureSpan">chai.chai.</span>assert (express, errmsg)](#apidoc.element.chai.chai.assert)
+- description and source-code
+```javascript
+assert = function (express, errmsg) {
+  var test = new Assertion(null, null, chai.assert);
+  test.assert(
+      express
+    , errmsg
+    , '[ negation message unavailable ]'
+  );
+}
+```
+- example usage
+```shell
+...
+};
+
+Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
+  util.overwriteChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+/**
+ * ### .assert(expression, message, negateMessage, expected, actual, showDiff)
+ *
+ * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
+ *
+ * @name assert
+ * @param {Philosophical} expression to be tested
+ * @param {String|Function} message or function that returns message to display if expression fails
+ * @param {String|Function} negatedMessage or function that returns negatedMessage to display if negated expression fails
+...
+```
+
+#### <a name="apidoc.element.chai.chai.expect"></a>[function <span class="apidocSignatureSpan">chai.chai.</span>expect (val, message)](#apidoc.element.chai.chai.expect)
+- description and source-code
+```javascript
+expect = function (val, message) {
+  return new chai.Assertion(val, message);
+}
+```
+- example usage
+```shell
+n/a
+```
+
+#### <a name="apidoc.element.chai.chai.should"></a>[function <span class="apidocSignatureSpan">chai.chai.</span>should ()](#apidoc.element.chai.chai.should)
+- description and source-code
+```javascript
+function loadShould() {
+  // explicitly define this method as function as to have it's name to include as 'ssfi'
+  function shouldGetter() {
+    if (this instanceof String || this instanceof Number || this instanceof Boolean ) {
+      return new Assertion(this.valueOf(), null, shouldGetter);
+    }
+    return new Assertion(this, null, shouldGetter);
+  }
+  function shouldSetter(value) {
+    // See https://github.com/chaijs/chai/issues/86: this makes
+    // 'whatever.should = someValue' actually set 'someValue', which is
+    // especially useful for 'global.should = require('chai').should()'.
+    //
+    // Note that we have to use [[DefineProperty]] instead of [[Put]]
+    // since otherwise we would trigger this very setter!
+    Object.defineProperty(this, 'should', {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  }
+  // modify Object.prototype to have 'should'
+  Object.defineProperty(Object.prototype, 'should', {
+    set: shouldSetter
+    , get: shouldGetter
+    , configurable: true
+  });
+
+  var should = {};
+
+<span class="apidocCodeCommentSpan">  /**
+   * ### .fail(actual, expected, [message], [operator])
+   *
+   * Throw a failure.
+   *
+   * @name fail
+   * @param {Mixed} actual
+   * @param {Mixed} expected
+   * @param {String} message
+   * @param {String} operator
+   * @namespace Should
+   * @api public
+   */
+</span>
+  should.fail = function (actual, expected, message, operator) {
+    message = message || 'should.fail()';
+    throw new chai.AssertionError(message, {
+        actual: actual
+      , expected: expected
+      , operator: operator
+    }, should.fail);
+  };
+
+  /**
+   * ### .equal(actual, expected, [message])
+   *
+   * Asserts non-strict equality ('==') of 'actual' and 'expected'.
+   *
+   *     should.equal(3, '3', '== coerces values to strings');
+   *
+   * @name equal
+   * @param {Mixed} actual
+   * @param {Mixed} expected
+   * @param {String} message
+   * @namespace Should
+   * @api public
+   */
+
+  should.equal = function (val1, val2, msg) {
+    new Assertion(val1, msg).to.equal(val2);
+  };
+
+  /**
+   * ### .throw(function, [constructor/string/regexp], [string/regexp], [message])
+   *
+   * Asserts that 'function' will throw an error that is an instance of
+   * 'constructor', or alternately that it will throw an error with message
+   * matching 'regexp'.
+   *
+   *     should.throw(fn, 'function throws a reference error');
+   *     should.throw(fn, /function throws a reference error/);
+   *     should.throw(fn, ReferenceError);
+   *     should.throw(fn, ReferenceError, 'function throws a reference error');
+   *     should.throw(fn, ReferenceError, /function throws a reference error/);
+   *
+   * @name throw
+   * @alias Throw
+   * @param {Function} function
+   * @param {ErrorConstructor} constructor
+   * @param {RegExp} regexp
+   * @param {String} message
+   * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error#Error_types
+   * @namespace Should
+   * @api public
+   */
+
+  should.Throw = function (fn, errt, errs, msg) {
+    new Assertion(fn, msg).to.Throw(errt, errs);
+  };
+
+  /**
+   * ### .exist
+   *
+   * Asserts that the target is neither 'null' nor 'undefined'.
+   *
+   *     var foo = 'hi';
+   *
+   *     should.exist(foo, 'foo exists');
+   *
+   * @name exist
+   * @namespace Should
+   * @api public
+   */
+
+  should.exist = function (val, msg) {
+    new Assertion(val, msg).to.exist;
+  }
+
+  // negation
+  should.not = {}
+
+  /**
+   * ### .not.equal(actual, expected, [message])
+   *
+   * Asserts non-strict inequality ('!=') of 'actual' and 'expected'.
+   *
+   *     should.not.equal(3, 4, 'these numbers are not equal');
+   *
+   * @name not.equal
+   * @param {Mixed} actual
+   * @param {Mixed} expected
+   * @param {String} message
+   * @namespace Should
+   * @api public
+   */
+
+  should.not.equal = function (val1, val2, msg) {
+    new Assertion(val1, msg).to.not.equal(val2);
+  };
+
+  /**
+   * ### .throw(function, [constructor/regexp], [message])
+   *
+   * Asserts that 'function' will _not_ throw an error that is an instance of
+   * 'constructor', or alternately that it will not throw an er ...
+```
+- example usage
+```shell
+...
+    return new Assertion(this.valueOf(), null, shouldGetter);
+  }
+  return new Assertion(this, null, shouldGetter);
+}
+function shouldSetter(value) {
+  // See https://github.com/chaijs/chai/issues/86: this makes
+  // 'whatever.should = someValue' actually set 'someValue', which is
+  // especially useful for 'global.should = require('chai').should()'.
+  //
+  // Note that we have to use [[DefineProperty]] instead of [[Put]]
+  // since otherwise we would trigger this very setter!
+  Object.defineProperty(this, 'should', {
+    value: value,
+    enumerable: true,
+    configurable: true,
+...
+```
+
+#### <a name="apidoc.element.chai.chai.use"></a>[function <span class="apidocSignatureSpan">chai.chai.</span>use (fn)](#apidoc.element.chai.chai.use)
+- description and source-code
+```javascript
+use = function (fn) {
+  if (!~used.indexOf(fn)) {
+    fn(this, util);
+    used.push(fn);
+  }
+
+  return this;
+}
+```
+- example usage
+```shell
+...
+/*!
+* Utils for plugins (not exported)
+*/
+
+var util = require('./chai/utils');
+
+/**
+* # .use(function)
+*
+* Provides a way to extend the internals of Chai
+*
+* @param {Function}
+* @returns {this} for chaining
+* @api public
+*/
+...
 ```
 
 
@@ -2735,7 +5138,23 @@ fail = function (actual, expected, message, operator) {
 ```
 - example usage
 ```shell
-n/a
+...
+      express
+    , errmsg
+    , '[ negation message unavailable ]'
+  );
+};
+
+/**
+ * ### .fail(actual, expected, [message], [operator])
+ *
+ * Throw a failure. Node.js 'assert' module-compatible.
+ *
+ * @name fail
+ * @param {Mixed} actual
+ * @param {Mixed} expected
+ * @param {String} message
+...
 ```
 
 
@@ -2801,7 +5220,23 @@ addChainableMethod = function (ctx, name, method, chainingBehavior) {
 ```
 - example usage
 ```shell
-n/a
+...
+};
+
+Assertion.addMethod = function (name, fn) {
+  util.addMethod(this.prototype, name, fn);
+};
+
+Assertion.addChainableMethod = function (name, fn, chainingBehavior) {
+  util.addChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+Assertion.overwriteProperty = function (name, fn) {
+  util.overwriteProperty(this.prototype, name, fn);
+};
+
+Assertion.overwriteMethod = function (name, fn) {
+...
 ```
 
 #### <a name="apidoc.element.chai.util.addMethod"></a>[function <span class="apidocSignatureSpan">chai.util.</span>addMethod (ctx, name, method)](#apidoc.element.chai.util.addMethod)
@@ -2819,7 +5254,23 @@ addMethod = function (ctx, name, method) {
 ```
 - example usage
 ```shell
-n/a
+...
+});
+
+Assertion.addProperty = function (name, fn) {
+  util.addProperty(this.prototype, name, fn);
+};
+
+Assertion.addMethod = function (name, fn) {
+  util.addMethod(this.prototype, name, fn);
+};
+
+Assertion.addChainableMethod = function (name, fn, chainingBehavior) {
+  util.addChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+Assertion.overwriteProperty = function (name, fn) {
+...
 ```
 
 #### <a name="apidoc.element.chai.util.addProperty"></a>[function <span class="apidocSignatureSpan">chai.util.</span>addProperty (ctx, name, getter)](#apidoc.element.chai.util.addProperty)
@@ -2841,7 +5292,23 @@ addProperty = function (ctx, name, getter) {
 ```
 - example usage
 ```shell
-n/a
+...
+  set: function(value) {
+    console.warn('Assertion.showDiff is deprecated, use chai.config.showDiff instead.');
+    config.showDiff = value;
+  }
+});
+
+Assertion.addProperty = function (name, fn) {
+  util.addProperty(this.prototype, name, fn);
+};
+
+Assertion.addMethod = function (name, fn) {
+  util.addMethod(this.prototype, name, fn);
+};
+
+Assertion.addChainableMethod = function (name, fn, chainingBehavior) {
+...
 ```
 
 #### <a name="apidoc.element.chai.util.eql"></a>[function <span class="apidocSignatureSpan">chai.util.</span>eql (a, b, m)](#apidoc.element.chai.util.eql)
@@ -2870,7 +5337,23 @@ function deepEqual(a, b, m) {
 ```
 - example usage
 ```shell
-n/a
+...
+
+if (msg) flag(this, 'message', msg);
+var obj = flag(this, 'object');
+var expected = false;
+
+if (_.type(obj) === 'array' && _.type(val) === 'object') {
+  for (var i in obj) {
+    if (_.eql(obj[i], val)) {
+      expected = true;
+      break;
+    }
+  }
+} else if (_.type(val) === 'object') {
+  if (!flag(this, 'negate')) {
+    for (var k in val) new Assertion(obj).property(k, val[k]);
+...
 ```
 
 #### <a name="apidoc.element.chai.util.expectTypes"></a>[function <span class="apidocSignatureSpan">chai.util.</span>expectTypes (obj, types)](#apidoc.element.chai.util.expectTypes)
@@ -2897,7 +5380,23 @@ expectTypes = function (obj, types) {
 ```
 - example usage
 ```shell
-n/a
+...
+   */
+
+  function includeChainingBehavior () {
+flag(this, 'contains', true);
+  }
+
+  function include (val, msg) {
+_.expectTypes(this, ['array', 'object', 'string']);
+
+if (msg) flag(this, 'message', msg);
+var obj = flag(this, 'object');
+var expected = false;
+
+if (_.type(obj) === 'array' && _.type(val) === 'object') {
+  for (var i in obj) {
+...
 ```
 
 #### <a name="apidoc.element.chai.util.flag"></a>[function <span class="apidocSignatureSpan">chai.util.</span>flag (obj, key, value)](#apidoc.element.chai.util.flag)
@@ -2914,7 +5413,23 @@ flag = function (obj, key, value) {
 ```
 - example usage
 ```shell
-n/a
+...
+
+/**
+* ### addChainableMethod (ctx, name, method, chainingBehavior)
+*
+* Adds a method to an object, such that the method can also be chained.
+*
+*     utils.addChainableMethod(chai.Assertion.prototype, 'foo', function (str) {
+*       var obj = utils.flag(this, 'object');
+*       new chai.Assertion(obj).to.be.equal(str);
+*     });
+*
+* Can also be accessed directly from 'chai.Assertion'.
+*
+*     chai.Assertion.addChainableMethod('foo', fn, chainingBehavior);
+*
+...
 ```
 
 #### <a name="apidoc.element.chai.util.getActual"></a>[function <span class="apidocSignatureSpan">chai.util.</span>getActual (obj, args)](#apidoc.element.chai.util.getActual)
@@ -2926,7 +5441,23 @@ getActual = function (obj, args) {
 ```
 - example usage
 ```shell
-n/a
+...
+Assertion.prototype.assert = function (expr, msg, negateMsg, expected, _actual, showDiff) {
+  var ok = util.test(this, arguments);
+  if (true !== showDiff) showDiff = false;
+  if (true !== config.showDiff) showDiff = false;
+
+  if (!ok) {
+    var msg = util.getMessage(this, arguments)
+      , actual = util.getActual(this, arguments);
+    throw new AssertionError(msg, {
+        actual: actual
+      , expected: expected
+      , showDiff: showDiff
+    }, (config.includeStack) ? this.assert : flag(this, 'ssfi'));
+  }
+};
+...
 ```
 
 #### <a name="apidoc.element.chai.util.getMessage"></a>[function <span class="apidocSignatureSpan">chai.util.</span>getMessage (obj, args)](#apidoc.element.chai.util.getMessage)
@@ -2952,7 +5483,23 @@ getMessage = function (obj, args) {
 ```
 - example usage
 ```shell
-n/a
+...
+
+  Assertion.prototype.assert = function (expr, msg, negateMsg, expected, _actual, showDiff) {
+var ok = util.test(this, arguments);
+if (true !== showDiff) showDiff = false;
+if (true !== config.showDiff) showDiff = false;
+
+if (!ok) {
+  var msg = util.getMessage(this, arguments)
+    , actual = util.getActual(this, arguments);
+  throw new AssertionError(msg, {
+      actual: actual
+    , expected: expected
+    , showDiff: showDiff
+  }, (config.includeStack) ? this.assert : flag(this, 'ssfi'));
+}
+...
 ```
 
 #### <a name="apidoc.element.chai.util.getName"></a>[function <span class="apidocSignatureSpan">chai.util.</span>getName (func)](#apidoc.element.chai.util.getName)
@@ -2967,7 +5514,22 @@ getName = function (func) {
 ```
 - example usage
 ```shell
-n/a
+...
+ * @alias instanceOf
+ * @namespace BDD
+ * @api public
+ */
+
+function assertInstanceOf (constructor, msg) {
+  if (msg) flag(this, 'message', msg);
+  var name = _.getName(constructor);
+  this.assert(
+      flag(this, 'object') instanceof constructor
+    , 'expected #{this} to be an instance of ' + name
+    , 'expected #{this} to not be an instance of ' + name
+  );
+};
+...
 ```
 
 #### <a name="apidoc.element.chai.util.getPathInfo"></a>[function <span class="apidocSignatureSpan">chai.util.</span>getPathInfo (path, obj)](#apidoc.element.chai.util.getPathInfo)
@@ -2989,7 +5551,22 @@ function getPathInfo(path, obj) {
 ```
 - example usage
 ```shell
-n/a
+...
+  Assertion.addMethod('property', function (name, val, msg) {
+if (msg) flag(this, 'message', msg);
+
+var isDeep = !!flag(this, 'deep')
+  , descriptor = isDeep ? 'deep property ' : 'property '
+  , negate = flag(this, 'negate')
+  , obj = flag(this, 'object')
+  , pathInfo = isDeep ? _.getPathInfo(name, obj) : null
+  , hasProperty = isDeep
+    ? pathInfo.exists
+    : _.hasProperty(name, obj)
+  , value = isDeep
+    ? pathInfo.value
+    : obj[name];
+...
 ```
 
 #### <a name="apidoc.element.chai.util.getPathValue"></a>[function <span class="apidocSignatureSpan">chai.util.</span>getPathValue (path, obj)](#apidoc.element.chai.util.getPathValue)
@@ -3002,7 +5579,23 @@ getPathValue = function (path, obj) {
 ```
 - example usage
 ```shell
-n/a
+...
+* @see https://github.com/logicalparadox/filtr
+* MIT Licensed
+*/
+
+var getPathInfo = require('./getPathInfo');
+
+/**
+* ### .getPathValue(path, object)
+*
+* This allows the retrieval of values in an
+* object given a string path.
+*
+*     var obj = {
+*         prop1: {
+*             arr: ['a', 'b', 'c']
+...
 ```
 
 #### <a name="apidoc.element.chai.util.hasProperty"></a>[function <span class="apidocSignatureSpan">chai.util.</span>hasProperty (name, obj)](#apidoc.element.chai.util.hasProperty)
@@ -3025,7 +5618,23 @@ function hasProperty(name, obj) {
 ```
 - example usage
 ```shell
-n/a
+...
+var isDeep = !!flag(this, 'deep')
+  , descriptor = isDeep ? 'deep property ' : 'property '
+  , negate = flag(this, 'negate')
+  , obj = flag(this, 'object')
+  , pathInfo = isDeep ? _.getPathInfo(name, obj) : null
+  , hasProperty = isDeep
+    ? pathInfo.exists
+    : _.hasProperty(name, obj)
+  , value = isDeep
+    ? pathInfo.value
+    : obj[name];
+
+if (negate && arguments.length > 1) {
+  if (undefined === value) {
+    msg = (msg != null) ? msg + ': ' : '';
+...
 ```
 
 #### <a name="apidoc.element.chai.util.inspect"></a>[function <span class="apidocSignatureSpan">chai.util.</span>inspect (obj, showHidden, depth, colors)](#apidoc.element.chai.util.inspect)
@@ -3042,7 +5651,23 @@ function inspect(obj, showHidden, depth, colors) {
 ```
 - example usage
 ```shell
-n/a
+...
+    for (var k in val) subset[k] = obj[k];
+    expected = _.eql(subset, val);
+  } else {
+    expected = (obj != undefined) && ~obj.indexOf(val);
+  }
+  this.assert(
+      expected
+    , 'expected #{this} to include ' + _.inspect(val)
+    , 'expected #{this} to not include ' + _.inspect(val));
+}
+
+Assertion.addChainableMethod('include', include, includeChainingBehavior);
+Assertion.addChainableMethod('contain', include, includeChainingBehavior);
+Assertion.addChainableMethod('contains', include, includeChainingBehavior);
+Assertion.addChainableMethod('includes', include, includeChainingBehavior);
+...
 ```
 
 #### <a name="apidoc.element.chai.util.objDisplay"></a>[function <span class="apidocSignatureSpan">chai.util.</span>objDisplay (obj)](#apidoc.element.chai.util.objDisplay)
@@ -3075,7 +5700,23 @@ objDisplay = function (obj) {
 ```
 - example usage
 ```shell
-n/a
+...
+
+function satisfy (matcher, msg) {
+  if (msg) flag(this, 'message', msg);
+  var obj = flag(this, 'object');
+  var result = matcher(obj);
+  this.assert(
+      result
+    , 'expected #{this} to satisfy ' + _.objDisplay(matcher)
+    , 'expected #{this} to not satisfy' + _.objDisplay(matcher)
+    , this.negate ? false : true
+    , result
+  );
+}
+
+Assertion.addMethod('satisfy', satisfy);
+...
 ```
 
 #### <a name="apidoc.element.chai.util.overwriteChainableMethod"></a>[function <span class="apidocSignatureSpan">chai.util.</span>overwriteChainableMethod (ctx, name, method, chainingBehavior)](#apidoc.element.chai.util.overwriteChainableMethod)
@@ -3099,7 +5740,23 @@ overwriteChainableMethod = function (ctx, name, method, chainingBehavior) {
 ```
 - example usage
 ```shell
-n/a
+...
+};
+
+Assertion.overwriteMethod = function (name, fn) {
+  util.overwriteMethod(this.prototype, name, fn);
+};
+
+Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
+  util.overwriteChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+/**
+ * ### .assert(expression, message, negateMessage, expected, actual, showDiff)
+ *
+ * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
+ *
+...
 ```
 
 #### <a name="apidoc.element.chai.util.overwriteMethod"></a>[function <span class="apidocSignatureSpan">chai.util.</span>overwriteMethod (ctx, name, method)](#apidoc.element.chai.util.overwriteMethod)
@@ -3120,7 +5777,23 @@ overwriteMethod = function (ctx, name, method) {
 ```
 - example usage
 ```shell
-n/a
+...
+};
+
+Assertion.overwriteProperty = function (name, fn) {
+  util.overwriteProperty(this.prototype, name, fn);
+};
+
+Assertion.overwriteMethod = function (name, fn) {
+  util.overwriteMethod(this.prototype, name, fn);
+};
+
+Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
+  util.overwriteChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+/**
+...
 ```
 
 #### <a name="apidoc.element.chai.util.overwriteProperty"></a>[function <span class="apidocSignatureSpan">chai.util.</span>overwriteProperty (ctx, name, getter)](#apidoc.element.chai.util.overwriteProperty)
@@ -3144,7 +5817,23 @@ overwriteProperty = function (ctx, name, getter) {
 ```
 - example usage
 ```shell
-n/a
+...
+};
+
+Assertion.addChainableMethod = function (name, fn, chainingBehavior) {
+  util.addChainableMethod(this.prototype, name, fn, chainingBehavior);
+};
+
+Assertion.overwriteProperty = function (name, fn) {
+  util.overwriteProperty(this.prototype, name, fn);
+};
+
+Assertion.overwriteMethod = function (name, fn) {
+  util.overwriteMethod(this.prototype, name, fn);
+};
+
+Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
+...
 ```
 
 #### <a name="apidoc.element.chai.util.test"></a>[function <span class="apidocSignatureSpan">chai.util.</span>test (obj, args)](#apidoc.element.chai.util.test)
@@ -3158,7 +5847,24 @@ test = function (obj, args) {
 ```
 - example usage
 ```shell
-n/a
+...
+   * @param {Mixed} expected value (remember to check for negation)
+   * @param {Mixed} actual (optional) will default to 'this.obj'
+   * @param {Boolean} showDiff (optional) when set to 'true', assert will display a diff in addition to the message if expression
+ fails
+   * @api private
+   */
+
+  Assertion.prototype.assert = function (expr, msg, negateMsg, expected, _actual, showDiff) {
+var ok = util.test(this, arguments);
+if (true !== showDiff) showDiff = false;
+if (true !== config.showDiff) showDiff = false;
+
+if (!ok) {
+  var msg = util.getMessage(this, arguments)
+    , actual = util.getActual(this, arguments);
+  throw new AssertionError(msg, {
+...
 ```
 
 #### <a name="apidoc.element.chai.util.transferFlags"></a>[function <span class="apidocSignatureSpan">chai.util.</span>transferFlags (assertion, object, includeAll)](#apidoc.element.chai.util.transferFlags)
@@ -3183,7 +5889,23 @@ transferFlags = function (assertion, object, includeAll) {
 ```
 - example usage
 ```shell
-n/a
+...
+* Transfer all the flags for 'assertion' to 'object'. If
+* 'includeAll' is set to 'false', then the base Chai
+* assertion flags (namely 'object', 'ssfi', and 'message')
+* will not be transferred.
+*
+*
+*     var newAssertion = new Assertion();
+*     utils.transferFlags(assertion, newAssertion);
+*
+*     var anotherAsseriton = new Assertion(myObj);
+*     utils.transferFlags(assertion, anotherAssertion, false);
+*
+* @param {Assertion} assertion the assertion to transfer the flags from
+* @param {Object} object the object to transfer the flags to; usually a new assertion
+* @param {Boolean} includeAll
+...
 ```
 
 #### <a name="apidoc.element.chai.util.type"></a>[function <span class="apidocSignatureSpan">chai.util.</span>type (obj)](#apidoc.element.chai.util.type)
@@ -3202,7 +5924,23 @@ function getType(obj) {
 ```
 - example usage
 ```shell
-n/a
+...
+function an (type, msg) {
+  if (msg) flag(this, 'message', msg);
+  type = type.toLowerCase();
+  var obj = flag(this, 'object')
+    , article = ~[ 'a', 'e', 'i', 'o', 'u' ].indexOf(type.charAt(0)) ? 'an ' : 'a ';
+
+  this.assert(
+      type === _.type(obj)
+    , 'expected #{this} to be ' + article + type
+    , 'expected #{this} not to be ' + article + type
+  );
+}
+
+Assertion.addChainableMethod('an', an);
+Assertion.addChainableMethod('a', an);
+...
 ```
 
 
@@ -3225,7 +5963,23 @@ function getType(obj) {
 ```
 - example usage
 ```shell
-n/a
+...
+function an (type, msg) {
+  if (msg) flag(this, 'message', msg);
+  type = type.toLowerCase();
+  var obj = flag(this, 'object')
+    , article = ~[ 'a', 'e', 'i', 'o', 'u' ].indexOf(type.charAt(0)) ? 'an ' : 'a ';
+
+  this.assert(
+      type === _.type(obj)
+    , 'expected #{this} to be ' + article + type
+    , 'expected #{this} not to be ' + article + type
+  );
+}
+
+Assertion.addChainableMethod('an', an);
+Assertion.addChainableMethod('a', an);
+...
 ```
 
 #### <a name="apidoc.element.chai.util.type.Library"></a>[function <span class="apidocSignatureSpan">chai.util.type.</span>Library ()](#apidoc.element.chai.util.type.Library)
@@ -3256,7 +6010,23 @@ define = function (type, test) {
 ```
 - example usage
 ```shell
-n/a
+...
+* #### .define (type, test)
+*
+* Add a test to for the '.test()' assertion.
+*
+* Can be defined as a regular expression:
+*
+* '''js
+* lib.define('int', /^[0-9]+$/);
+* '''
+*
+* ... or as a function:
+*
+* '''js
+* lib.define('bln', function (obj) {
+*   if ('boolean' === lib.of(obj)) return true;
+...
 ```
 
 #### <a name="apidoc.element.chai.util.type.Library.prototype.of"></a>[function <span class="apidocSignatureSpan">chai.util.type.Library.prototype.</span>of (obj)](#apidoc.element.chai.util.type.Library.prototype.of)
@@ -3275,7 +6045,23 @@ function getType(obj) {
 ```
 - example usage
 ```shell
-n/a
+...
+
+/**
+* #### .of (obj)
+*
+* Expose replacement 'typeof' detection to the library.
+*
+* '''js
+* if ('string' === lib.of('hello world')) {
+*   // ...
+* }
+* '''
+*
+* @param {Mixed} object to test
+* @return {String} type
+*/
+...
 ```
 
 #### <a name="apidoc.element.chai.util.type.Library.prototype.test"></a>[function <span class="apidocSignatureSpan">chai.util.type.Library.prototype.</span>test (obj, type)](#apidoc.element.chai.util.type.Library.prototype.test)
@@ -3296,7 +6082,24 @@ test = function (obj, type) {
 ```
 - example usage
 ```shell
-n/a
+...
+   * @param {Mixed} expected value (remember to check for negation)
+   * @param {Mixed} actual (optional) will default to 'this.obj'
+   * @param {Boolean} showDiff (optional) when set to 'true', assert will display a diff in addition to the message if expression
+ fails
+   * @api private
+   */
+
+  Assertion.prototype.assert = function (expr, msg, negateMsg, expected, _actual, showDiff) {
+var ok = util.test(this, arguments);
+if (true !== showDiff) showDiff = false;
+if (true !== config.showDiff) showDiff = false;
+
+if (!ok) {
+  var msg = util.getMessage(this, arguments)
+    , actual = util.getActual(this, arguments);
+  throw new AssertionError(msg, {
+...
 ```
 
 
