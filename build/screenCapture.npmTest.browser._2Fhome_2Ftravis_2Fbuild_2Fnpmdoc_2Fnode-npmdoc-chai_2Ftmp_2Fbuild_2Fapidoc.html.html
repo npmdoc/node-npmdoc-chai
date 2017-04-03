@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="http://chaijs.com"
-
-    >chai (v3.5.0)</a>
+    <a href="http://chaijs.com">chai (v3.5.0)</a>
 </h1>
 <h4>BDD/TDD assertion library for node.js and the browser. Test framework agnostic.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.chai">module chai</a><ol>
 
@@ -1800,13 +1793,13 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function Assertion(obj, msg, stack) {
-  flag(this, &#x27;ssfi&#x27;, stack || arguments.callee);
-  flag(this, &#x27;object&#x27;, obj);
-  flag(this, &#x27;message&#x27;, msg);
+  flag(this, 'ssfi', stack || arguments.callee);
+  flag(this, 'object', obj);
+  flag(this, 'message', msg);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  * chai
- * Copyright(c) 2011-2014 Jake Luer &#x3c;jake@alogicalparadox.com&#x3e;
+ * Copyright(c) 2011-2014 Jake Luer &lt;jake@alogicalparadox.com&gt;
  * MIT Licensed
  */
 
@@ -1833,11 +1826,11 @@ chai.expect = function (val, message) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function AssertionError(message, _props, ssf) {
-  var extend = exclude(&#x27;name&#x27;, &#x27;message&#x27;, &#x27;stack&#x27;, &#x27;constructor&#x27;, &#x27;toJSON&#x27;)
+  var extend = exclude('name', 'message', 'stack', 'constructor', 'toJSON')
     , props = extend(_props || {});
 
   // default values
-  this.message = message || &#x27;Unspecified AssertionError&#x27;;
+  this.message = message || 'Unspecified AssertionError';
   this.showDiff = false;
 
   // copy from properties
@@ -1847,7 +1840,7 @@ chai.expect = function (val, message) {
 
   // capture stack trace
   ssf = ssf || arguments.callee;
-  if (ssf &#x26;&#x26; Error.captureStackTrace) {
+  if (ssf &amp;&amp; Error.captureStackTrace) {
     Error.captureStackTrace(this, ssf);
   } else {
     try {
@@ -1864,7 +1857,7 @@ chai.expect = function (val, message) {
  */
 
 assert.fail = function (actual, expected, message, operator) {
-  message = message || &#x27;assert.fail()&#x27;;
+  message = message || 'assert.fail()';
   throw new chai.<span class="apidocCodeKeywordSpan">AssertionError</span>(message, {
       actual: actual
     , expected: expected
@@ -1886,7 +1879,7 @@ assert.fail = function (actual, expected, message, operator) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function loadShould() {
-  // explicitly define this method as function as to have it&#x27;s name to include as `ssfi`
+  // explicitly define this method as function as to have it's name to include as `ssfi`
   function shouldGetter() {
     if (this instanceof String || this instanceof Number || this instanceof Boolean ) {
       return new Assertion(this.valueOf(), null, shouldGetter);
@@ -1896,11 +1889,11 @@ assert.fail = function (actual, expected, message, operator) {
   function shouldSetter(value) {
     // See https://github.com/chaijs/chai/issues/86: this makes
     // `whatever.should = someValue` actually set `someValue`, which is
-    // especially useful for `global.should = require(&#x27;chai&#x27;).should()`.
+    // especially useful for `global.should = require('chai').should()`.
     //
     // Note that we have to use [[DefineProperty]] instead of [[Put]]
     // since otherwise we would trigger this very setter!
-    Object.defineProperty(this, &#x27;should&#x27;, {
+    Object.defineProperty(this, 'should', {
       value: value,
       enumerable: true,
       configurable: true,
@@ -1908,7 +1901,7 @@ assert.fail = function (actual, expected, message, operator) {
     });
   }
   // modify Object.prototype to have `should`
-  Object.defineProperty(Object.prototype, &#x27;should&#x27;, {
+  Object.defineProperty(Object.prototype, 'should', {
     set: shouldSetter
     , get: shouldGetter
     , configurable: true
@@ -1931,7 +1924,7 @@ assert.fail = function (actual, expected, message, operator) {
    */
 </span>
   should.fail = function (actual, expected, message, operator) {
-    message = message || &#x27;should.fail()&#x27;;
+    message = message || 'should.fail()';
     throw new chai.AssertionError(message, {
         actual: actual
       , expected: expected
@@ -1944,7 +1937,7 @@ assert.fail = function (actual, expected, message, operator) {
    *
    * Asserts non-strict equality (`==`) of `actual` and `expected`.
    *
-   *     should.equal(3, &#x27;3&#x27;, &#x27;== coerces values to strings&#x27;);
+   *     should.equal(3, '3', '== coerces values to strings');
    *
    * @name equal
    * @param {Mixed} actual
@@ -1965,10 +1958,10 @@ assert.fail = function (actual, expected, message, operator) {
    * `constructor`, or alternately that it will throw an error with message
    * matching `regexp`.
    *
-   *     should.throw(fn, &#x27;function throws a reference error&#x27;);
+   *     should.throw(fn, 'function throws a reference error');
    *     should.throw(fn, /function throws a reference error/);
    *     should.throw(fn, ReferenceError);
-   *     should.throw(fn, ReferenceError, &#x27;function throws a reference error&#x27;);
+   *     should.throw(fn, ReferenceError, 'function throws a reference error');
    *     should.throw(fn, ReferenceError, /function throws a reference error/);
    *
    * @name throw
@@ -1991,9 +1984,9 @@ assert.fail = function (actual, expected, message, operator) {
    *
    * Asserts that the target is neither `null` nor `undefined`.
    *
-   *     var foo = &#x27;hi&#x27;;
+   *     var foo = 'hi';
    *
-   *     should.exist(foo, &#x27;foo exists&#x27;);
+   *     should.exist(foo, 'foo exists');
    *
    * @name exist
    * @namespace Should
@@ -2012,7 +2005,7 @@ assert.fail = function (actual, expected, message, operator) {
    *
    * Asserts non-strict inequality (`!=`) of `actual` and `expected`.
    *
-   *     should.not.equal(3, 4, &#x27;these numbers are not equal&#x27;);
+   *     should.not.equal(3, 4, 'these numbers are not equal');
    *
    * @name not.equal
    * @param {Mixed} actual
@@ -2048,7 +2041,7 @@ assert.fail = function (actual, expected, message, operator) {
   test.assert(
       express
     , errmsg
-    , &#x27;[ negation message unavailable ]&#x27;
+    , '[ negation message unavailable ]'
   );
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -2061,7 +2054,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
 /**
  * ### .<span class="apidocCodeKeywordSpan">assert</span>(expression, message, negateMessage, expected, actual, showDiff)
  *
- * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn&#x27;t pass.
+ * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
  *
  * @name assert
  * @param {Philosophical} expression to be tested
@@ -2095,7 +2088,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function loadShould() {
-  // explicitly define this method as function as to have it&#x27;s name to include as `ssfi`
+  // explicitly define this method as function as to have it's name to include as `ssfi`
   function shouldGetter() {
     if (this instanceof String || this instanceof Number || this instanceof Boolean ) {
       return new Assertion(this.valueOf(), null, shouldGetter);
@@ -2105,11 +2098,11 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
   function shouldSetter(value) {
     // See https://github.com/chaijs/chai/issues/86: this makes
     // `whatever.should = someValue` actually set `someValue`, which is
-    // especially useful for `global.should = require(&#x27;chai&#x27;).should()`.
+    // especially useful for `global.should = require('chai').should()`.
     //
     // Note that we have to use [[DefineProperty]] instead of [[Put]]
     // since otherwise we would trigger this very setter!
-    Object.defineProperty(this, &#x27;should&#x27;, {
+    Object.defineProperty(this, 'should', {
       value: value,
       enumerable: true,
       configurable: true,
@@ -2117,7 +2110,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
     });
   }
   // modify Object.prototype to have `should`
-  Object.defineProperty(Object.prototype, &#x27;should&#x27;, {
+  Object.defineProperty(Object.prototype, 'should', {
     set: shouldSetter
     , get: shouldGetter
     , configurable: true
@@ -2140,7 +2133,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
    */
 </span>
   should.fail = function (actual, expected, message, operator) {
-    message = message || &#x27;should.fail()&#x27;;
+    message = message || 'should.fail()';
     throw new chai.AssertionError(message, {
         actual: actual
       , expected: expected
@@ -2153,7 +2146,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
    *
    * Asserts non-strict equality (`==`) of `actual` and `expected`.
    *
-   *     should.equal(3, &#x27;3&#x27;, &#x27;== coerces values to strings&#x27;);
+   *     should.equal(3, '3', '== coerces values to strings');
    *
    * @name equal
    * @param {Mixed} actual
@@ -2174,10 +2167,10 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
    * `constructor`, or alternately that it will throw an error with message
    * matching `regexp`.
    *
-   *     should.throw(fn, &#x27;function throws a reference error&#x27;);
+   *     should.throw(fn, 'function throws a reference error');
    *     should.throw(fn, /function throws a reference error/);
    *     should.throw(fn, ReferenceError);
-   *     should.throw(fn, ReferenceError, &#x27;function throws a reference error&#x27;);
+   *     should.throw(fn, ReferenceError, 'function throws a reference error');
    *     should.throw(fn, ReferenceError, /function throws a reference error/);
    *
    * @name throw
@@ -2200,9 +2193,9 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
    *
    * Asserts that the target is neither `null` nor `undefined`.
    *
-   *     var foo = &#x27;hi&#x27;;
+   *     var foo = 'hi';
    *
-   *     should.exist(foo, &#x27;foo exists&#x27;);
+   *     should.exist(foo, 'foo exists');
    *
    * @name exist
    * @namespace Should
@@ -2221,7 +2214,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
    *
    * Asserts non-strict inequality (`!=`) of `actual` and `expected`.
    *
-   *     should.not.equal(3, 4, &#x27;these numbers are not equal&#x27;);
+   *     should.not.equal(3, 4, 'these numbers are not equal');
    *
    * @name not.equal
    * @param {Mixed} actual
@@ -2248,11 +2241,11 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
 function shouldSetter(value) {
   // See https://github.com/chaijs/chai/issues/86: this makes
   // `whatever.should = someValue` actually set `someValue`, which is
-  // especially useful for `global.should = require(&#x27;chai&#x27;).<span class="apidocCodeKeywordSpan">should</span>()`.
+  // especially useful for `global.should = require('chai').<span class="apidocCodeKeywordSpan">should</span>()`.
   //
   // Note that we have to use [[DefineProperty]] instead of [[Put]]
   // since otherwise we would trigger this very setter!
-  Object.defineProperty(this, &#x27;should&#x27;, {
+  Object.defineProperty(this, 'should', {
     value: value,
     enumerable: true,
     configurable: true,
@@ -2281,7 +2274,7 @@ function shouldSetter(value) {
 * Utils for plugins (not exported)
 */
 
-var util = require(&#x27;./chai/utils&#x27;);
+var util = require('./chai/utils');
 
 /**
 * # .<span class="apidocCodeKeywordSpan">use</span>(function)
@@ -2306,12 +2299,12 @@ var util = require(&#x27;./chai/utils&#x27;);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getType(obj) {
   var type = Object.prototype.toString.call(obj).match(objectTypeRegexp)[1].toLowerCase();
-  // Let &#x22;new String(&#x27;&#x27;)&#x22; return &#x27;object&#x27;
-  if (typeof Promise === &#x27;function&#x27; &#x26;&#x26; obj instanceof Promise) return &#x27;promise&#x27;;
-  // PhantomJS has type &#x22;DOMWindow&#x22; for null
-  if (obj === null) return &#x27;null&#x27;;
-  // PhantomJS has type &#x22;DOMWindow&#x22; for undefined
-  if (obj === undefined) return &#x27;undefined&#x27;;
+  // Let "new String('')" return 'object'
+  if (typeof Promise === 'function' &amp;&amp; obj instanceof Promise) return 'promise';
+  // PhantomJS has type "DOMWindow" for null
+  if (obj === null) return 'null';
+  // PhantomJS has type "DOMWindow" for undefined
+  if (obj === undefined) return 'undefined';
   return type;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2346,13 +2339,13 @@ var util = require(&#x27;./chai/utils&#x27;);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function Assertion(obj, msg, stack) {
-  flag(this, &#x27;ssfi&#x27;, stack || arguments.callee);
-  flag(this, &#x27;object&#x27;, obj);
-  flag(this, &#x27;message&#x27;, msg);
+  flag(this, 'ssfi', stack || arguments.callee);
+  flag(this, 'object', obj);
+  flag(this, 'message', msg);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  * chai
- * Copyright(c) 2011-2014 Jake Luer &#x3c;jake@alogicalparadox.com&#x3e;
+ * Copyright(c) 2011-2014 Jake Luer &lt;jake@alogicalparadox.com&gt;
  * MIT Licensed
  */
 
@@ -2445,7 +2438,7 @@ Assertion.overwriteProperty = function (name, fn) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   set: function(value) {
-    console.warn(&#x27;Assertion.showDiff is deprecated, use chai.config.showDiff instead.&#x27;);
+    console.warn('Assertion.showDiff is deprecated, use chai.config.showDiff instead.');
     config.showDiff = value;
   }
 });
@@ -2488,7 +2481,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
 /**
  * ### .assert(expression, message, negateMessage, expected, actual, showDiff)
  *
- * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn&#x27;t pass.
+ * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
  *
 ...</pre></li>
     </ul>
@@ -2570,16 +2563,16 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Throw = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
 assert.doesNotThrow = function (fn, type, msg) {
-  if (&#x27;string&#x27; === typeof type) {
+  if ('string' === typeof type) {
     msg = type;
     type = null;
   }
@@ -2605,9 +2598,9 @@ assert.doesNotThrow = function (fn, type, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">above = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -2615,8 +2608,8 @@ assert.doesNotThrow = function (fn, type, msg) {
   );
 }
 
-Assertion.addMethod(&#x27;eql&#x27;, assertEql);
-Assertion.addMethod(&#x27;eqls&#x27;, assertEql);
+Assertion.addMethod('eql', assertEql);
+Assertion.addMethod('eqls', assertEql);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">above</span>(value)
@@ -2640,9 +2633,9 @@ Assertion.addMethod(&#x27;eqls&#x27;, assertEql);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">approximately = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -2658,7 +2651,7 @@ assert.closeTo = function (act, exp, delta, msg) {
  *
  * Asserts that the target is equal `expected`, to within a +/- `delta` range.
  *
- *     assert.approximately(1.5, 1, 0.5, &#x27;numbers are close&#x27;);
+ *     assert.approximately(1.5, 1, 0.5, 'numbers are close');
  *
  * @name approximately
  * @param {Number} actual
@@ -2686,7 +2679,7 @@ assert.closeTo = function (act, exp, delta, msg) {
         actual: actual
       , expected: expected
       , showDiff: showDiff
-    }, (config.includeStack) ? this.assert : flag(this, &#x27;ssfi&#x27;));
+    }, (config.includeStack) ? this.assert : flag(this, 'ssfi'));
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -2699,7 +2692,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
 /**
  * ### .<span class="apidocCodeKeywordSpan">assert</span>(expression, message, negateMessage, expected, actual, showDiff)
  *
- * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn&#x27;t pass.
+ * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
  *
  * @name assert
  * @param {Philosophical} expression to be tested
@@ -2718,9 +2711,9 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">below = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -2728,8 +2721,8 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
   }
 }
 
-Assertion.addMethod(&#x27;least&#x27;, assertLeast);
-Assertion.addMethod(&#x27;gte&#x27;, assertLeast);
+Assertion.addMethod('least', assertLeast);
+Assertion.addMethod('gte', assertLeast);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">below</span>(value)
@@ -2753,9 +2746,9 @@ Assertion.addMethod(&#x27;gte&#x27;, assertLeast);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">closeTo = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -2763,8 +2756,8 @@ Assertion.addMethod(&#x27;gte&#x27;, assertLeast);
   );
 }
 
-Assertion.addMethod(&#x27;satisfy&#x27;, satisfy);
-Assertion.addMethod(&#x27;satisfies&#x27;, satisfy);
+Assertion.addMethod('satisfy', satisfy);
+Assertion.addMethod('satisfies', satisfy);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">closeTo</span>(expected, delta)
@@ -2788,9 +2781,9 @@ Assertion.addMethod(&#x27;satisfies&#x27;, satisfy);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">eq = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -2807,27 +2800,27 @@ Assertion.addMethod(&#x27;satisfies&#x27;, satisfy);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">eql = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-if (msg) flag(this, &#x27;message&#x27;, msg);
-var obj = flag(this, &#x27;object&#x27;);
+if (msg) flag(this, 'message', msg);
+var obj = flag(this, 'object');
 var expected = false;
 
-if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&#x27;) {
+if (_.type(obj) === 'array' &amp;&amp; _.type(val) === 'object') {
   for (var i in obj) {
     if (_.<span class="apidocCodeKeywordSpan">eql</span>(obj[i], val)) {
       expected = true;
       break;
     }
   }
-} else if (_.type(val) === &#x27;object&#x27;) {
-  if (!flag(this, &#x27;negate&#x27;)) {
+} else if (_.type(val) === 'object') {
+  if (!flag(this, 'negate')) {
     for (var k in val) new Assertion(obj).property(k, val[k]);
 ...</pre></li>
     </ul>
@@ -2842,9 +2835,9 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">eqls = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -2861,9 +2854,9 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">equal = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -2875,10 +2868,10 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
  *
  * Negates any of assertions following in the chain.
  *
- *     expect(foo).to.not.<span class="apidocCodeKeywordSpan">equal</span>(&#x27;bar&#x27;);
+ *     expect(foo).to.not.<span class="apidocCodeKeywordSpan">equal</span>('bar');
  *     expect(goodFn).to.not.throw(Error);
- *     expect({ foo: &#x27;baz&#x27; }).to.have.property(&#x27;foo&#x27;)
- *       .and.not.equal(&#x27;bar&#x27;);
+ *     expect({ foo: 'baz' }).to.have.property('foo')
+ *       .and.not.equal('bar');
  *
  * @name not
  * @namespace BDD
@@ -2896,9 +2889,9 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">equals = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -2906,15 +2899,15 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
 * to be the value of that property from the original object. This
 * permits for further chainable assertions on that property.
 *
-*     expect(obj).to.have.property(&#x27;foo&#x27;)
-*       .that.is.a(&#x27;string&#x27;);
-*     expect(deepObj).to.have.property(&#x27;green&#x27;)
-*       .that.is.an(&#x27;object&#x27;)
-*       .that.deep.<span class="apidocCodeKeywordSpan">equals</span>({ tea: &#x27;matcha&#x27; });
-*     expect(deepObj).to.have.property(&#x27;teas&#x27;)
-*       .that.is.an(&#x27;array&#x27;)
-*       .with.deep.property(&#x27;[2]&#x27;)
-*         .that.deep.equals({ tea: &#x27;konacha&#x27; });
+*     expect(obj).to.have.property('foo')
+*       .that.is.a('string');
+*     expect(deepObj).to.have.property('green')
+*       .that.is.an('object')
+*       .that.deep.<span class="apidocCodeKeywordSpan">equals</span>({ tea: 'matcha' });
+*     expect(deepObj).to.have.property('teas')
+*       .that.is.an('array')
+*       .with.deep.property('[2]')
+*         .that.deep.equals({ tea: 'konacha' });
 *
 * Note that dots and bracket in `name` must be backslash-escaped when
 * the `deep` flag is set, while they must NOT be escaped when the `deep`
@@ -2931,9 +2924,9 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">greaterThan = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -2950,9 +2943,9 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">gt = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -2969,9 +2962,9 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">gte = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -2988,9 +2981,9 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">haveOwnProperty = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3007,9 +3000,9 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">haveOwnPropertyDescriptor = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3026,9 +3019,9 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">instanceOf = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3045,9 +3038,9 @@ assert.notTypeOf = function (val, type, msg) {
  * Asserts that `value` is an instance of `constructor`.
  *
  *     var Tea = function (name) { this.name = name; }
- *       , chai = new Tea(&#x27;chai&#x27;);
+ *       , chai = new Tea('chai');
  *
- *     assert.instanceOf(chai, Tea, &#x27;chai is an instance of tea&#x27;);
+ *     assert.instanceOf(chai, Tea, 'chai is an instance of tea');
 ...</pre></li>
     </ul>
 
@@ -3061,18 +3054,18 @@ assert.notTypeOf = function (val, type, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">instanceof = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-*     expect(new Float32Array()).to.be.a(&#x27;float32array&#x27;);
-*     expect(Symbol()).to.be.a(&#x27;symbol&#x27;);
+*     expect(new Float32Array()).to.be.a('float32array');
+*     expect(Symbol()).to.be.a('symbol');
 *
 *     // es6 overrides
-*     expect({[Symbol.toStringTag]:()=&#x3e;&#x27;foo&#x27;}).to.be.a(&#x27;foo&#x27;);
+*     expect({[Symbol.toStringTag]:()=&gt;'foo'}).to.be.a('foo');
 *
 *     // language chain
 *     expect(foo).to.be.an.<span class="apidocCodeKeywordSpan">instanceof</span>(Foo);
@@ -3096,9 +3089,9 @@ assert.notTypeOf = function (val, type, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">key = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3115,9 +3108,9 @@ assert.notTypeOf = function (val, type, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">keys = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3129,14 +3122,14 @@ assert.notTypeOf = function (val, type, msg) {
  * Sets the `any` flag, (opposite of the `all` flag)
  * later used in the `keys` assertion.
  *
- *     expect(foo).to.have.any.<span class="apidocCodeKeywordSpan">keys</span>(&#x27;bar&#x27;, &#x27;baz&#x27;);
+ *     expect(foo).to.have.any.<span class="apidocCodeKeywordSpan">keys</span>('bar', 'baz');
  *
  * @name any
  * @namespace BDD
  * @api public
  */
 
-Assertion.addProperty(&#x27;any&#x27;, function () {
+Assertion.addProperty('any', function () {
 ...</pre></li>
     </ul>
 
@@ -3150,18 +3143,18 @@ Assertion.addProperty(&#x27;any&#x27;, function () {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">least = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 }
 
-Assertion.addMethod(&#x27;above&#x27;, assertAbove);
-Assertion.addMethod(&#x27;gt&#x27;, assertAbove);
-Assertion.addMethod(&#x27;greaterThan&#x27;, assertAbove);
+Assertion.addMethod('above', assertAbove);
+Assertion.addMethod('gt', assertAbove);
+Assertion.addMethod('greaterThan', assertAbove);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">least</span>(value)
@@ -3185,9 +3178,9 @@ Assertion.addMethod(&#x27;greaterThan&#x27;, assertAbove);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">lengthOf = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3201,11 +3194,11 @@ Assertion.addMethod(&#x27;greaterThan&#x27;, assertAbove);
 /**
  * ### .<span class="apidocCodeKeywordSpan">lengthOf</span>(value[, message])
  *
- * Asserts that the target&#x27;s `length` property has
+ * Asserts that the target's `length` property has
  * the expected value.
  *
  *     expect([ 1, 2, 3]).to.have.lengthOf(3);
- *     expect(&#x27;foobar&#x27;).to.have.lengthOf(6);
+ *     expect('foobar').to.have.lengthOf(6);
  *
 ...</pre></li>
     </ul>
@@ -3220,9 +3213,9 @@ Assertion.addMethod(&#x27;greaterThan&#x27;, assertAbove);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">lessThan = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3239,9 +3232,9 @@ Assertion.addMethod(&#x27;greaterThan&#x27;, assertAbove);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">lt = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3258,9 +3251,9 @@ Assertion.addMethod(&#x27;greaterThan&#x27;, assertAbove);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">lte = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3277,9 +3270,9 @@ Assertion.addMethod(&#x27;greaterThan&#x27;, assertAbove);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">match = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3287,15 +3280,15 @@ Assertion.addMethod(&#x27;greaterThan&#x27;, assertAbove);
   );
 }
 
-Assertion.addChainableMethod(&#x27;length&#x27;, assertLength, assertLengthChain);
-Assertion.addMethod(&#x27;lengthOf&#x27;, assertLength);
+Assertion.addChainableMethod('length', assertLength, assertLengthChain);
+Assertion.addMethod('lengthOf', assertLength);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">match</span>(regexp)
  *
  * Asserts that the target matches a regular expression.
  *
- *     expect(&#x27;foobar&#x27;).to.match(/^foo/);
+ *     expect('foobar').to.match(/^foo/);
  *
  * @name match
  * @alias matches
@@ -3312,9 +3305,9 @@ Assertion.addMethod(&#x27;lengthOf&#x27;, assertLength);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">matches = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3331,9 +3324,9 @@ Assertion.addMethod(&#x27;lengthOf&#x27;, assertLength);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">members = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3366,18 +3359,18 @@ Assertion.addMethod(&#x27;lengthOf&#x27;, assertLength);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">most = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 }
 
-Assertion.addMethod(&#x27;below&#x27;, assertBelow);
-Assertion.addMethod(&#x27;lt&#x27;, assertBelow);
-Assertion.addMethod(&#x27;lessThan&#x27;, assertBelow);
+Assertion.addMethod('below', assertBelow);
+Assertion.addMethod('lt', assertBelow);
+Assertion.addMethod('lessThan', assertBelow);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">most</span>(value)
@@ -3401,14 +3394,14 @@ Assertion.addMethod(&#x27;lessThan&#x27;, assertBelow);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">oneOf = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      , &#x27;expected #{this} to not have the same members as #{act}&#x27;
+      , 'expected #{this} to not have the same members as #{act}'
       , obj
       , subset
   );
@@ -3419,8 +3412,8 @@ Assertion.addMethod(&#x27;lessThan&#x27;, assertBelow);
  *
  * Assert that a value appears somewhere in the top level of array `list`.
  *
- *     expect(&#x27;a&#x27;).to.be.oneOf([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
- *     expect(9).to.not.be.oneOf([&#x27;z&#x27;]);
+ *     expect('a').to.be.oneOf(['a', 'b', 'c']);
+ *     expect(9).to.not.be.oneOf(['z']);
  *     expect([3]).to.not.be.oneOf([1, 2, [3]]);
  *
 ...</pre></li>
@@ -3436,16 +3429,16 @@ Assertion.addMethod(&#x27;lessThan&#x27;, assertBelow);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">ownProperty = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   }
 
-  flag(this, &#x27;object&#x27;, value);
+  flag(this, 'object', value);
 });
 
 
@@ -3454,7 +3447,7 @@ Assertion.addMethod(&#x27;lessThan&#x27;, assertBelow);
  *
  * Asserts that the target has an own property `name`.
  *
- *     expect(&#x27;test&#x27;).to.have.ownProperty(&#x27;length&#x27;);
+ *     expect('test').to.have.ownProperty('length');
  *
  * @name ownProperty
  * @alias haveOwnProperty
@@ -3471,9 +3464,9 @@ Assertion.addMethod(&#x27;lessThan&#x27;, assertBelow);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">ownPropertyDescriptor = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3481,20 +3474,20 @@ Assertion.addMethod(&#x27;lessThan&#x27;, assertBelow);
   );
 }
 
-Assertion.addMethod(&#x27;ownProperty&#x27;, assertOwnProperty);
-Assertion.addMethod(&#x27;haveOwnProperty&#x27;, assertOwnProperty);
+Assertion.addMethod('ownProperty', assertOwnProperty);
+Assertion.addMethod('haveOwnProperty', assertOwnProperty);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">ownPropertyDescriptor</span>(name[, descriptor[, message]])
  *
  * Asserts that the target has an own property descriptor `name`, that optionally matches `descriptor`.
  *
- *     expect(&#x27;test&#x27;).to.have.ownPropertyDescriptor(&#x27;length&#x27;);
- *     expect(&#x27;test&#x27;).to.have.ownPropertyDescriptor(&#x27;length&#x27;, { enumerable: false, configurable: false, writable
+ *     expect('test').to.have.ownPropertyDescriptor('length');
+ *     expect('test').to.have.ownPropertyDescriptor('length', { enumerable: false, configurable: false, writable
 : false, value: 4 });
- *     expect(&#x27;test&#x27;).not.to.have.ownPropertyDescriptor(&#x27;length&#x27;, { enumerable: false, configurable: false,
+ *     expect('test').not.to.have.ownPropertyDescriptor('length', { enumerable: false, configurable: false,
 writable: false, value: 3 });
- *     expect(&#x27;test&#x27;).ownPropertyDescriptor(&#x27;length&#x27;).to.have.property(&#x27;enumerable&#x27;, false);
+ *     expect('test').ownPropertyDescriptor('length').to.have.property('enumerable', false);
 ...</pre></li>
     </ul>
 
@@ -3508,9 +3501,9 @@ writable: false, value: 3 });
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">property = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3520,10 +3513,10 @@ writable: false, value: 3 });
 *
 * Negates any of assertions following in the chain.
 *
-*     expect(foo).to.not.equal(&#x27;bar&#x27;);
+*     expect(foo).to.not.equal('bar');
 *     expect(goodFn).to.not.throw(Error);
-*     expect({ foo: &#x27;baz&#x27; }).to.have.<span class="apidocCodeKeywordSpan">property</span>(&#x27;foo&#x27;)
-*       .and.not.equal(&#x27;bar&#x27;);
+*     expect({ foo: 'baz' }).to.have.<span class="apidocCodeKeywordSpan">property</span>('foo')
+*       .and.not.equal('bar');
 *
 * @name not
 * @namespace BDD
@@ -3542,18 +3535,18 @@ writable: false, value: 3 });
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">respondTo = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 };
 
-Assertion.addMethod(&#x27;throw&#x27;, assertThrows);
-Assertion.addMethod(&#x27;throws&#x27;, assertThrows);
-Assertion.addMethod(&#x27;Throw&#x27;, assertThrows);
+Assertion.addMethod('throw', assertThrows);
+Assertion.addMethod('throws', assertThrows);
+Assertion.addMethod('Throw', assertThrows);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">respondTo</span>(method)
@@ -3561,8 +3554,8 @@ Assertion.addMethod(&#x27;Throw&#x27;, assertThrows);
  * Asserts that the object or class target will respond to a method.
  *
  *     Klass.prototype.bar = function(){};
- *     expect(Klass).to.respondTo(&#x27;bar&#x27;);
- *     expect(obj).to.respondTo(&#x27;bar&#x27;);
+ *     expect(Klass).to.respondTo('bar');
+ *     expect(obj).to.respondTo('bar');
  *
 ...</pre></li>
     </ul>
@@ -3577,9 +3570,9 @@ Assertion.addMethod(&#x27;Throw&#x27;, assertThrows);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">respondsTo = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3596,9 +3589,9 @@ Assertion.addMethod(&#x27;Throw&#x27;, assertThrows);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">satisfies = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3615,17 +3608,17 @@ Assertion.addMethod(&#x27;Throw&#x27;, assertThrows);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">satisfy = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
 
-Assertion.addProperty(&#x27;itself&#x27;, function () {
-  flag(this, &#x27;itself&#x27;, true);
+Assertion.addProperty('itself', function () {
+  flag(this, 'itself', true);
 });
 
 /**
@@ -3633,7 +3626,7 @@ Assertion.addProperty(&#x27;itself&#x27;, function () {
  *
  * Asserts that the target passes a given truth test.
  *
- *     expect(1).to.satisfy(function(num) { return num &#x3e; 0; });
+ *     expect(1).to.satisfy(function(num) { return num &gt; 0; });
  *
  * @name satisfy
  * @alias satisfies
@@ -3650,9 +3643,9 @@ Assertion.addProperty(&#x27;itself&#x27;, function () {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">string = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3660,15 +3653,15 @@ Assertion.addProperty(&#x27;itself&#x27;, function () {
   );
 }
 
-Assertion.addMethod(&#x27;match&#x27;, assertMatch);
-Assertion.addMethod(&#x27;matches&#x27;, assertMatch);
+Assertion.addMethod('match', assertMatch);
+Assertion.addMethod('matches', assertMatch);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">string</span>(string)
  *
  * Asserts that the string target contains another string.
  *
- *     expect(&#x27;foobar&#x27;).to.have.string(&#x27;bar&#x27;);
+ *     expect('foobar').to.have.string('bar');
  *
  * @name string
  * @param {String} string
@@ -3685,9 +3678,9 @@ Assertion.addMethod(&#x27;matches&#x27;, assertMatch);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">throw = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3698,10 +3691,10 @@ Assertion.addMethod(&#x27;matches&#x27;, assertMatch);
 *
 * Negates any of assertions following in the chain.
 *
-*     expect(foo).to.not.equal(&#x27;bar&#x27;);
+*     expect(foo).to.not.equal('bar');
 *     expect(goodFn).to.not.<span class="apidocCodeKeywordSpan">throw</span>(Error);
-*     expect({ foo: &#x27;baz&#x27; }).to.have.property(&#x27;foo&#x27;)
-*       .and.not.equal(&#x27;bar&#x27;);
+*     expect({ foo: 'baz' }).to.have.property('foo')
+*       .and.not.equal('bar');
 *
 * @name not
 * @namespace BDD
@@ -3720,9 +3713,9 @@ Assertion.addMethod(&#x27;matches&#x27;, assertMatch);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">throws = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3740,7 +3733,7 @@ assert.lengthOf = function (exp, len, msg) {
  * `constructor`, or alternately that it will throw an error with message
  * matching `regexp`.
  *
- *     assert.throws(fn, &#x27;function throws a reference error&#x27;);
+ *     assert.throws(fn, 'function throws a reference error');
  *     assert.throws(fn, /function throws a reference error/);
 ...</pre></li>
     </ul>
@@ -3755,9 +3748,9 @@ assert.lengthOf = function (exp, len, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">within = function () {
-  var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-  if (old_ssfi &#x26;&#x26; config.includeStack === false)
-    flag(this, &#x27;ssfi&#x27;, ctx[name]);
+  var old_ssfi = flag(this, 'ssfi');
+  if (old_ssfi &amp;&amp; config.includeStack === false)
+    flag(this, 'ssfi', ctx[name]);
   var result = method.apply(this, arguments);
   return result === undefined ? this : result;
 }</pre></li>
@@ -3765,8 +3758,8 @@ assert.lengthOf = function (exp, len, msg) {
   }
 }
 
-Assertion.addMethod(&#x27;most&#x27;, assertMost);
-Assertion.addMethod(&#x27;lte&#x27;, assertMost);
+Assertion.addMethod('most', assertMost);
+Assertion.addMethod('lte', assertMost);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">within</span>(start, finish)
@@ -3797,11 +3790,11 @@ Assertion.addMethod(&#x27;lte&#x27;, assertMost);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function AssertionError(message, _props, ssf) {
-  var extend = exclude(&#x27;name&#x27;, &#x27;message&#x27;, &#x27;stack&#x27;, &#x27;constructor&#x27;, &#x27;toJSON&#x27;)
+  var extend = exclude('name', 'message', 'stack', 'constructor', 'toJSON')
     , props = extend(_props || {});
 
   // default values
-  this.message = message || &#x27;Unspecified AssertionError&#x27;;
+  this.message = message || 'Unspecified AssertionError';
   this.showDiff = false;
 
   // copy from properties
@@ -3811,7 +3804,7 @@ Assertion.addMethod(&#x27;lte&#x27;, assertMost);
 
   // capture stack trace
   ssf = ssf || arguments.callee;
-  if (ssf &#x26;&#x26; Error.captureStackTrace) {
+  if (ssf &amp;&amp; Error.captureStackTrace) {
     Error.captureStackTrace(this, ssf);
   } else {
     try {
@@ -3828,7 +3821,7 @@ Assertion.addMethod(&#x27;lte&#x27;, assertMost);
  */
 
 assert.fail = function (actual, expected, message, operator) {
-  message = message || &#x27;assert.fail()&#x27;;
+  message = message || 'assert.fail()';
   throw new chai.<span class="apidocCodeKeywordSpan">AssertionError</span>(message, {
       actual: actual
     , expected: expected
@@ -3855,11 +3848,11 @@ assert.fail = function (actual, expected, message, operator) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function AssertionError(message, _props, ssf) {
-  var extend = exclude(&#x27;name&#x27;, &#x27;message&#x27;, &#x27;stack&#x27;, &#x27;constructor&#x27;, &#x27;toJSON&#x27;)
+  var extend = exclude('name', 'message', 'stack', 'constructor', 'toJSON')
     , props = extend(_props || {});
 
   // default values
-  this.message = message || &#x27;Unspecified AssertionError&#x27;;
+  this.message = message || 'Unspecified AssertionError';
   this.showDiff = false;
 
   // copy from properties
@@ -3869,7 +3862,7 @@ assert.fail = function (actual, expected, message, operator) {
 
   // capture stack trace
   ssf = ssf || arguments.callee;
-  if (ssf &#x26;&#x26; Error.captureStackTrace) {
+  if (ssf &amp;&amp; Error.captureStackTrace) {
     Error.captureStackTrace(this, ssf);
   } else {
     try {
@@ -3892,11 +3885,11 @@ assert.fail = function (actual, expected, message, operator) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">toJSON = function (stack) {
-  var extend = exclude(&#x27;constructor&#x27;, &#x27;toJSON&#x27;, &#x27;stack&#x27;)
+  var extend = exclude('constructor', 'toJSON', 'stack')
     , props = extend({ name: this.name }, this);
 
   // include stack if exists and not turned off
-  if (false !== stack &#x26;&#x26; this.stack) {
+  if (false !== stack &amp;&amp; this.stack) {
     props.stack = this.stack;
   }
 
@@ -3926,7 +3919,7 @@ assert.fail = function (actual, expected, message, operator) {
   test.assert(
       express
     , errmsg
-    , &#x27;[ negation message unavailable ]&#x27;
+    , '[ negation message unavailable ]'
   );
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -3939,7 +3932,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
 /**
  * ### .<span class="apidocCodeKeywordSpan">assert</span>(expression, message, negateMessage, expected, actual, showDiff)
  *
- * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn&#x27;t pass.
+ * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
  *
  * @name assert
  * @param {Philosophical} expression to be tested
@@ -3958,18 +3951,18 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Throw = function (fn, errt, errs, msg) {
-  if (&#x27;string&#x27; === typeof errt || errt instanceof RegExp) {
+  if ('string' === typeof errt || errt instanceof RegExp) {
     errs = errt;
     errt = null;
   }
 
   var assertErr = new Assertion(fn, msg).to.throw(errt, errs);
-  return flag(assertErr, &#x27;object&#x27;);
+  return flag(assertErr, 'object');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
 assert.doesNotThrow = function (fn, type, msg) {
-  if (&#x27;string&#x27; === typeof type) {
+  if ('string' === typeof type) {
     msg = type;
     type = null;
   }
@@ -4009,7 +4002,7 @@ assert.closeTo = function (act, exp, delta, msg) {
  *
  * Asserts that the target is equal `expected`, to within a +/- `delta` range.
  *
- *     assert.approximately(1.5, 1, 0.5, &#x27;numbers are close&#x27;);
+ *     assert.approximately(1.5, 1, 0.5, 'numbers are close');
  *
  * @name approximately
  * @param {Number} actual
@@ -4042,7 +4035,7 @@ assert.closeTo = function (act, exp, delta, msg) {
 *
 *     var obj = { val: 10 };
 *     var fn = function() { obj.val = 22 };
-*     assert.changes(fn, obj, &#x27;val&#x27;);
+*     assert.changes(fn, obj, 'val');
 *
 ...</pre></li>
     </ul>
@@ -4063,8 +4056,8 @@ assert.closeTo = function (act, exp, delta, msg) {
   );
 }
 
-Assertion.addMethod(&#x27;satisfy&#x27;, satisfy);
-Assertion.addMethod(&#x27;satisfies&#x27;, satisfy);
+Assertion.addMethod('satisfy', satisfy);
+Assertion.addMethod('satisfies', satisfy);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">closeTo</span>(expected, delta)
@@ -4104,7 +4097,7 @@ Assertion.addMethod(&#x27;satisfies&#x27;, satisfy);
 *
 *     var obj = { val: 10 };
 *     var fn = function() { obj.val = 5 };
-*     assert.decreases(fn, obj, &#x27;val&#x27;);
+*     assert.decreases(fn, obj, 'val');
 *
 ...</pre></li>
     </ul>
@@ -4133,7 +4126,7 @@ assert.notStrictEqual = function (act, exp, msg) {
  *
  * Asserts that `actual` is deeply equal to `expected`.
  *
- *     assert.deepEqual({ tea: &#x27;green&#x27; }, { tea: &#x27;green&#x27; });
+ *     assert.deepEqual({ tea: 'green' }, { tea: 'green' });
  *
  * @name deepEqual
  * @param {Mixed} actual
@@ -4165,7 +4158,7 @@ assert.notProperty = function (obj, prop, msg) {
  * Asserts that `object` has a property named by `property`, which can be a
  * string using dot- and bracket-notation for deep reference.
  *
- *     assert.deepProperty({ tea: { green: &#x27;matcha&#x27; }}, &#x27;tea.green&#x27;);
+ *     assert.deepProperty({ tea: { green: 'matcha' }}, 'tea.green');
  *
  * @name deepProperty
 ...</pre></li>
@@ -4197,7 +4190,7 @@ assert.deepPropertyVal = function (obj, prop, val, msg) {
  * different from that given by `value`. `property` can use dot- and
  * bracket-notation for deep reference.
  *
- *     assert.deepPropertyNotVal({ tea: { green: &#x27;matcha&#x27; }}, &#x27;tea.green&#x27;, &#x27;konacha&#x27;);
+ *     assert.deepPropertyNotVal({ tea: { green: 'matcha' }}, 'tea.green', 'konacha');
  *
 ...</pre></li>
     </ul>
@@ -4228,7 +4221,7 @@ assert.propertyNotVal = function (obj, prop, val, msg) {
  * by `value`. `property` can use dot- and bracket-notation for deep
  * reference.
  *
- *     assert.deepPropertyVal({ tea: { green: &#x27;matcha&#x27; }}, &#x27;tea.green&#x27;, &#x27;matcha&#x27;);
+ *     assert.deepPropertyVal({ tea: { green: 'matcha' }}, 'tea.green', 'matcha');
  *
 ...</pre></li>
     </ul>
@@ -4258,8 +4251,8 @@ assert.propertyNotVal = function (obj, prop, val, msg) {
 * Asserts that a function does not changes the value of a property
 *
 *     var obj = { val: 10 };
-*     var fn = function() { console.log(&#x27;foo&#x27;); };
-*     assert.doesNotChange(fn, obj, &#x27;val&#x27;);
+*     var fn = function() { console.log('foo'); };
+*     assert.doesNotChange(fn, obj, 'val');
 *
 ...</pre></li>
     </ul>
@@ -4290,7 +4283,7 @@ assert.propertyNotVal = function (obj, prop, val, msg) {
 *
 *     var obj = { val: 10 };
 *     var fn = function() { obj.val = 15 };
-*     assert.doesNotDecrease(fn, obj, &#x27;val&#x27;);
+*     assert.doesNotDecrease(fn, obj, 'val');
 *
 ...</pre></li>
     </ul>
@@ -4321,7 +4314,7 @@ assert.propertyNotVal = function (obj, prop, val, msg) {
 *
 *     var obj = { val: 10 };
 *     var fn = function() { obj.val = 8 };
-*     assert.doesNotIncrease(fn, obj, &#x27;val&#x27;);
+*     assert.doesNotIncrease(fn, obj, 'val');
 *
 ...</pre></li>
     </ul>
@@ -4336,7 +4329,7 @@ assert.propertyNotVal = function (obj, prop, val, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">doesNotThrow = function (fn, type, msg) {
-  if (&#x27;string&#x27; === typeof type) {
+  if ('string' === typeof type) {
     msg = type;
     type = null;
   }
@@ -4347,7 +4340,7 @@ assert.propertyNotVal = function (obj, prop, val, msg) {
   }
 
   var assertErr = new Assertion(fn, msg).to.throw(errt, errs);
-  return flag(assertErr, &#x27;object&#x27;);
+  return flag(assertErr, 'object');
 };
 
 /**
@@ -4357,7 +4350,7 @@ assert.propertyNotVal = function (obj, prop, val, msg) {
  * `constructor`, or alternately that it will not throw an error with message
  * matching `regexp`.
  *
- *     assert.doesNotThrow(fn, Error, &#x27;function does not throw&#x27;);
+ *     assert.doesNotThrow(fn, Error, 'function does not throw');
  *
 ...</pre></li>
     </ul>
@@ -4375,9 +4368,9 @@ assert.propertyNotVal = function (obj, prop, val, msg) {
   var test = new Assertion(act, msg, assert.equal);
 
   test.assert(
-      exp == flag(test, &#x27;object&#x27;)
-    , &#x27;expected #{this} to equal #{exp}&#x27;
-    , &#x27;expected #{this} to not equal #{act}&#x27;
+      exp == flag(test, 'object')
+    , 'expected #{this} to equal #{exp}'
+    , 'expected #{this} to not equal #{act}'
     , exp
     , act
   );
@@ -4390,10 +4383,10 @@ assert.propertyNotVal = function (obj, prop, val, msg) {
  *
  * Negates any of assertions following in the chain.
  *
- *     expect(foo).to.not.<span class="apidocCodeKeywordSpan">equal</span>(&#x27;bar&#x27;);
+ *     expect(foo).to.not.<span class="apidocCodeKeywordSpan">equal</span>('bar');
  *     expect(goodFn).to.not.throw(Error);
- *     expect({ foo: &#x27;baz&#x27; }).to.have.property(&#x27;foo&#x27;)
- *       .and.not.equal(&#x27;bar&#x27;);
+ *     expect({ foo: 'baz' }).to.have.property('foo')
+ *       .and.not.equal('bar');
  *
  * @name not
  * @namespace BDD
@@ -4426,7 +4419,7 @@ assert.propertyNotVal = function (obj, prop, val, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">fail = function (actual, expected, message, operator) {
-  message = message || &#x27;assert.fail()&#x27;;
+  message = message || 'assert.fail()';
   throw new chai.AssertionError(message, {
       actual: actual
     , expected: expected
@@ -4436,7 +4429,7 @@ assert.propertyNotVal = function (obj, prop, val, msg) {
     <li>example usage<pre class="apidocCodePre">...
       express
     , errmsg
-    , &#x27;[ negation message unavailable ]&#x27;
+    , '[ negation message unavailable ]'
   );
 };
 
@@ -4508,10 +4501,10 @@ assert.doesNotDecrease = function (fn, obj, prop) {
  * ### .<span class="apidocCodeKeywordSpan">ifError</span>(object)
  *
  * Asserts if value is not a false value, and throws if it is a true value.
- * This is added to allow for chai to be a drop-in replacement for Node&#x27;s
+ * This is added to allow for chai to be a drop-in replacement for Node's
  * assert class.
  *
- *     var err = new Error(&#x27;I am a custom error&#x27;);
+ *     var err = new Error('I am a custom error');
  *     assert.ifError(err); // Rethrows err!
 ...</pre></li>
     </ul>
@@ -4532,8 +4525,8 @@ assert.doesNotDecrease = function (fn, obj, prop) {
   );
 }
 
-Assertion.addChainableMethod(&#x27;an&#x27;, an);
-Assertion.addChainableMethod(&#x27;a&#x27;, an);
+Assertion.addChainableMethod('an', an);
+Assertion.addChainableMethod('a', an);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">include</span>(value)
@@ -4573,7 +4566,7 @@ assert.includeMembers = function (superset, subset, msg) {
  * Order is not taken into account.
  * Duplicates are ignored.
  *
- *     assert.includeDeepMembers([ {a: 1}, {b: 2}, {c: 3} ], [ {b: 2}, {a: 1}, {b: 2} ], &#x27;include deep members&#x27;);
+ *     assert.includeDeepMembers([ {a: 1}, {b: 2}, {c: 3} ], [ {b: 2}, {a: 1}, {b: 2} ], 'include deep members');
  *
 ...</pre></li>
     </ul>
@@ -4603,7 +4596,7 @@ assert.sameDeepMembers = function (set1, set2, msg) {
  * Asserts that `subset` is included in `superset`.
  * Order is not taken into account.
  *
- *     assert.includeMembers([ 1, 2, 3 ], [ 2, 1 ], &#x27;include members&#x27;);
+ *     assert.includeMembers([ 1, 2, 3 ], [ 2, 1 ], 'include members');
  *
  * @name includeMembers
 ...</pre></li>
@@ -4635,7 +4628,7 @@ assert.sameDeepMembers = function (set1, set2, msg) {
 *
 *     var obj = { val: 10 };
 *     var fn = function() { obj.val = 13 };
-*     assert.increases(fn, obj, &#x27;val&#x27;);
+*     assert.increases(fn, obj, 'val');
 *
 ...</pre></li>
     </ul>
@@ -4665,9 +4658,9 @@ assert.notTypeOf = function (val, type, msg) {
  * Asserts that `value` is an instance of `constructor`.
  *
  *     var Tea = function (name) { this.name = name; }
- *       , chai = new Tea(&#x27;chai&#x27;);
+ *       , chai = new Tea('chai');
  *
- *     assert.instanceOf(chai, Tea, &#x27;chai is an instance of tea&#x27;);
+ *     assert.instanceOf(chai, Tea, 'chai is an instance of tea');
 ...</pre></li>
     </ul>
 
@@ -4693,9 +4686,9 @@ assert.notTypeOf = function (val, type, msg) {
 /**
 * ### .<span class="apidocCodeKeywordSpan">isAbove</span>(valueToCheck, valueToBeAbove, [message])
 *
-* Asserts `valueToCheck` is strictly greater than (&#x3e;) `valueToBeAbove`
+* Asserts `valueToCheck` is strictly greater than (&gt;) `valueToBeAbove`
 *
-*     assert.isAbove(5, 2, &#x27;5 is strictly greater than 2&#x27;);
+*     assert.isAbove(5, 2, '5 is strictly greater than 2');
 *
 * @name isAbove
 * @param {Mixed} valueToCheck
@@ -4712,19 +4705,19 @@ assert.notTypeOf = function (val, type, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isArray = function (val, msg) {
-  new Assertion(val, msg).to.be.an(&#x27;array&#x27;);
+  new Assertion(val, msg).to.be.an('array');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
    * @api public
    */
 
-  Assertion.addProperty(&#x27;empty&#x27;, function () {
-var obj = flag(this, &#x27;object&#x27;)
+  Assertion.addProperty('empty', function () {
+var obj = flag(this, 'object')
   , expected = obj;
 
-if (Array.<span class="apidocCodeKeywordSpan">isArray</span>(obj) || &#x27;string&#x27; === typeof object) {
+if (Array.<span class="apidocCodeKeywordSpan">isArray</span>(obj) || 'string' === typeof object) {
   expected = obj.length;
-} else if (typeof obj === &#x27;object&#x27;) {
+} else if (typeof obj === 'object') {
   expected = Object.keys(obj).length;
 }
 
@@ -4755,10 +4748,10 @@ this.assert(
 /**
 * ### .<span class="apidocCodeKeywordSpan">isAtLeast</span>(valueToCheck, valueToBeAtLeast, [message])
 *
-* Asserts `valueToCheck` is greater than or equal to (&#x3e;=) `valueToBeAtLeast`
+* Asserts `valueToCheck` is greater than or equal to (&gt;=) `valueToBeAtLeast`
 *
-*     assert.isAtLeast(5, 2, &#x27;5 is greater or equal to 2&#x27;);
-*     assert.isAtLeast(3, 3, &#x27;3 is greater or equal to 3&#x27;);
+*     assert.isAtLeast(5, 2, '5 is greater or equal to 2');
+*     assert.isAtLeast(3, 3, '3 is greater or equal to 3');
 *
 * @name isAtLeast
 ...</pre></li>
@@ -4786,10 +4779,10 @@ this.assert(
 /**
 * ### .<span class="apidocCodeKeywordSpan">isAtMost</span>(valueToCheck, valueToBeAtMost, [message])
 *
-* Asserts `valueToCheck` is less than or equal to (&#x3c;=) `valueToBeAtMost`
+* Asserts `valueToCheck` is less than or equal to (&lt;=) `valueToBeAtMost`
 *
-*     assert.isAtMost(3, 6, &#x27;3 is less than or equal to 6&#x27;);
-*     assert.isAtMost(4, 4, &#x27;4 is less than or equal to 4&#x27;);
+*     assert.isAtMost(3, 6, '3 is less than or equal to 6');
+*     assert.isAtMost(4, 4, '4 is less than or equal to 4');
 *
 * @name isAtMost
 ...</pre></li>
@@ -4817,9 +4810,9 @@ this.assert(
 /**
 * ### .<span class="apidocCodeKeywordSpan">isBelow</span>(valueToCheck, valueToBeBelow, [message])
 *
-* Asserts `valueToCheck` is strictly less than (&#x3c;) `valueToBeBelow`
+* Asserts `valueToCheck` is strictly less than (&lt;) `valueToBeBelow`
 *
-*     assert.isBelow(3, 6, &#x27;3 is strictly less than 6&#x27;);
+*     assert.isBelow(3, 6, '3 is strictly less than 6');
 *
 * @name isBelow
 * @param {Mixed} valueToCheck
@@ -4836,13 +4829,13 @@ this.assert(
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isBoolean = function (val, msg) {
-  new Assertion(val, msg).to.be.a(&#x27;boolean&#x27;);
+  new Assertion(val, msg).to.be.a('boolean');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
 
 assert.isNotNumber = function (val, msg) {
-  new Assertion(val, msg).to.not.be.a(&#x27;number&#x27;);
+  new Assertion(val, msg).to.not.be.a('number');
 };
 
 /**
@@ -4853,7 +4846,7 @@ assert.isNotNumber = function (val, msg) {
  *     var teaReady = true
  *       , teaServed = false;
  *
- *     assert.isBoolean(teaReady, &#x27;is the tea ready&#x27;);
+ *     assert.isBoolean(teaReady, 'is the tea ready');
 ...</pre></li>
     </ul>
 
@@ -4881,8 +4874,8 @@ assert.isUndefined = function (val, msg) {
  *
  * Asserts that `value` is not `undefined`.
  *
- *     var tea = &#x27;cup of chai&#x27;;
- *     assert.isDefined(tea, &#x27;tea has been defined&#x27;);
+ *     var tea = 'cup of chai';
+ *     assert.isDefined(tea, 'tea has been defined');
  *
  * @name isDefined
 ...</pre></li>
@@ -4929,7 +4922,7 @@ this.assert(
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isFalse = function (val, msg) {
-  new Assertion(val, msg).is[&#x27;false&#x27;];
+  new Assertion(val, msg).is['false'];
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
@@ -4944,7 +4937,7 @@ assert.isNotTrue = function (val, msg) {
  * Asserts that `value` is false.
  *
  *     var teaServed = false;
- *     assert.isFalse(teaServed, &#x27;no tea yet? hmm...&#x27;);
+ *     assert.isFalse(teaServed, 'no tea yet? hmm...');
  *
  * @name isFalse
 ...</pre></li>
@@ -4991,7 +4984,7 @@ this.assert(
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isFunction = function (val, msg) {
-  new Assertion(val, msg).to.be.a(&#x27;function&#x27;);
+  new Assertion(val, msg).to.be.a('function');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
@@ -5005,8 +4998,8 @@ assert.isDefined = function (val, msg) {
  *
  * Asserts that `value` is a function.
  *
- *     function serveTea() { return &#x27;cup of tea&#x27;; };
- *     assert.isFunction(serveTea, &#x27;great, we can have tea now&#x27;);
+ *     function serveTea() { return 'cup of tea'; };
+ *     assert.isFunction(serveTea, 'great, we can have tea now');
  *
  * @name isFunction
 ...</pre></li>
@@ -5032,7 +5025,7 @@ assert.isDefined = function (val, msg) {
  * ### .isNaN
  * Asserts that value is NaN
  *
- *    assert.<span class="apidocCodeKeywordSpan">isNaN</span>(&#x27;foo&#x27;, &#x27;foo is NaN&#x27;);
+ *    assert.<span class="apidocCodeKeywordSpan">isNaN</span>('foo', 'foo is NaN');
  *
  * @name isNaN
  * @param {Mixed} value
@@ -5053,13 +5046,13 @@ assert.isDefined = function (val, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isNotArray = function (val, msg) {
-  new Assertion(val, msg).to.not.be.an(&#x27;array&#x27;);
+  new Assertion(val, msg).to.not.be.an('array');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
 
 assert.isArray = function (val, msg) {
-  new Assertion(val, msg).to.be.an(&#x27;array&#x27;);
+  new Assertion(val, msg).to.be.an('array');
 };
 
 /**
@@ -5067,8 +5060,8 @@ assert.isArray = function (val, msg) {
  *
  * Asserts that `value` is _not_ an array.
  *
- *     var menu = &#x27;green|chai|oolong&#x27;;
- *     assert.isNotArray(menu, &#x27;what kind of tea do we want?&#x27;);
+ *     var menu = 'green|chai|oolong';
+ *     assert.isNotArray(menu, 'what kind of tea do we want?');
  *
  * @name isNotArray
 ...</pre></li>
@@ -5084,13 +5077,13 @@ assert.isArray = function (val, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isNotBoolean = function (val, msg) {
-  new Assertion(val, msg).to.not.be.a(&#x27;boolean&#x27;);
+  new Assertion(val, msg).to.not.be.a('boolean');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
 
 assert.isBoolean = function (val, msg) {
-  new Assertion(val, msg).to.be.a(&#x27;boolean&#x27;);
+  new Assertion(val, msg).to.be.a('boolean');
 };
 
 /**
@@ -5098,10 +5091,10 @@ assert.isBoolean = function (val, msg) {
  *
  * Asserts that `value` is _not_ a boolean.
  *
- *     var teaReady = &#x27;yep&#x27;
- *       , teaServed = &#x27;nope&#x27;;
+ *     var teaReady = 'yep'
+ *       , teaServed = 'nope';
  *
- *     assert.isNotBoolean(teaReady, &#x27;is the tea ready&#x27;);
+ *     assert.isNotBoolean(teaReady, 'is the tea ready');
 ...</pre></li>
     </ul>
 
@@ -5152,7 +5145,7 @@ assert.isExtensible = function (obj, msg) {
  */
 
 assert.isFalse = function (val, msg) {
-  new Assertion(val, msg).is[&#x27;false&#x27;];
+  new Assertion(val, msg).is['false'];
 };
 
 /**
@@ -5160,8 +5153,8 @@ assert.isFalse = function (val, msg) {
  *
  * Asserts that `value` is not false.
  *
- *     var tea = &#x27;tasty chai&#x27;;
- *     assert.isNotFalse(tea, &#x27;great, time for tea!&#x27;);
+ *     var tea = 'tasty chai';
+ *     assert.isNotFalse(tea, 'great, time for tea!');
  *
  * @name isNotFalse
 ...</pre></li>
@@ -5208,13 +5201,13 @@ assert.isFrozen = function (obj, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isNotFunction = function (val, msg) {
-  new Assertion(val, msg).to.not.be.a(&#x27;function&#x27;);
+  new Assertion(val, msg).to.not.be.a('function');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
 
 assert.isFunction = function (val, msg) {
-  new Assertion(val, msg).to.be.a(&#x27;function&#x27;);
+  new Assertion(val, msg).to.be.a('function');
 };
 
 /**
@@ -5222,8 +5215,8 @@ assert.isFunction = function (val, msg) {
  *
  * Asserts that `value` is _not_ a function.
  *
- *     var serveTea = [ &#x27;heat&#x27;, &#x27;pour&#x27;, &#x27;sip&#x27; ];
- *     assert.isNotFunction(serveTea, &#x27;great, we have listed the steps&#x27;);
+ *     var serveTea = [ 'heat', 'pour', 'sip' ];
+ *     assert.isNotFunction(serveTea, 'great, we have listed the steps');
  *
  * @name isNotFunction
 ...</pre></li>
@@ -5249,7 +5242,7 @@ assert.isFunction = function (val, msg) {
  * ### .isNotNaN
  * Asserts that value is not NaN
  *
- *    assert.<span class="apidocCodeKeywordSpan">isNotNaN</span>(4, &#x27;4 is not NaN&#x27;);
+ *    assert.<span class="apidocCodeKeywordSpan">isNotNaN</span>(4, '4 is not NaN');
  *
  * @name isNotNaN
  * @param {Mixed} value
@@ -5284,8 +5277,8 @@ assert.isNull = function (val, msg) {
  *
  * Asserts that `value` is not null.
  *
- *     var tea = &#x27;tasty chai&#x27;;
- *     assert.isNotNull(tea, &#x27;great, time for tea!&#x27;);
+ *     var tea = 'tasty chai';
+ *     assert.isNotNull(tea, 'great, time for tea!');
  *
  * @name isNotNull
 ...</pre></li>
@@ -5301,13 +5294,13 @@ assert.isNull = function (val, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isNotNumber = function (val, msg) {
-  new Assertion(val, msg).to.not.be.a(&#x27;number&#x27;);
+  new Assertion(val, msg).to.not.be.a('number');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
 
 assert.isNumber = function (val, msg) {
-  new Assertion(val, msg).to.be.a(&#x27;number&#x27;);
+  new Assertion(val, msg).to.be.a('number');
 };
 
 /**
@@ -5315,8 +5308,8 @@ assert.isNumber = function (val, msg) {
  *
  * Asserts that `value` is _not_ a number.
  *
- *     var cups = &#x27;2 cups please&#x27;;
- *     assert.isNotNumber(cups, &#x27;how many cups&#x27;);
+ *     var cups = '2 cups please';
+ *     assert.isNotNumber(cups, 'how many cups');
  *
  * @name isNotNumber
 ...</pre></li>
@@ -5332,23 +5325,23 @@ assert.isNumber = function (val, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isNotObject = function (val, msg) {
-  new Assertion(val, msg).to.not.be.a(&#x27;object&#x27;);
+  new Assertion(val, msg).to.not.be.a('object');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
 
 assert.isObject = function (val, msg) {
-  new Assertion(val, msg).to.be.a(&#x27;object&#x27;);
+  new Assertion(val, msg).to.be.a('object');
 };
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">isNotObject</span>(value, [message])
  *
- * Asserts that `value` is _not_ an object of type &#x27;Object&#x27; (as revealed by `Object.prototype.toString`).
+ * Asserts that `value` is _not_ an object of type 'Object' (as revealed by `Object.prototype.toString`).
  *
- *     var selection = &#x27;chai&#x27;
- *     assert.isNotObject(selection, &#x27;tea selection is not an object&#x27;);
- *     assert.isNotObject(null, &#x27;null is not an object&#x27;);
+ *     var selection = 'chai'
+ *     assert.isNotObject(selection, 'tea selection is not an object');
+ *     assert.isNotObject(null, 'null is not an object');
  *
 ...</pre></li>
     </ul>
@@ -5377,8 +5370,8 @@ assert.isOk = function (val, msg) {
  *
  * Asserts that `object` is falsy.
  *
- *     assert.isNotOk(&#x27;everything&#x27;, &#x27;this will fail&#x27;);
- *     assert.isNotOk(false, &#x27;this will pass&#x27;);
+ *     assert.isNotOk('everything', 'this will fail');
+ *     assert.isNotOk(false, 'this will pass');
  *
  * @name isNotOk
 ...</pre></li>
@@ -5425,13 +5418,13 @@ assert.isSealed = function (obj, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isNotString = function (val, msg) {
-  new Assertion(val, msg).to.not.be.a(&#x27;string&#x27;);
+  new Assertion(val, msg).to.not.be.a('string');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
 
 assert.isString = function (val, msg) {
-  new Assertion(val, msg).to.be.a(&#x27;string&#x27;);
+  new Assertion(val, msg).to.be.a('string');
 };
 
 /**
@@ -5440,7 +5433,7 @@ assert.isString = function (val, msg) {
  * Asserts that `value` is _not_ a string.
  *
  *     var teaOrder = 4;
- *     assert.isNotString(teaOrder, &#x27;order placed&#x27;);
+ *     assert.isNotString(teaOrder, 'order placed');
  *
  * @name isNotString
 ...</pre></li>
@@ -5462,7 +5455,7 @@ assert.isString = function (val, msg) {
  */
 
 assert.isTrue = function (val, msg) {
-  new Assertion(val, msg).is[&#x27;true&#x27;];
+  new Assertion(val, msg).is['true'];
 };
 
 /**
@@ -5470,8 +5463,8 @@ assert.isTrue = function (val, msg) {
  *
  * Asserts that `value` is not true.
  *
- *     var tea = &#x27;tasty chai&#x27;;
- *     assert.isNotTrue(tea, &#x27;great, time for tea!&#x27;);
+ *     var tea = 'tasty chai';
+ *     assert.isNotTrue(tea, 'great, time for tea!');
  *
  * @name isNotTrue
 ...</pre></li>
@@ -5501,7 +5494,7 @@ assert.isNotFalse = function (val, msg) {
  *
  * Asserts that `value` is null.
  *
- *     assert.isNull(err, &#x27;there was no error&#x27;);
+ *     assert.isNull(err, 'there was no error');
  *
  * @name isNull
  * @param {Mixed} value
@@ -5518,13 +5511,13 @@ assert.isNotFalse = function (val, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isNumber = function (val, msg) {
-  new Assertion(val, msg).to.be.a(&#x27;number&#x27;);
+  new Assertion(val, msg).to.be.a('number');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
 
 assert.isNotString = function (val, msg) {
-  new Assertion(val, msg).to.not.be.a(&#x27;string&#x27;);
+  new Assertion(val, msg).to.not.be.a('string');
 };
 
 /**
@@ -5533,7 +5526,7 @@ assert.isNotString = function (val, msg) {
  * Asserts that `value` is a number.
  *
  *     var cups = 2;
- *     assert.isNumber(cups, &#x27;how many cups&#x27;);
+ *     assert.isNumber(cups, 'how many cups');
  *
  * @name isNumber
 ...</pre></li>
@@ -5549,23 +5542,23 @@ assert.isNotString = function (val, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isObject = function (val, msg) {
-  new Assertion(val, msg).to.be.a(&#x27;object&#x27;);
+  new Assertion(val, msg).to.be.a('object');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
 
 assert.isNotFunction = function (val, msg) {
-  new Assertion(val, msg).to.not.be.a(&#x27;function&#x27;);
+  new Assertion(val, msg).to.not.be.a('function');
 };
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">isObject</span>(value, [message])
  *
- * Asserts that `value` is an object of type &#x27;Object&#x27; (as revealed by `Object.prototype.toString`).
+ * Asserts that `value` is an object of type 'Object' (as revealed by `Object.prototype.toString`).
  * _The assertion does not match subclassed objects._
  *
- *     var selection = { name: &#x27;Chai&#x27;, serve: &#x27;with spices&#x27; };
- *     assert.isObject(selection, &#x27;tea selection is an object&#x27;);
+ *     var selection = { name: 'Chai', serve: 'with spices' };
+ *     assert.isObject(selection, 'tea selection is an object');
  *
 ...</pre></li>
     </ul>
@@ -5594,8 +5587,8 @@ assert.isNotFunction = function (val, msg) {
  *
  * Asserts that `object` is truthy.
  *
- *     assert.isOk(&#x27;everything&#x27;, &#x27;everything is ok&#x27;);
- *     assert.isOk(false, &#x27;this will fail&#x27;);
+ *     assert.isOk('everything', 'everything is ok');
+ *     assert.isOk(false, 'this will fail');
  *
  * @name isOk
 ...</pre></li>
@@ -5642,13 +5635,13 @@ this.assert(
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isString = function (val, msg) {
-  new Assertion(val, msg).to.be.a(&#x27;string&#x27;);
+  new Assertion(val, msg).to.be.a('string');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
 
 assert.isNotArray = function (val, msg) {
-  new Assertion(val, msg).to.not.be.an(&#x27;array&#x27;);
+  new Assertion(val, msg).to.not.be.an('array');
 };
 
 /**
@@ -5656,8 +5649,8 @@ assert.isNotArray = function (val, msg) {
  *
  * Asserts that `value` is a string.
  *
- *     var teaOrder = &#x27;chai&#x27;;
- *     assert.isString(teaOrder, &#x27;order placed&#x27;);
+ *     var teaOrder = 'chai';
+ *     assert.isString(teaOrder, 'order placed');
  *
  * @name isString
 ...</pre></li>
@@ -5673,7 +5666,7 @@ assert.isNotArray = function (val, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isTrue = function (val, msg) {
-  new Assertion(val, msg).is[&#x27;true&#x27;];
+  new Assertion(val, msg).is['true'];
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
@@ -5688,7 +5681,7 @@ assert.isAtMost = function (val, atmst, msg) {
  * Asserts that `value` is true.
  *
  *     var teaServed = true;
- *     assert.isTrue(teaServed, &#x27;the tea has been served&#x27;);
+ *     assert.isTrue(teaServed, 'the tea has been served');
  *
  * @name isTrue
 ...</pre></li>
@@ -5719,7 +5712,7 @@ assert.isNotNaN = function (val, msg) {
  * Asserts that `value` is `undefined`.
  *
  *     var tea;
- *     assert.isUndefined(tea, &#x27;no tea defined&#x27;);
+ *     assert.isUndefined(tea, 'no tea defined');
  *
  * @name isUndefined
 ...</pre></li>
@@ -5747,11 +5740,11 @@ assert.isNotNaN = function (val, msg) {
 /**
  * ### .<span class="apidocCodeKeywordSpan">lengthOf</span>(value[, message])
  *
- * Asserts that the target&#x27;s `length` property has
+ * Asserts that the target's `length` property has
  * the expected value.
  *
  *     expect([ 1, 2, 3]).to.have.lengthOf(3);
- *     expect(&#x27;foobar&#x27;).to.have.lengthOf(6);
+ *     expect('foobar').to.have.lengthOf(6);
  *
 ...</pre></li>
     </ul>
@@ -5772,15 +5765,15 @@ assert.isNotNaN = function (val, msg) {
   );
 }
 
-Assertion.addChainableMethod(&#x27;length&#x27;, assertLength, assertLengthChain);
-Assertion.addMethod(&#x27;lengthOf&#x27;, assertLength);
+Assertion.addChainableMethod('length', assertLength, assertLengthChain);
+Assertion.addMethod('lengthOf', assertLength);
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">match</span>(regexp)
  *
  * Asserts that the target matches a regular expression.
  *
- *     expect(&#x27;foobar&#x27;).to.match(/^foo/);
+ *     expect('foobar').to.match(/^foo/);
  *
  * @name match
  * @alias matches
@@ -5811,7 +5804,7 @@ assert.deepEqual = function (act, exp, msg) {
  *
  * Assert that `actual` is not deeply equal to `expected`.
  *
- *     assert.notDeepEqual({ tea: &#x27;green&#x27; }, { tea: &#x27;jasmine&#x27; });
+ *     assert.notDeepEqual({ tea: 'green' }, { tea: 'jasmine' });
  *
  * @name notDeepEqual
  * @param {Mixed} actual
@@ -5843,7 +5836,7 @@ assert.deepProperty = function (obj, prop, msg) {
  * Asserts that `object` does _not_ have a property named by `property`, which
  * can be a string using dot- and bracket-notation for deep reference.
  *
- *     assert.notDeepProperty({ tea: { green: &#x27;matcha&#x27; }}, &#x27;tea.oolong&#x27;);
+ *     assert.notDeepProperty({ tea: { green: 'matcha' }}, 'tea.oolong');
  *
  * @name notDeepProperty
 ...</pre></li>
@@ -5862,15 +5855,15 @@ assert.deepProperty = function (obj, prop, msg) {
   var test = new Assertion(act, msg, assert.notEqual);
 
   test.assert(
-      exp != flag(test, &#x27;object&#x27;)
-    , &#x27;expected #{this} to not equal #{exp}&#x27;
-    , &#x27;expected #{this} to equal #{act}&#x27;
+      exp != flag(test, 'object')
+    , 'expected #{this} to not equal #{exp}'
+    , 'expected #{this} to equal #{act}'
     , exp
     , act
   );
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    , &#x27;expected #{this} to not equal #{act}&#x27;
+    , 'expected #{this} to not equal #{act}'
     , exp
     , act
   );
@@ -5881,7 +5874,7 @@ assert.deepProperty = function (obj, prop, msg) {
  *
  * Asserts non-strict inequality (`!=`) of `actual` and `expected`.
  *
- *     assert.notEqual(3, 4, &#x27;these numbers are not equal&#x27;);
+ *     assert.notEqual(3, 4, 'these numbers are not equal');
  *
  * @name notEqual
  * @param {Mixed} actual
@@ -5943,8 +5936,8 @@ assert.include = function (exp, inc, msg) {
  * Asserts that `haystack` does not include `needle`. Works
  * for strings and arrays.
  *
- *     assert.notInclude(&#x27;foobar&#x27;, &#x27;baz&#x27;, &#x27;string not include substring&#x27;);
- *     assert.notInclude([ 1, 2, 3 ], 4, &#x27;array not include contain value&#x27;);
+ *     assert.notInclude('foobar', 'baz', 'string not include substring');
+ *     assert.notInclude([ 1, 2, 3 ], 4, 'array not include contain value');
  *
 ...</pre></li>
     </ul>
@@ -5974,9 +5967,9 @@ assert.instanceOf = function (val, type, msg) {
  * Asserts `value` is not an instance of `constructor`.
  *
  *     var Tea = function (name) { this.name = name; }
- *       , chai = new String(&#x27;chai&#x27;);
+ *       , chai = new String('chai');
  *
- *     assert.notInstanceOf(chai, Tea, &#x27;chai is not an instance of tea&#x27;);
+ *     assert.notInstanceOf(chai, Tea, 'chai is not an instance of tea');
 ...</pre></li>
     </ul>
 
@@ -6004,7 +5997,7 @@ assert.match = function (exp, re, msg) {
  *
  * Asserts that `value` does not match the regular expression `regexp`.
  *
- *     assert.notMatch(&#x27;foobar&#x27;, /^foo/, &#x27;regexp does not match&#x27;);
+ *     assert.notMatch('foobar', /^foo/, 'regexp does not match');
  *
  * @name notMatch
  * @param {Mixed} value
@@ -6050,7 +6043,7 @@ assert.property = function (obj, prop, msg) {
  *
  * Asserts that `object` does _not_ have a property named by `property`.
  *
- *     assert.notProperty({ tea: { green: &#x27;matcha&#x27; }}, &#x27;coffee&#x27;);
+ *     assert.notProperty({ tea: { green: 'matcha' }}, 'coffee');
  *
  * @name notProperty
  * @param {Object} object
@@ -6096,7 +6089,7 @@ assert.strictEqual = function (act, exp, msg) {
  *
  * Asserts strict inequality (`!==`) of `actual` and `expected`.
  *
- *     assert.notStrictEqual(3, &#x27;3&#x27;, &#x27;no coercion for strict equality&#x27;);
+ *     assert.notStrictEqual(3, '3', 'no coercion for strict equality');
  *
  * @name notStrictEqual
  * @param {Mixed} actual
@@ -6125,10 +6118,10 @@ assert.typeOf = function (val, type, msg) {
 /**
  * ### .<span class="apidocCodeKeywordSpan">notTypeOf</span>(value, name, [message])
  *
- * Asserts that `value`&#x27;s type is _not_ `name`, as determined by
+ * Asserts that `value`'s type is _not_ `name`, as determined by
  * `Object.prototype.toString`.
  *
- *     assert.notTypeOf(&#x27;tea&#x27;, &#x27;number&#x27;, &#x27;strings are not numbers&#x27;);
+ *     assert.notTypeOf('tea', 'number', 'strings are not numbers');
  *
  * @name notTypeOf
 ...</pre></li>
@@ -6162,7 +6155,7 @@ assert.typeOf = function (val, type, msg) {
   new Assertion(inList, msg).to.be.oneOf(list);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      , &#x27;expected #{this} to not have the same members as #{act}&#x27;
+      , 'expected #{this} to not have the same members as #{act}'
       , obj
       , subset
   );
@@ -6173,8 +6166,8 @@ assert.typeOf = function (val, type, msg) {
  *
  * Assert that a value appears somewhere in the top level of array `list`.
  *
- *     expect(&#x27;a&#x27;).to.be.oneOf([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
- *     expect(9).to.not.be.oneOf([&#x27;z&#x27;]);
+ *     expect('a').to.be.oneOf(['a', 'b', 'c']);
+ *     expect(9).to.not.be.oneOf(['z']);
  *     expect([3]).to.not.be.oneOf([1, 2, [3]]);
  *
 ...</pre></li>
@@ -6192,38 +6185,38 @@ assert.typeOf = function (val, type, msg) {
     <li>description and source-code<pre class="apidocCodePre">operator = function (val, operator, val2, msg) {
   var ok;
   switch(operator) {
-    case &#x27;==&#x27;:
+    case '==':
       ok = val == val2;
       break;
-    case &#x27;===&#x27;:
+    case '===':
       ok = val === val2;
       break;
-    case &#x27;&#x3e;&#x27;:
-      ok = val &#x3e; val2;
+    case '&gt;':
+      ok = val &gt; val2;
       break;
-    case &#x27;&#x3e;=&#x27;:
-      ok = val &#x3e;= val2;
+    case '&gt;=':
+      ok = val &gt;= val2;
       break;
-    case &#x27;&#x3c;&#x27;:
-      ok = val &#x3c; val2;
+    case '&lt;':
+      ok = val &lt; val2;
       break;
-    case &#x27;&#x3c;=&#x27;:
-      ok = val &#x3c;= val2;
+    case '&lt;=':
+      ok = val &lt;= val2;
       break;
-    case &#x27;!=&#x27;:
+    case '!=':
       ok = val != val2;
       break;
-    case &#x27;!==&#x27;:
+    case '!==':
       ok = val !== val2;
       break;
     default:
-      throw new Error(&#x27;Invalid operator &#x22;&#x27; + operator + &#x27;&#x22;&#x27;);
+      throw new Error('Invalid operator "' + operator + '"');
   }
   var test = new Assertion(ok, msg);
   test.assert(
-      true === flag(test, &#x27;object&#x27;)
-    , &#x27;expected &#x27; + util.inspect(val) + &#x27; to be &#x27; + operator + &#x27; &#x27; + util.inspect(val2)
-    , &#x27;expected &#x27; + util.inspect(val) + &#x27; to not be &#x27; + operator + &#x27; &#x27; + util.inspect(val2) );
+      true === flag(test, 'object')
+    , 'expected ' + util.inspect(val) + ' to be ' + operator + ' ' + util.inspect(val2)
+    , 'expected ' + util.inspect(val) + ' to not be ' + operator + ' ' + util.inspect(val2) );
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     type = null;
@@ -6237,8 +6230,8 @@ assert.typeOf = function (val, type, msg) {
  *
  * Compares two values using `operator`.
  *
- *     assert.operator(1, &#x27;&#x3c;&#x27;, 2, &#x27;everything is ok&#x27;);
- *     assert.operator(1, &#x27;&#x3e;&#x27;, 2, &#x27;this will fail&#x27;);
+ *     assert.operator(1, '&lt;', 2, 'everything is ok');
+ *     assert.operator(1, '&gt;', 2, 'this will fail');
  *
  * @name operator
 ...</pre></li>
@@ -6262,10 +6255,10 @@ assert.typeOf = function (val, type, msg) {
 *
 * Negates any of assertions following in the chain.
 *
-*     expect(foo).to.not.equal(&#x27;bar&#x27;);
+*     expect(foo).to.not.equal('bar');
 *     expect(goodFn).to.not.throw(Error);
-*     expect({ foo: &#x27;baz&#x27; }).to.have.<span class="apidocCodeKeywordSpan">property</span>(&#x27;foo&#x27;)
-*       .and.not.equal(&#x27;bar&#x27;);
+*     expect({ foo: 'baz' }).to.have.<span class="apidocCodeKeywordSpan">property</span>('foo')
+*       .and.not.equal('bar');
 *
 * @name not
 * @namespace BDD
@@ -6299,7 +6292,7 @@ assert.propertyVal = function (obj, prop, val, msg) {
  * Asserts that `object` has a property named by `property`, but with a value
  * different from that given by `value`.
  *
- *     assert.propertyNotVal({ tea: &#x27;is good&#x27; }, &#x27;tea&#x27;, &#x27;is bad&#x27;);
+ *     assert.propertyNotVal({ tea: 'is good' }, 'tea', 'is bad');
  *
  * @name propertyNotVal
 ...</pre></li>
@@ -6330,7 +6323,7 @@ assert.notDeepProperty = function (obj, prop, msg) {
  * Asserts that `object` has a property named by `property` with value given
  * by `value`.
  *
- *     assert.propertyVal({ tea: &#x27;is good&#x27; }, &#x27;tea&#x27;, &#x27;is good&#x27;);
+ *     assert.propertyVal({ tea: 'is good' }, 'tea', 'is good');
  *
  * @name propertyVal
 ...</pre></li>
@@ -6361,7 +6354,7 @@ assert.sameMembers = function (set1, set2, msg) {
  * Asserts that `set1` and `set2` have the same members - using a deep equality checking.
  * Order is not taken into account.
  *
- *     assert.sameDeepMembers([ {b: 3}, {a: 2}, {c: 5} ], [ {c: 5}, {b: 3}, {a: 2} ], &#x27;same deep members&#x27;);
+ *     assert.sameDeepMembers([ {b: 3}, {a: 2}, {c: 5} ], [ {c: 5}, {b: 3}, {a: 2} ], 'same deep members');
  *
  * @name sameDeepMembers
 ...</pre></li>
@@ -6392,7 +6385,7 @@ assert.approximately = function (act, exp, delta, msg) {
  * Asserts that `set1` and `set2` have the same members.
  * Order is not taken into account.
  *
- *     assert.sameMembers([ 1, 2, 3 ], [ 2, 1, 3 ], &#x27;same members&#x27;);
+ *     assert.sameMembers([ 1, 2, 3 ], [ 2, 1, 3 ], 'same members');
  *
  * @name sameMembers
 ...</pre></li>
@@ -6426,7 +6419,7 @@ assert.approximately = function (act, exp, delta, msg) {
   new Assertion(act, msg).to.equal(exp);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    , &#x27;expected #{this} to equal #{act}&#x27;
+    , 'expected #{this} to equal #{act}'
     , exp
     , act
   );
@@ -6437,7 +6430,7 @@ assert.approximately = function (act, exp, delta, msg) {
  *
  * Asserts strict equality (`===`) of `actual` and `expected`.
  *
- *     assert.strictEqual(true, true, &#x27;these booleans are strictly equal&#x27;);
+ *     assert.strictEqual(true, true, 'these booleans are strictly equal');
  *
  * @name strictEqual
  * @param {Mixed} actual
@@ -6454,13 +6447,13 @@ assert.approximately = function (act, exp, delta, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">throw = function (fn, errt, errs, msg) {
-  if (&#x27;string&#x27; === typeof errt || errt instanceof RegExp) {
+  if ('string' === typeof errt || errt instanceof RegExp) {
     errs = errt;
     errt = null;
   }
 
   var assertErr = new Assertion(fn, msg).to.throw(errt, errs);
-  return flag(assertErr, &#x27;object&#x27;);
+  return flag(assertErr, 'object');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
@@ -6469,10 +6462,10 @@ assert.approximately = function (act, exp, delta, msg) {
 *
 * Negates any of assertions following in the chain.
 *
-*     expect(foo).to.not.equal(&#x27;bar&#x27;);
+*     expect(foo).to.not.equal('bar');
 *     expect(goodFn).to.not.<span class="apidocCodeKeywordSpan">throw</span>(Error);
-*     expect({ foo: &#x27;baz&#x27; }).to.have.property(&#x27;foo&#x27;)
-*       .and.not.equal(&#x27;bar&#x27;);
+*     expect({ foo: 'baz' }).to.have.property('foo')
+*       .and.not.equal('bar');
 *
 * @name not
 * @namespace BDD
@@ -6491,13 +6484,13 @@ assert.approximately = function (act, exp, delta, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">throws = function (fn, errt, errs, msg) {
-  if (&#x27;string&#x27; === typeof errt || errt instanceof RegExp) {
+  if ('string' === typeof errt || errt instanceof RegExp) {
     errs = errt;
     errt = null;
   }
 
   var assertErr = new Assertion(fn, msg).to.throw(errt, errs);
-  return flag(assertErr, &#x27;object&#x27;);
+  return flag(assertErr, 'object');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  */
@@ -6513,7 +6506,7 @@ assert.lengthOf = function (exp, len, msg) {
  * `constructor`, or alternately that it will throw an error with message
  * matching `regexp`.
  *
- *     assert.throws(fn, &#x27;function throws a reference error&#x27;);
+ *     assert.throws(fn, 'function throws a reference error');
  *     assert.throws(fn, /function throws a reference error/);
 ...</pre></li>
     </ul>
@@ -6534,18 +6527,18 @@ assert.lengthOf = function (exp, len, msg) {
  */
 
 assert.isNotBoolean = function (val, msg) {
-  new Assertion(val, msg).to.not.be.a(&#x27;boolean&#x27;);
+  new Assertion(val, msg).to.not.be.a('boolean');
 };
 
 /**
  * ### .<span class="apidocCodeKeywordSpan">typeOf</span>(value, name, [message])
  *
- * Asserts that `value`&#x27;s type is `name`, as determined by
+ * Asserts that `value`'s type is `name`, as determined by
  * `Object.prototype.toString`.
  *
- *     assert.typeOf({ tea: &#x27;chai&#x27; }, &#x27;object&#x27;, &#x27;we have an object&#x27;);
- *     assert.typeOf([&#x27;chai&#x27;, &#x27;jasmine&#x27;], &#x27;array&#x27;, &#x27;we have an array&#x27;);
- *     assert.typeOf(&#x27;tea&#x27;, &#x27;string&#x27;, &#x27;we have a string&#x27;);
+ *     assert.typeOf({ tea: 'chai' }, 'object', 'we have an object');
+ *     assert.typeOf(['chai', 'jasmine'], 'array', 'we have an array');
+ *     assert.typeOf('tea', 'string', 'we have a string');
 ...</pre></li>
     </ul>
 
@@ -6564,13 +6557,13 @@ assert.isNotBoolean = function (val, msg) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function Assertion(obj, msg, stack) {
-  flag(this, &#x27;ssfi&#x27;, stack || arguments.callee);
-  flag(this, &#x27;object&#x27;, obj);
-  flag(this, &#x27;message&#x27;, msg);
+  flag(this, 'ssfi', stack || arguments.callee);
+  flag(this, 'object', obj);
+  flag(this, 'message', msg);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  * chai
- * Copyright(c) 2011-2014 Jake Luer &#x3c;jake@alogicalparadox.com&#x3e;
+ * Copyright(c) 2011-2014 Jake Luer &lt;jake@alogicalparadox.com&gt;
  * MIT Licensed
  */
 
@@ -6597,11 +6590,11 @@ chai.expect = function (val, message) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function AssertionError(message, _props, ssf) {
-  var extend = exclude(&#x27;name&#x27;, &#x27;message&#x27;, &#x27;stack&#x27;, &#x27;constructor&#x27;, &#x27;toJSON&#x27;)
+  var extend = exclude('name', 'message', 'stack', 'constructor', 'toJSON')
     , props = extend(_props || {});
 
   // default values
-  this.message = message || &#x27;Unspecified AssertionError&#x27;;
+  this.message = message || 'Unspecified AssertionError';
   this.showDiff = false;
 
   // copy from properties
@@ -6611,7 +6604,7 @@ chai.expect = function (val, message) {
 
   // capture stack trace
   ssf = ssf || arguments.callee;
-  if (ssf &#x26;&#x26; Error.captureStackTrace) {
+  if (ssf &amp;&amp; Error.captureStackTrace) {
     Error.captureStackTrace(this, ssf);
   } else {
     this.stack = new Error().stack;
@@ -6624,7 +6617,7 @@ chai.expect = function (val, message) {
  */
 
 assert.fail = function (actual, expected, message, operator) {
-  message = message || &#x27;assert.fail()&#x27;;
+  message = message || 'assert.fail()';
   throw new chai.<span class="apidocCodeKeywordSpan">AssertionError</span>(message, {
       actual: actual
     , expected: expected
@@ -6646,7 +6639,7 @@ assert.fail = function (actual, expected, message, operator) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function loadShould() {
-  // explicitly define this method as function as to have it&#x27;s name to include as `ssfi`
+  // explicitly define this method as function as to have it's name to include as `ssfi`
   function shouldGetter() {
     if (this instanceof String || this instanceof Number || this instanceof Boolean ) {
       return new Assertion(this.valueOf(), null, shouldGetter);
@@ -6656,11 +6649,11 @@ assert.fail = function (actual, expected, message, operator) {
   function shouldSetter(value) {
     // See https://github.com/chaijs/chai/issues/86: this makes
     // `whatever.should = someValue` actually set `someValue`, which is
-    // especially useful for `global.should = require(&#x27;chai&#x27;).should()`.
+    // especially useful for `global.should = require('chai').should()`.
     //
     // Note that we have to use [[DefineProperty]] instead of [[Put]]
     // since otherwise we would trigger this very setter!
-    Object.defineProperty(this, &#x27;should&#x27;, {
+    Object.defineProperty(this, 'should', {
       value: value,
       enumerable: true,
       configurable: true,
@@ -6668,7 +6661,7 @@ assert.fail = function (actual, expected, message, operator) {
     });
   }
   // modify Object.prototype to have `should`
-  Object.defineProperty(Object.prototype, &#x27;should&#x27;, {
+  Object.defineProperty(Object.prototype, 'should', {
     set: shouldSetter
     , get: shouldGetter
     , configurable: true
@@ -6691,7 +6684,7 @@ assert.fail = function (actual, expected, message, operator) {
    */
 </span>
   should.fail = function (actual, expected, message, operator) {
-    message = message || &#x27;should.fail()&#x27;;
+    message = message || 'should.fail()';
     throw new chai.AssertionError(message, {
         actual: actual
       , expected: expected
@@ -6704,7 +6697,7 @@ assert.fail = function (actual, expected, message, operator) {
    *
    * Asserts non-strict equality (`==`) of `actual` and `expected`.
    *
-   *     should.equal(3, &#x27;3&#x27;, &#x27;== coerces values to strings&#x27;);
+   *     should.equal(3, '3', '== coerces values to strings');
    *
    * @name equal
    * @param {Mixed} actual
@@ -6725,10 +6718,10 @@ assert.fail = function (actual, expected, message, operator) {
    * `constructor`, or alternately that it will throw an error with message
    * matching `regexp`.
    *
-   *     should.throw(fn, &#x27;function throws a reference error&#x27;);
+   *     should.throw(fn, 'function throws a reference error');
    *     should.throw(fn, /function throws a reference error/);
    *     should.throw(fn, ReferenceError);
-   *     should.throw(fn, ReferenceError, &#x27;function throws a reference error&#x27;);
+   *     should.throw(fn, ReferenceError, 'function throws a reference error');
    *     should.throw(fn, ReferenceError, /function throws a reference error/);
    *
    * @name throw
@@ -6751,9 +6744,9 @@ assert.fail = function (actual, expected, message, operator) {
    *
    * Asserts that the target is neither `null` nor `undefined`.
    *
-   *     var foo = &#x27;hi&#x27;;
+   *     var foo = 'hi';
    *
-   *     should.exist(foo, &#x27;foo exists&#x27;);
+   *     should.exist(foo, 'foo exists');
    *
    * @name exist
    * @namespace Should
@@ -6772,7 +6765,7 @@ assert.fail = function (actual, expected, message, operator) {
    *
    * Asserts non-strict inequality (`!=`) of `actual` and `expected`.
    *
-   *     should.not.equal(3, 4, &#x27;these numbers are not equal&#x27;);
+   *     should.not.equal(3, 4, 'these numbers are not equal');
    *
    * @name not.equal
    * @param {Mixed} actual
@@ -6808,7 +6801,7 @@ assert.fail = function (actual, expected, message, operator) {
   test.assert(
       express
     , errmsg
-    , &#x27;[ negation message unavailable ]&#x27;
+    , '[ negation message unavailable ]'
   );
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -6821,7 +6814,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
 /**
  * ### .<span class="apidocCodeKeywordSpan">assert</span>(expression, message, negateMessage, expected, actual, showDiff)
  *
- * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn&#x27;t pass.
+ * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
  *
  * @name assert
  * @param {Philosophical} expression to be tested
@@ -6855,7 +6848,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function loadShould() {
-  // explicitly define this method as function as to have it&#x27;s name to include as `ssfi`
+  // explicitly define this method as function as to have it's name to include as `ssfi`
   function shouldGetter() {
     if (this instanceof String || this instanceof Number || this instanceof Boolean ) {
       return new Assertion(this.valueOf(), null, shouldGetter);
@@ -6865,11 +6858,11 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
   function shouldSetter(value) {
     // See https://github.com/chaijs/chai/issues/86: this makes
     // `whatever.should = someValue` actually set `someValue`, which is
-    // especially useful for `global.should = require(&#x27;chai&#x27;).should()`.
+    // especially useful for `global.should = require('chai').should()`.
     //
     // Note that we have to use [[DefineProperty]] instead of [[Put]]
     // since otherwise we would trigger this very setter!
-    Object.defineProperty(this, &#x27;should&#x27;, {
+    Object.defineProperty(this, 'should', {
       value: value,
       enumerable: true,
       configurable: true,
@@ -6877,7 +6870,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
     });
   }
   // modify Object.prototype to have `should`
-  Object.defineProperty(Object.prototype, &#x27;should&#x27;, {
+  Object.defineProperty(Object.prototype, 'should', {
     set: shouldSetter
     , get: shouldGetter
     , configurable: true
@@ -6900,7 +6893,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
    */
 </span>
   should.fail = function (actual, expected, message, operator) {
-    message = message || &#x27;should.fail()&#x27;;
+    message = message || 'should.fail()';
     throw new chai.AssertionError(message, {
         actual: actual
       , expected: expected
@@ -6913,7 +6906,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
    *
    * Asserts non-strict equality (`==`) of `actual` and `expected`.
    *
-   *     should.equal(3, &#x27;3&#x27;, &#x27;== coerces values to strings&#x27;);
+   *     should.equal(3, '3', '== coerces values to strings');
    *
    * @name equal
    * @param {Mixed} actual
@@ -6934,10 +6927,10 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
    * `constructor`, or alternately that it will throw an error with message
    * matching `regexp`.
    *
-   *     should.throw(fn, &#x27;function throws a reference error&#x27;);
+   *     should.throw(fn, 'function throws a reference error');
    *     should.throw(fn, /function throws a reference error/);
    *     should.throw(fn, ReferenceError);
-   *     should.throw(fn, ReferenceError, &#x27;function throws a reference error&#x27;);
+   *     should.throw(fn, ReferenceError, 'function throws a reference error');
    *     should.throw(fn, ReferenceError, /function throws a reference error/);
    *
    * @name throw
@@ -6960,9 +6953,9 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
    *
    * Asserts that the target is neither `null` nor `undefined`.
    *
-   *     var foo = &#x27;hi&#x27;;
+   *     var foo = 'hi';
    *
-   *     should.exist(foo, &#x27;foo exists&#x27;);
+   *     should.exist(foo, 'foo exists');
    *
    * @name exist
    * @namespace Should
@@ -6981,7 +6974,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
    *
    * Asserts non-strict inequality (`!=`) of `actual` and `expected`.
    *
-   *     should.not.equal(3, 4, &#x27;these numbers are not equal&#x27;);
+   *     should.not.equal(3, 4, 'these numbers are not equal');
    *
    * @name not.equal
    * @param {Mixed} actual
@@ -7008,11 +7001,11 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
 function shouldSetter(value) {
   // See https://github.com/chaijs/chai/issues/86: this makes
   // `whatever.should = someValue` actually set `someValue`, which is
-  // especially useful for `global.should = require(&#x27;chai&#x27;).<span class="apidocCodeKeywordSpan">should</span>()`.
+  // especially useful for `global.should = require('chai').<span class="apidocCodeKeywordSpan">should</span>()`.
   //
   // Note that we have to use [[DefineProperty]] instead of [[Put]]
   // since otherwise we would trigger this very setter!
-  Object.defineProperty(this, &#x27;should&#x27;, {
+  Object.defineProperty(this, 'should', {
     value: value,
     enumerable: true,
     configurable: true,
@@ -7041,7 +7034,7 @@ function shouldSetter(value) {
 * Utils for plugins (not exported)
 */
 
-var util = require(&#x27;./chai/utils&#x27;);
+var util = require('./chai/utils');
 
 /**
 * # .<span class="apidocCodeKeywordSpan">use</span>(function)
@@ -7091,7 +7084,7 @@ var util = require(&#x27;./chai/utils&#x27;);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">fail = function (actual, expected, message, operator) {
-  message = message || &#x27;expect.fail()&#x27;;
+  message = message || 'expect.fail()';
   throw new chai.AssertionError(message, {
       actual: actual
     , expected: expected
@@ -7101,7 +7094,7 @@ var util = require(&#x27;./chai/utils&#x27;);
     <li>example usage<pre class="apidocCodePre">...
       express
     , errmsg
-    , &#x27;[ negation message unavailable ]&#x27;
+    , '[ negation message unavailable ]'
   );
 };
 
@@ -7132,7 +7125,7 @@ var util = require(&#x27;./chai/utils&#x27;);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">addChainableMethod = function (ctx, name, method, chainingBehavior) {
-  if (typeof chainingBehavior !== &#x27;function&#x27;) {
+  if (typeof chainingBehavior !== 'function') {
     chainingBehavior = function () { };
   }
 
@@ -7152,9 +7145,9 @@ var util = require(&#x27;./chai/utils&#x27;);
         chainableBehavior.chainingBehavior.call(this);
 
         var assert = function assert() {
-          var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-          if (old_ssfi &#x26;&#x26; config.includeStack === false)
-            flag(this, &#x27;ssfi&#x27;, assert);
+          var old_ssfi = flag(this, 'ssfi');
+          if (old_ssfi &amp;&amp; config.includeStack === false)
+            flag(this, 'ssfi', assert);
           var result = chainableBehavior.method.apply(this, arguments);
           return result === undefined ? this : result;
         };
@@ -7214,9 +7207,9 @@ Assertion.overwriteMethod = function (name, fn) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">addMethod = function (ctx, name, method) {
   ctx[name] = function () {
-    var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-    if (old_ssfi &#x26;&#x26; config.includeStack === false)
-      flag(this, &#x27;ssfi&#x27;, ctx[name]);
+    var old_ssfi = flag(this, 'ssfi');
+    if (old_ssfi &amp;&amp; config.includeStack === false)
+      flag(this, 'ssfi', ctx[name]);
     var result = method.apply(this, arguments);
     return result === undefined ? this : result;
   };
@@ -7252,9 +7245,9 @@ Assertion.overwriteProperty = function (name, fn) {
     <li>description and source-code<pre class="apidocCodePre">addProperty = function (ctx, name, getter) {
   Object.defineProperty(ctx, name,
     { get: function addProperty() {
-        var old_ssfi = flag(this, &#x27;ssfi&#x27;);
-        if (old_ssfi &#x26;&#x26; config.includeStack === false)
-          flag(this, &#x27;ssfi&#x27;, addProperty);
+        var old_ssfi = flag(this, 'ssfi');
+        if (old_ssfi &amp;&amp; config.includeStack === false)
+          flag(this, 'ssfi', addProperty);
 
         var result = getter.call(this);
         return result === undefined ? this : result;
@@ -7264,7 +7257,7 @@ Assertion.overwriteProperty = function (name, fn) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   set: function(value) {
-    console.warn(&#x27;Assertion.showDiff is deprecated, use chai.config.showDiff instead.&#x27;);
+    console.warn('Assertion.showDiff is deprecated, use chai.config.showDiff instead.');
     config.showDiff = value;
   }
 });
@@ -7293,18 +7286,18 @@ Assertion.addChainableMethod = function (name, fn, chainingBehavior) {
     <li>description and source-code<pre class="apidocCodePre">function deepEqual(a, b, m) {
   if (sameValue(a, b)) {
     return true;
-  } else if (&#x27;date&#x27; === type(a)) {
+  } else if ('date' === type(a)) {
     return dateEqual(a, b);
-  } else if (&#x27;regexp&#x27; === type(a)) {
+  } else if ('regexp' === type(a)) {
     return regexpEqual(a, b);
   } else if (Buffer.isBuffer(a)) {
     return bufferEqual(a, b);
-  } else if (&#x27;arguments&#x27; === type(a)) {
+  } else if ('arguments' === type(a)) {
     return argumentsEqual(a, b, m);
   } else if (!typeEqual(a, b)) {
     return false;
-  } else if ((&#x27;object&#x27; !== type(a) &#x26;&#x26; &#x27;object&#x27; !== type(b))
-  &#x26;&#x26; (&#x27;array&#x27; !== type(a) &#x26;&#x26; &#x27;array&#x27; !== type(b))) {
+  } else if (('object' !== type(a) &amp;&amp; 'object' !== type(b))
+  &amp;&amp; ('array' !== type(a) &amp;&amp; 'array' !== type(b))) {
     return sameValue(a, b);
   } else {
     return objectEqual(a, b, m);
@@ -7312,19 +7305,19 @@ Assertion.addChainableMethod = function (name, fn, chainingBehavior) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-if (msg) flag(this, &#x27;message&#x27;, msg);
-var obj = flag(this, &#x27;object&#x27;);
+if (msg) flag(this, 'message', msg);
+var obj = flag(this, 'object');
 var expected = false;
 
-if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&#x27;) {
+if (_.type(obj) === 'array' &amp;&amp; _.type(val) === 'object') {
   for (var i in obj) {
     if (_.<span class="apidocCodeKeywordSpan">eql</span>(obj[i], val)) {
       expected = true;
       break;
     }
   }
-} else if (_.type(val) === &#x27;object&#x27;) {
-  if (!flag(this, &#x27;negate&#x27;)) {
+} else if (_.type(val) === 'object') {
+  if (!flag(this, 'negate')) {
     for (var k in val) new Assertion(obj).property(k, val[k]);
 ...</pre></li>
     </ul>
@@ -7339,20 +7332,20 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">expectTypes = function (obj, types) {
-  var obj = flag(obj, &#x27;object&#x27;);
+  var obj = flag(obj, 'object');
   types = types.map(function (t) { return t.toLowerCase(); });
   types.sort();
 
-  // Transforms [&#x27;lorem&#x27;, &#x27;ipsum&#x27;] into &#x27;a lirum, or an ipsum&#x27;
+  // Transforms ['lorem', 'ipsum'] into 'a lirum, or an ipsum'
   var str = types.map(function (t, index) {
-    var art = ~[ &#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27; ].indexOf(t.charAt(0)) ? &#x27;an&#x27; : &#x27;a&#x27;;
-    var or = types.length &#x3e; 1 &#x26;&#x26; index === types.length - 1 ? &#x27;or &#x27; : &#x27;&#x27;;
-    return or + art + &#x27; &#x27; + t;
-  }).join(&#x27;, &#x27;);
+    var art = ~[ 'a', 'e', 'i', 'o', 'u' ].indexOf(t.charAt(0)) ? 'an' : 'a';
+    var or = types.length &gt; 1 &amp;&amp; index === types.length - 1 ? 'or ' : '';
+    return or + art + ' ' + t;
+  }).join(', ');
 
   if (!types.some(function (expected) { return type(obj) === expected; })) {
     throw new AssertionError(
-      &#x27;object tested must be &#x27; + str + &#x27;, but &#x27; + type(obj) + &#x27; given&#x27;
+      'object tested must be ' + str + ', but ' + type(obj) + ' given'
     );
   }
 }</pre></li>
@@ -7360,17 +7353,17 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
    */
 
   function includeChainingBehavior () {
-flag(this, &#x27;contains&#x27;, true);
+flag(this, 'contains', true);
   }
 
   function include (val, msg) {
-_.<span class="apidocCodeKeywordSpan">expectTypes</span>(this, [&#x27;array&#x27;, &#x27;object&#x27;, &#x27;string&#x27;]);
+_.<span class="apidocCodeKeywordSpan">expectTypes</span>(this, ['array', 'object', 'string']);
 
-if (msg) flag(this, &#x27;message&#x27;, msg);
-var obj = flag(this, &#x27;object&#x27;);
+if (msg) flag(this, 'message', msg);
+var obj = flag(this, 'object');
 var expected = false;
 
-if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&#x27;) {
+if (_.type(obj) === 'array' &amp;&amp; _.type(val) === 'object') {
   for (var i in obj) {
 ...</pre></li>
     </ul>
@@ -7399,14 +7392,14 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
 *
 * Adds a method to an object, such that the method can also be chained.
 *
-*     utils.addChainableMethod(chai.Assertion.prototype, &#x27;foo&#x27;, function (str) {
-*       var obj = utils.<span class="apidocCodeKeywordSpan">flag</span>(this, &#x27;object&#x27;);
+*     utils.addChainableMethod(chai.Assertion.prototype, 'foo', function (str) {
+*       var obj = utils.<span class="apidocCodeKeywordSpan">flag</span>(this, 'object');
 *       new chai.Assertion(obj).to.be.equal(str);
 *     });
 *
 * Can also be accessed directly from `chai.Assertion`.
 *
-*     chai.Assertion.addChainableMethod(&#x27;foo&#x27;, fn, chainingBehavior);
+*     chai.Assertion.addChainableMethod('foo', fn, chainingBehavior);
 *
 ...</pre></li>
     </ul>
@@ -7421,7 +7414,7 @@ if (_.type(obj) === &#x27;array&#x27; &#x26;&#x26; _.type(val) === &#x27;object&
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getActual = function (obj, args) {
-  return args.length &#x3e; 4 ? args[4] : obj._obj;
+  return args.length &gt; 4 ? args[4] : obj._obj;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 Assertion.prototype.assert = function (expr, msg, negateMsg, expected, _actual, showDiff) {
@@ -7436,7 +7429,7 @@ Assertion.prototype.assert = function (expr, msg, negateMsg, expected, _actual, 
         actual: actual
       , expected: expected
       , showDiff: showDiff
-    }, (config.includeStack) ? this.assert : flag(this, &#x27;ssfi&#x27;));
+    }, (config.includeStack) ? this.assert : flag(this, 'ssfi'));
   }
 };
 ...</pre></li>
@@ -7452,21 +7445,21 @@ Assertion.prototype.assert = function (expr, msg, negateMsg, expected, _actual, 
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getMessage = function (obj, args) {
-  var negate = flag(obj, &#x27;negate&#x27;)
-    , val = flag(obj, &#x27;object&#x27;)
+  var negate = flag(obj, 'negate')
+    , val = flag(obj, 'object')
     , expected = args[3]
     , actual = getActual(obj, args)
     , msg = negate ? args[2] : args[1]
-    , flagMsg = flag(obj, &#x27;message&#x27;);
+    , flagMsg = flag(obj, 'message');
 
-  if(typeof msg === &#x22;function&#x22;) msg = msg();
-  msg = msg || &#x27;&#x27;;
+  if(typeof msg === "function") msg = msg();
+  msg = msg || '';
   msg = msg
     .replace(/#\{this\}/g, function () { return objDisplay(val); })
     .replace(/#\{act\}/g, function () { return objDisplay(actual); })
     .replace(/#\{exp\}/g, function () { return objDisplay(expected); });
 
-  return flagMsg ? flagMsg + &#x27;: &#x27; + msg : msg;
+  return flagMsg ? flagMsg + ': ' + msg : msg;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
@@ -7482,7 +7475,7 @@ if (!ok) {
       actual: actual
     , expected: expected
     , showDiff: showDiff
-  }, (config.includeStack) ? this.assert : flag(this, &#x27;ssfi&#x27;));
+  }, (config.includeStack) ? this.assert : flag(this, 'ssfi'));
 }
 ...</pre></li>
     </ul>
@@ -7500,7 +7493,7 @@ if (!ok) {
   if (func.name) return func.name;
 
   var match = /^\s?function ([^(]*)\(/.exec(func);
-  return match &#x26;&#x26; match[1] ? match[1] : &#x22;&#x22;;
+  return match &amp;&amp; match[1] ? match[1] : "";
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  * @alias instanceOf
@@ -7509,12 +7502,12 @@ if (!ok) {
  */
 
 function assertInstanceOf (constructor, msg) {
-  if (msg) flag(this, &#x27;message&#x27;, msg);
+  if (msg) flag(this, 'message', msg);
   var name = _.<span class="apidocCodeKeywordSpan">getName</span>(constructor);
   this.assert(
-      flag(this, &#x27;object&#x27;) instanceof constructor
-    , &#x27;expected #{this} to be an instance of &#x27; + name
-    , &#x27;expected #{this} to not be an instance of &#x27; + name
+      flag(this, 'object') instanceof constructor
+    , 'expected #{this} to be an instance of ' + name
+    , 'expected #{this} to not be an instance of ' + name
   );
 };
 ...</pre></li>
@@ -7534,7 +7527,7 @@ function assertInstanceOf (constructor, msg) {
       last = parsed[parsed.length - 1];
 
   var info = {
-    parent: parsed.length &#x3e; 1 ? _getPathValue(parsed, obj, parsed.length - 1) : obj,
+    parent: parsed.length &gt; 1 ? _getPathValue(parsed, obj, parsed.length - 1) : obj,
     name: last.p || last.i,
     value: _getPathValue(parsed, obj)
   };
@@ -7543,13 +7536,13 @@ function assertInstanceOf (constructor, msg) {
   return info;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  Assertion.addMethod(&#x27;property&#x27;, function (name, val, msg) {
-if (msg) flag(this, &#x27;message&#x27;, msg);
+  Assertion.addMethod('property', function (name, val, msg) {
+if (msg) flag(this, 'message', msg);
 
-var isDeep = !!flag(this, &#x27;deep&#x27;)
-  , descriptor = isDeep ? &#x27;deep property &#x27; : &#x27;property &#x27;
-  , negate = flag(this, &#x27;negate&#x27;)
-  , obj = flag(this, &#x27;object&#x27;)
+var isDeep = !!flag(this, 'deep')
+  , descriptor = isDeep ? 'deep property ' : 'property '
+  , negate = flag(this, 'negate')
+  , obj = flag(this, 'object')
   , pathInfo = isDeep ? _.<span class="apidocCodeKeywordSpan">getPathInfo</span>(name, obj) : null
   , hasProperty = isDeep
     ? pathInfo.exists
@@ -7578,7 +7571,7 @@ var isDeep = !!flag(this, &#x27;deep&#x27;)
 * MIT Licensed
 */
 
-var getPathInfo = require(&#x27;./getPathInfo&#x27;);
+var getPathInfo = require('./getPathInfo');
 
 /**
 * ### .<span class="apidocCodeKeywordSpan">getPathValue</span>(path, object)
@@ -7588,7 +7581,7 @@ var getPathInfo = require(&#x27;./getPathInfo&#x27;);
 *
 *     var obj = {
 *         prop1: {
-*             arr: [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]
+*             arr: ['a', 'b', 'c']
 ...</pre></li>
     </ul>
 
@@ -7605,21 +7598,21 @@ var getPathInfo = require(&#x27;./getPathInfo&#x27;);
   var ot = type(obj);
 
   // Bad Object, obviously no props at all
-  if(ot === &#x27;null&#x27; || ot === &#x27;undefined&#x27;)
+  if(ot === 'null' || ot === 'undefined')
     return false;
 
   // The `in` operator does not work with certain literals
   // box these before the check
-  if(literals[ot] &#x26;&#x26; typeof obj !== &#x27;object&#x27;)
+  if(literals[ot] &amp;&amp; typeof obj !== 'object')
     obj = new literals[ot](obj);
 
   return name in obj;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var isDeep = !!flag(this, &#x27;deep&#x27;)
-  , descriptor = isDeep ? &#x27;deep property &#x27; : &#x27;property &#x27;
-  , negate = flag(this, &#x27;negate&#x27;)
-  , obj = flag(this, &#x27;object&#x27;)
+var isDeep = !!flag(this, 'deep')
+  , descriptor = isDeep ? 'deep property ' : 'property '
+  , negate = flag(this, 'negate')
+  , obj = flag(this, 'object')
   , pathInfo = isDeep ? _.getPathInfo(name, obj) : null
   , hasProperty = isDeep
     ? pathInfo.exists
@@ -7628,9 +7621,9 @@ var isDeep = !!flag(this, &#x27;deep&#x27;)
     ? pathInfo.value
     : obj[name];
 
-if (negate &#x26;&#x26; arguments.length &#x3e; 1) {
+if (negate &amp;&amp; arguments.length &gt; 1) {
   if (undefined === value) {
-    msg = (msg != null) ? msg + &#x27;: &#x27; : &#x27;&#x27;;
+    msg = (msg != null) ? msg + ': ' : '';
 ...</pre></li>
     </ul>
 
@@ -7649,24 +7642,24 @@ if (negate &#x26;&#x26; arguments.length &#x3e; 1) {
     seen: [],
     stylize: function (str) { return str; }
   };
-  return formatValue(ctx, obj, (typeof depth === &#x27;undefined&#x27; ? 2 : depth));
+  return formatValue(ctx, obj, (typeof depth === 'undefined' ? 2 : depth));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     for (var k in val) subset[k] = obj[k];
     expected = _.eql(subset, val);
   } else {
-    expected = (obj != undefined) &#x26;&#x26; ~obj.indexOf(val);
+    expected = (obj != undefined) &amp;&amp; ~obj.indexOf(val);
   }
   this.assert(
       expected
-    , &#x27;expected #{this} to include &#x27; + _.<span class="apidocCodeKeywordSpan">inspect</span>(val)
-    , &#x27;expected #{this} to not include &#x27; + _.inspect(val));
+    , 'expected #{this} to include ' + _.<span class="apidocCodeKeywordSpan">inspect</span>(val)
+    , 'expected #{this} to not include ' + _.inspect(val));
 }
 
-Assertion.addChainableMethod(&#x27;include&#x27;, include, includeChainingBehavior);
-Assertion.addChainableMethod(&#x27;contain&#x27;, include, includeChainingBehavior);
-Assertion.addChainableMethod(&#x27;contains&#x27;, include, includeChainingBehavior);
-Assertion.addChainableMethod(&#x27;includes&#x27;, include, includeChainingBehavior);
+Assertion.addChainableMethod('include', include, includeChainingBehavior);
+Assertion.addChainableMethod('contain', include, includeChainingBehavior);
+Assertion.addChainableMethod('contains', include, includeChainingBehavior);
+Assertion.addChainableMethod('includes', include, includeChainingBehavior);
 ...</pre></li>
     </ul>
 
@@ -7683,19 +7676,19 @@ Assertion.addChainableMethod(&#x27;includes&#x27;, include, includeChainingBehav
   var str = inspect(obj)
     , type = Object.prototype.toString.call(obj);
 
-  if (config.truncateThreshold &#x26;&#x26; str.length &#x3e;= config.truncateThreshold) {
-    if (type === &#x27;[object Function]&#x27;) {
-      return !obj.name || obj.name === &#x27;&#x27;
-        ? &#x27;[Function]&#x27;
-        : &#x27;[Function: &#x27; + obj.name + &#x27;]&#x27;;
-    } else if (type === &#x27;[object Array]&#x27;) {
-      return &#x27;[ Array(&#x27; + obj.length + &#x27;) ]&#x27;;
-    } else if (type === &#x27;[object Object]&#x27;) {
+  if (config.truncateThreshold &amp;&amp; str.length &gt;= config.truncateThreshold) {
+    if (type === '[object Function]') {
+      return !obj.name || obj.name === ''
+        ? '[Function]'
+        : '[Function: ' + obj.name + ']';
+    } else if (type === '[object Array]') {
+      return '[ Array(' + obj.length + ') ]';
+    } else if (type === '[object Object]') {
       var keys = Object.keys(obj)
-        , kstr = keys.length &#x3e; 2
-          ? keys.splice(0, 2).join(&#x27;, &#x27;) + &#x27;, ...&#x27;
-          : keys.join(&#x27;, &#x27;);
-      return &#x27;{ Object (&#x27; + kstr + &#x27;) }&#x27;;
+        , kstr = keys.length &gt; 2
+          ? keys.splice(0, 2).join(', ') + ', ...'
+          : keys.join(', ');
+      return '{ Object (' + kstr + ') }';
     } else {
       return str;
     }
@@ -7706,19 +7699,19 @@ Assertion.addChainableMethod(&#x27;includes&#x27;, include, includeChainingBehav
     <li>example usage<pre class="apidocCodePre">...
 
 function satisfy (matcher, msg) {
-  if (msg) flag(this, &#x27;message&#x27;, msg);
-  var obj = flag(this, &#x27;object&#x27;);
+  if (msg) flag(this, 'message', msg);
+  var obj = flag(this, 'object');
   var result = matcher(obj);
   this.assert(
       result
-    , &#x27;expected #{this} to satisfy &#x27; + _.<span class="apidocCodeKeywordSpan">objDisplay</span>(matcher)
-    , &#x27;expected #{this} to not satisfy&#x27; + _.objDisplay(matcher)
+    , 'expected #{this} to satisfy ' + _.<span class="apidocCodeKeywordSpan">objDisplay</span>(matcher)
+    , 'expected #{this} to not satisfy' + _.objDisplay(matcher)
     , this.negate ? false : true
     , result
   );
 }
 
-Assertion.addMethod(&#x27;satisfy&#x27;, satisfy);
+Assertion.addMethod('satisfy', satisfy);
 ...</pre></li>
     </ul>
 
@@ -7760,7 +7753,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
 /**
  * ### .assert(expression, message, negateMessage, expected, actual, showDiff)
  *
- * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn&#x27;t pass.
+ * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
  *
 ...</pre></li>
     </ul>
@@ -7778,7 +7771,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
   var _method = ctx[name]
     , _super = function () { return this; };
 
-  if (_method &#x26;&#x26; &#x27;function&#x27; === typeof _method)
+  if (_method &amp;&amp; 'function' === typeof _method)
     _super = _method;
 
   ctx[name] = function () {
@@ -7818,7 +7811,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
   var _get = Object.getOwnPropertyDescriptor(ctx, name)
     , _super = function () {};
 
-  if (_get &#x26;&#x26; &#x27;function&#x27; === typeof _get.get)
+  if (_get &amp;&amp; 'function' === typeof _get.get)
     _super = _get.get
 
   Object.defineProperty(ctx, name,
@@ -7858,7 +7851,7 @@ Assertion.overwriteChainableMethod = function (name, fn, chainingBehavior) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">test = function (obj, args) {
-  var negate = flag(obj, &#x27;negate&#x27;)
+  var negate = flag(obj, 'negate')
     , expr = args[0];
   return negate ? !expr : expr;
 }</pre></li>
@@ -7902,7 +7895,7 @@ if (!ok) {
 
   for (var flag in flags) {
     if (includeAll ||
-        (flag !== &#x27;object&#x27; &#x26;&#x26; flag !== &#x27;ssfi&#x27; &#x26;&#x26; flag != &#x27;message&#x27;)) {
+        (flag !== 'object' &amp;&amp; flag !== 'ssfi' &amp;&amp; flag != 'message')) {
       object.__flags[flag] = flags[flag];
     }
   }
@@ -7937,31 +7930,31 @@ if (!ok) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getType(obj) {
   var type = Object.prototype.toString.call(obj).match(objectTypeRegexp)[1].toLowerCase();
-  // Let &#x22;new String(&#x27;&#x27;)&#x22; return &#x27;object&#x27;
-  if (typeof Promise === &#x27;function&#x27; &#x26;&#x26; obj instanceof Promise) return &#x27;promise&#x27;;
-  // PhantomJS has type &#x22;DOMWindow&#x22; for null
-  if (obj === null) return &#x27;null&#x27;;
-  // PhantomJS has type &#x22;DOMWindow&#x22; for undefined
-  if (obj === undefined) return &#x27;undefined&#x27;;
+  // Let "new String('')" return 'object'
+  if (typeof Promise === 'function' &amp;&amp; obj instanceof Promise) return 'promise';
+  // PhantomJS has type "DOMWindow" for null
+  if (obj === null) return 'null';
+  // PhantomJS has type "DOMWindow" for undefined
+  if (obj === undefined) return 'undefined';
   return type;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 function an (type, msg) {
-  if (msg) flag(this, &#x27;message&#x27;, msg);
+  if (msg) flag(this, 'message', msg);
   type = type.toLowerCase();
-  var obj = flag(this, &#x27;object&#x27;)
-    , article = ~[ &#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27; ].indexOf(type.charAt(0)) ? &#x27;an
- &#x27; : &#x27;a &#x27;;
+  var obj = flag(this, 'object')
+    , article = ~[ 'a', 'e', 'i', 'o', 'u' ].indexOf(type.charAt(0)) ? 'an
+ ' : 'a ';
 
   this.assert(
       type === _.<span class="apidocCodeKeywordSpan">type</span>(obj)
-    , &#x27;expected #{this} to be &#x27; + article + type
-    , &#x27;expected #{this} not to be &#x27; + article + type
+    , 'expected #{this} to be ' + article + type
+    , 'expected #{this} not to be ' + article + type
   );
 }
 
-Assertion.addChainableMethod(&#x27;an&#x27;, an);
-Assertion.addChainableMethod(&#x27;a&#x27;, an);
+Assertion.addChainableMethod('an', an);
+Assertion.addChainableMethod('a', an);
 ...</pre></li>
     </ul>
 
@@ -7981,31 +7974,31 @@ Assertion.addChainableMethod(&#x27;a&#x27;, an);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getType(obj) {
   var type = Object.prototype.toString.call(obj).match(objectTypeRegexp)[1].toLowerCase();
-  // Let &#x22;new String(&#x27;&#x27;)&#x22; return &#x27;object&#x27;
-  if (typeof Promise === &#x27;function&#x27; &#x26;&#x26; obj instanceof Promise) return &#x27;promise&#x27;;
-  // PhantomJS has type &#x22;DOMWindow&#x22; for null
-  if (obj === null) return &#x27;null&#x27;;
-  // PhantomJS has type &#x22;DOMWindow&#x22; for undefined
-  if (obj === undefined) return &#x27;undefined&#x27;;
+  // Let "new String('')" return 'object'
+  if (typeof Promise === 'function' &amp;&amp; obj instanceof Promise) return 'promise';
+  // PhantomJS has type "DOMWindow" for null
+  if (obj === null) return 'null';
+  // PhantomJS has type "DOMWindow" for undefined
+  if (obj === undefined) return 'undefined';
   return type;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 function an (type, msg) {
-  if (msg) flag(this, &#x27;message&#x27;, msg);
+  if (msg) flag(this, 'message', msg);
   type = type.toLowerCase();
-  var obj = flag(this, &#x27;object&#x27;)
-    , article = ~[ &#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27; ].indexOf(type.charAt(0)) ? &#x27;an
- &#x27; : &#x27;a &#x27;;
+  var obj = flag(this, 'object')
+    , article = ~[ 'a', 'e', 'i', 'o', 'u' ].indexOf(type.charAt(0)) ? 'an
+ ' : 'a ';
 
   this.assert(
       type === _.<span class="apidocCodeKeywordSpan">type</span>(obj)
-    , &#x27;expected #{this} to be &#x27; + article + type
-    , &#x27;expected #{this} not to be &#x27; + article + type
+    , 'expected #{this} to be ' + article + type
+    , 'expected #{this} not to be ' + article + type
   );
 }
 
-Assertion.addChainableMethod(&#x27;an&#x27;, an);
-Assertion.addChainableMethod(&#x27;a&#x27;, an);
+Assertion.addChainableMethod('an', an);
+Assertion.addChainableMethod('a', an);
 ...</pre></li>
     </ul>
 
@@ -8052,14 +8045,14 @@ Assertion.addChainableMethod(&#x27;a&#x27;, an);
 * Can be defined as a regular expression:
 *
 * ```js
-* lib.<span class="apidocCodeKeywordSpan">define</span>(&#x27;int&#x27;, /^[0-9]+$/);
+* lib.<span class="apidocCodeKeywordSpan">define</span>('int', /^[0-9]+$/);
 * ```
 *
 * ... or as a function:
 *
 * ```js
-* lib.define(&#x27;bln&#x27;, function (obj) {
-*   if (&#x27;boolean&#x27; === lib.of(obj)) return true;
+* lib.define('bln', function (obj) {
+*   if ('boolean' === lib.of(obj)) return true;
 ...</pre></li>
     </ul>
 
@@ -8074,12 +8067,12 @@ Assertion.addChainableMethod(&#x27;a&#x27;, an);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getType(obj) {
   var type = Object.prototype.toString.call(obj).match(objectTypeRegexp)[1].toLowerCase();
-  // Let &#x22;new String(&#x27;&#x27;)&#x22; return &#x27;object&#x27;
-  if (typeof Promise === &#x27;function&#x27; &#x26;&#x26; obj instanceof Promise) return &#x27;promise&#x27;;
-  // PhantomJS has type &#x22;DOMWindow&#x22; for null
-  if (obj === null) return &#x27;null&#x27;;
-  // PhantomJS has type &#x22;DOMWindow&#x22; for undefined
-  if (obj === undefined) return &#x27;undefined&#x27;;
+  // Let "new String('')" return 'object'
+  if (typeof Promise === 'function' &amp;&amp; obj instanceof Promise) return 'promise';
+  // PhantomJS has type "DOMWindow" for null
+  if (obj === null) return 'null';
+  // PhantomJS has type "DOMWindow" for undefined
+  if (obj === undefined) return 'undefined';
   return type;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -8090,7 +8083,7 @@ Assertion.addChainableMethod(&#x27;a&#x27;, an);
 * Expose replacement `typeof` detection to the library.
 *
 * ```js
-* if (&#x27;string&#x27; === lib.<span class="apidocCodeKeywordSpan">of</span>(&#x27;hello world&#x27;)) {
+* if ('string' === lib.<span class="apidocCodeKeywordSpan">of</span>('hello world')) {
 *   // ...
 * }
 * ```
@@ -8114,12 +8107,12 @@ Assertion.addChainableMethod(&#x27;a&#x27;, an);
   if (type === getType(obj)) return true;
   var test = this.tests[type];
 
-  if (test &#x26;&#x26; &#x27;regexp&#x27; === getType(test)) {
+  if (test &amp;&amp; 'regexp' === getType(test)) {
     return test.test(obj);
-  } else if (test &#x26;&#x26; &#x27;function&#x27; === getType(test)) {
+  } else if (test &amp;&amp; 'function' === getType(test)) {
     return test(obj);
   } else {
-    throw new ReferenceError(&#x27;Type test &#x22;&#x27; + type + &#x27;&#x22; not defined or invalid.&#x27;);
+    throw new ReferenceError('Type test "' + type + '" not defined or invalid.');
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -8151,3 +8144,4 @@ if (!ok) {
     ]
 </div>
 </div>
+</body></html>
