@@ -6023,7 +6023,23 @@ assert.match = function (exp, re, msg) {
     <li>description and source-code<pre class="apidocCodePre">notOk = function (val, msg) {
   new Assertion(val, msg).is.not.ok;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* typo
+* Merge branch &#x27;master&#x27; of github.com:chaijs/chai
+* pkg: lock mocha/mocha-phantomjs versions (for now)
+* Merge pull request #173 from chaijs/inspect-fix
+* Fix `utils.inspect` with custom object-returning inspect()s.
+* Merge pull request #171 from Bartvds/master
+* replaced tabs with 2 spaces
+* added assert.<span class="apidocCodeKeywordSpan">notOk</span>()
+* Merge pull request #169 from katsgeorgeek/topics/master
+* Fix comparison objects.
+
+1.6.1 / 2013-06-05
+==================
+
+* Merge pull request #168 from katsgeorgeek/topics/master
+...</pre></li>
     </ul>
 
 
@@ -6146,7 +6162,23 @@ assert.typeOf = function (val, type, msg) {
     <li>description and source-code<pre class="apidocCodePre">ok = function (val, msg) {
   new Assertion(val, msg).is.ok;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+A better option was to provide a function-call form for these assertions so that
+the code&#x27;s intent is more clear and the linters stop complaining about something
+looking off. This form is added in addition to the existing property access form
+and does not impact existing test code.
+
+```js
+expect(true).to.be.true();
+foo.should.be.<span class="apidocCodeKeywordSpan">ok</span>();
+```
+
+These forms can also be mixed in any way, these are all functionally identical:
+
+```js
+expect(true).to.be.true.and.not.false();
+expect(true).to.be.true().and.not.false;
+...</pre></li>
     </ul>
 
 
