@@ -1,6 +1,6 @@
 # npmdoc-chai
 
-#### api documentation for  [chai (v3.5.0)](http://chaijs.com)  [![npm package](https://img.shields.io/npm/v/npmdoc-chai.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-chai) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-chai.svg)](https://travis-ci.org/npmdoc/node-npmdoc-chai)
+#### basic api documentation for  [chai (v3.5.0)](http://chaijs.com)  [![npm package](https://img.shields.io/npm/v/npmdoc-chai.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-chai) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-chai.svg)](https://travis-ci.org/npmdoc/node-npmdoc-chai)
 
 #### BDD/TDD assertion library for node.js and the browser. Test framework agnostic.
 
@@ -95,7 +95,8 @@
     "scripts": {
         "test": "make test"
     },
-    "version": "3.5.0"
+    "version": "3.5.0",
+    "bin": {}
 }
 ```
 
